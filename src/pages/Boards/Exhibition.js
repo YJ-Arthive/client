@@ -7,6 +7,7 @@ const Exhibition = () => {
   return (
     <div>
       <BoardHeader text='Exhibition' />
+      <div>버튼 컨테이너</div>
       <div>Exhibition 페이지</div>
     </div>
   );

@@ -93,7 +93,7 @@ const about_3_logo = css`
 const About = () => {
   return (
     <div className='About'>
-      <BoardHeader />
+      <BoardHeader text='About' />
       <div css={about_1_wrap}>
         <div css={about_1}>
           <h1>
