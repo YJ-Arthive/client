@@ -10,7 +10,8 @@ import MyInfo from './pages/MyPage/MyInfo';
 import Search from './pages/Search';
 import MyLike from './pages/MyPage/MyLike';
 import Exhibition from './pages/Boards/Exhibition';
-import ExhibitionDetail from './pages/Boards/ExhibitionRegister';
+import ExhibitionDetail from './pages/Boards/ExhibitionDetail';
+import ExhibitionRegister from './pages/Boards/ExhibitionRegister';
 import Art from './pages/Boards/Art';
 import Artist from './pages/Boards/Artist';
 import Gallery from './pages/Boards/Gallery';
@@ -29,6 +30,7 @@ export const globalStyle = css`
   body {
     padding: 0px;
     margin: 0px;
+    overflow-x: hidden;
   }
 `;
 
@@ -48,6 +50,7 @@ function Main() {
           <Route path='exhibition'>
             <Route index element={<Exhibition />} />
             <Route path='first-detail' element={<ExhibitionDetail />} />
+            <Route path='register' element={<ExhibitionRegister />} />
           </Route>
           <Route path='art' element={<Art />} />
           <Route path='artist' element={<Artist />} />
