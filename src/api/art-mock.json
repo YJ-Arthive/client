@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "posterUrl": "assets/poster.png",
+    "title": "현대적인 올랭피아",
+    "artist": "폴 세잔",
+    "like": "false"
+  },
+  {
+    "id": 2,
+    "posterUrl": "assets/poster.png",
+    "title": "현대적인 올랭피아",
+    "artist": "폴 세잔",
+    "like": "false"
+  },
+  {
+    "id": 3,
+    "posterUrl": "assets/poster.png",
+    "title": "현대적인 올랭피아",
+    "artist": "폴 세잔",
+    "like": "false"
+  },
+  {
+    "id": 4,
+    "posterUrl": "assets/poster.png",
+    "title": "현대적인 올랭피아",
+    "artist": "폴 세잔",
+    "like": "false"
+  }
+]

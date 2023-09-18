@@ -2,24 +2,70 @@
 import { css } from '@emotion/react';
 
 const exhibitionItem = css`
+  // border: 1px solid pink;
   display: flex;
   flex-direction: column;
-  border: 1px solid pink;
   width: 250px;
-  height: 427px;
+  height: 437px;
+  margin-bottom: 20px;
 `;
 
 const poster = css`
-  width: 250px;
+  cursor: pointer;
+  img {
+    width: 250px;
+    height: 100%;
+    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25);
+  }
+  margin-bottom: 10px;
 `;
 
-const ExhibitionItem = () => {
+const title = css`
+  // border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 38px;
+  font-size: 20px;
+
+  span {
+    text-align: right;
+  }
+
+  img {
+    width: 25px;
+    cursor: pointer;
+  }
+`;
+
+const location = css`
+  font-size: 15px;
+`;
+
+const period = css`
+  font-size: 13px;
+  color: #5e5e5e;
+`;
+
+const ExhibitionItem = ({ item }) => {
   return (
     <div css={exhibitionItem}>
-      <div css={poster}>포스터</div>
-      <div>타이틀</div>
-      <div>장소</div>
-      <div>기간</div>
+      <div css={poster}>
+        <img src={item.posterUrl} alt='포스터' />
+      </div>
+      <div css={title}>
+        {item.id}
+        <span>
+          <img src='assets/heart.png' alt='찜' />
+        </span>
+      </div>
+      <div css={location}>
+        {item.gallery}/ {item.location}
+      </div>
+      <div css={period}>
+        {item.startDate} ~ {item.endDate}
+      </div>
     </div>
   );
 };

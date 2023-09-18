@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "posterUrl": "assets/poster.png",
+    "title": "전시이름1",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 2,
+    "posterUrl": "https://media.istockphoto.com/id/1204598613/ko/%EB%B2%A1%ED%84%B0/%EB%AF%B8%EC%88%A0%EC%A0%84%EC%8B%9C%ED%9A%8C-%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?s=1024x1024&w=is&k=20&c=tpeT5xukMd6t5BVJyHJzaQkcHROTdAugd7TxR2kmgo4=",
+    "title": "전시이름2",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 3,
+    "posterUrl": "https://posterdesign.kr/wp-content/uploads/2021/10/%E1%84%91%E1%85%A9%E1%84%83%E1%85%B5-%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%89%E1%85%B5%E1%84%92%E1%85%AC-%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5-%E1%84%89%E1%85%A2%E1%86%B7%E1%84%91%E1%85%B3%E1%86%AF.png",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 4,
+    "posterUrl": "https://www.noblesse.com/shop/data/m/editor_new/2020/09/09/3cbef4f7922ef6b305.jpg",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 5,
+    "posterUrl": "https://i.pinimg.com/550x/7f/a5/92/7fa59258715d638bf9e557efa0c3f898.jpg",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 6,
+    "posterUrl": "https://image.newsis.com/2023/06/21/NISI20230621_0001295122_web.jpg",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 7,
+    "posterUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMjA5MjJfMjMg/MDAxNjYzODQzMTMyODAy.rLDmdm5TDrVpwsMfDbOZOHxMb9wG-AIeZBO2dtUG4Igg.w4bp1CIMmoGVwfwrFIFibvlEVpQFdiUcoGoxfiqsp5gg.PNG.kenoop/image01.png?type=w800",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 8,
+    "posterUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBZVvCOe-5qI_qvfeTGSD4li5cEURVF2uopw&usqp=CAU",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 9,
+    "posterUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQPtNIJsAjhx34Y872iZPv68EhZSzHP6-yZg&usqp=CAU",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 10,
+    "posterUrl": "https://file.newswire.co.kr/data/datafile2/thumb_640/2023/02/1981857528_20230206173206_6390465562.jpg",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 11,
+    "posterUrl": "https://image.newsis.com/2023/06/21/NISI20230621_0001295122_web.jpg",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 12,
+    "posterUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMjA5MjJfMjMg/MDAxNjYzODQzMTMyODAy.rLDmdm5TDrVpwsMfDbOZOHxMb9wG-AIeZBO2dtUG4Igg.w4bp1CIMmoGVwfwrFIFibvlEVpQFdiUcoGoxfiqsp5gg.PNG.kenoop/image01.png?type=w800",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 13,
+    "posterUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBZVvCOe-5qI_qvfeTGSD4li5cEURVF2uopw&usqp=CAU",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 14,
+    "posterUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQPtNIJsAjhx34Y872iZPv68EhZSzHP6-yZg&usqp=CAU",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 15,
+    "posterUrl": "https://file.newswire.co.kr/data/datafile2/thumb_640/2023/02/1981857528_20230206173206_6390465562.jpg",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 16,
+    "posterUrl": "https://image.newsis.com/2023/06/21/NISI20230621_0001295122_web.jpg",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 17,
+    "posterUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMjA5MjJfMjMg/MDAxNjYzODQzMTMyODAy.rLDmdm5TDrVpwsMfDbOZOHxMb9wG-AIeZBO2dtUG4Igg.w4bp1CIMmoGVwfwrFIFibvlEVpQFdiUcoGoxfiqsp5gg.PNG.kenoop/image01.png?type=w800",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 18,
+    "posterUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBZVvCOe-5qI_qvfeTGSD4li5cEURVF2uopw&usqp=CAU",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 19,
+    "posterUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQPtNIJsAjhx34Y872iZPv68EhZSzHP6-yZg&usqp=CAU",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  },
+  {
+    "id": 20,
+    "posterUrl": "https://cdn.gbprimenews.com/news/photo/202301/130149_95265_3153.jpg",
+    "title": "전시이름3",
+    "location": "서울",
+    "gallery": "갤러리 이름",
+    "startDate": "2023-07-04",
+    "endDate": "2023-07-10"
+  }
+]

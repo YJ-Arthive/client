@@ -1,7 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import items from '../../api/artist-mock.json';
-import Board from '../../components/Board';
+
+const boardItem = css`
+  // border: 1px solid pink;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 437px;
+  margin-bottom: 20px;
+`;
 
 const poster = css`
   cursor: pointer;
@@ -32,45 +39,37 @@ const title = css`
   }
 `;
 
-const artist = css`
+const location = css`
   font-size: 15px;
 `;
 
-const artItem = css`
-  display: flex;
-  flex-direction: column;
-  width: 250px;
-  height: 437px;
-  margin-bottom: 20px;
+const period = css`
+  font-size: 13px;
+  color: #5e5e5e;
 `;
 
-const ArtistItem = ({ item }) => {
+const BoardItem = ({ item }) => {
   return (
-    <div css={artItem}>
+    <div css={boardItem}>
       <div css={poster}>
         <img src={item.posterUrl} alt='포스터' />
       </div>
       <div css={title}>
-        {item.artist}
+        {item.title}
         <span>
           <img src='assets/heart.png' alt='찜' />
         </span>
       </div>
-      <div css={artist}>{item.artistEn}</div>
+      <div css={location}>
+        {item.gallery}/ {item.location}
+      </div>
+      <div css={period}>
+        {item.startDate} ~ {item.endDate}
+      </div>
     </div>
   );
 };
 
-const Artist = () => {
-  return (
-    <div>
-      <Board text='Artist'>
-        {items.map((item) => {
-          return <ArtistItem key={item.id} item={item} {...item} />;
-        })}
-      </Board>
-    </div>
-  );
-};
+export default BoardItem;
 
-export default Artist;
+// 각 게시판에의 Item 컴포넌트 재활용할 컴포넌트
