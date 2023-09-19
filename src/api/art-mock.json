@@ -1,27 +1,55 @@
 [
   {
     "id": 1,
-    "posterUrl": "assets/poster.png",
+    "posterUrl": "https://img1.daumcdn.net/thumb/R658x0.q70/?fname=http://t1.daumcdn.net/news/201503/06/ned/20150306160815069.jpeg",
     "title": "현대적인 올랭피아",
     "artist": "폴 세잔",
     "like": "false"
   },
   {
     "id": 2,
-    "posterUrl": "assets/poster.png",
+    "posterUrl": "https://img1.daumcdn.net/thumb/R658x0.q70/?fname=http://t1.daumcdn.net/news/201503/06/ned/20150306160815069.jpeg",
     "title": "현대적인 올랭피아",
     "artist": "폴 세잔",
     "like": "false"
   },
   {
     "id": 3,
-    "posterUrl": "assets/poster.png",
+    "posterUrl": "https://tvstore-phinf.pstatic.net/20210914_191/1631614821883lmWOm_JPEG/00020.jpg",
     "title": "현대적인 올랭피아",
     "artist": "폴 세잔",
     "like": "false"
   },
   {
     "id": 4,
+    "posterUrl": "assets/poster.png",
+    "title": "현대적인 올랭피아",
+    "artist": "폴 세잔",
+    "like": "false"
+  },
+  {
+    "id": 5,
+    "posterUrl": "assets/poster.png",
+    "title": "현대적인 올랭피아",
+    "artist": "폴 세잔",
+    "like": "false"
+  },
+  {
+    "id": 6,
+    "posterUrl": "assets/poster.png",
+    "title": "현대적인 올랭피아",
+    "artist": "폴 세잔",
+    "like": "false"
+  },
+  {
+    "id": 7,
+    "posterUrl": "https://tvstore-phinf.pstatic.net/20210914_191/1631614821883lmWOm_JPEG/00020.jpg",
+    "title": "현대적인 올랭피아",
+    "artist": "폴 세잔",
+    "like": "false"
+  },
+  {
+    "id": 8,
     "posterUrl": "assets/poster.png",
     "title": "현대적인 올랭피아",
     "artist": "폴 세잔",

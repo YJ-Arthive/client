@@ -49,7 +49,10 @@ function Main() {
           <Route path='my-like' element={<MyLike />} />
           <Route path='exhibition'>
             <Route index element={<Exhibition />} />
-            <Route path='first-detail' element={<ExhibitionDetail />} />
+            <Route
+              path='first-exhibition-detail'
+              element={<ExhibitionDetail />}
+            />
             <Route path='register' element={<ExhibitionRegister />} />
           </Route>
           <Route path='art' element={<Art />} />

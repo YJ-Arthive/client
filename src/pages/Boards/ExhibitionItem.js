@@ -55,7 +55,7 @@ const ExhibitionItem = ({ item }) => {
         <img src={item.posterUrl} alt='포스터' />
       </div>
       <div css={title}>
-        {item.id}
+        {item.title}
         <span>
           <img src='assets/heart.png' alt='찜' />
         </span>

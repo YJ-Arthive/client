@@ -6,7 +6,8 @@
     "location": "서울",
     "gallery": "갤러리 이름",
     "startDate": "2023-07-04",
-    "endDate": "2023-07-10"
+    "endDate": "2023-07-10",
+    "slug": "exhibition-detail-1"
   },
   {
     "id": 2,
