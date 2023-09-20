@@ -122,14 +122,23 @@ const Nav = () => {
       </div>
 
       <div css={navLinks}>
-        <Link to='/my-info'>
-          <img src='assets/Nav_Footer/mypage.png' alt='마이페이지' />
+        <Link to='my-info'>
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/Nav_Footer/mypage.png`}
+            alt='마이페이지'
+          />
         </Link>
         <Link to='/search'>
-          <img src='assets/Nav_Footer/search-btn.png' alt='검색페이지' />
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/Nav_Footer/search-btn.png`}
+            alt='검색페이지'
+          />
         </Link>
         <Link to='/my-like'>
-          <img src='assets/Nav_Footer/like-heart.png' alt='찜목록' />
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/Nav_Footer/like-heart.png`}
+            alt='찜목록'
+          />
         </Link>
       </div>
 

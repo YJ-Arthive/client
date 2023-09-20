@@ -39,7 +39,7 @@ const title = css`
   }
 `;
 
-const location = css`
+const subTitle = css`
   font-size: 15px;
 `;
 
@@ -60,7 +60,7 @@ const BoardItem = ({ item }) => {
           <img src='assets/heart.png' alt='찜' />
         </span>
       </div>
-      <div css={location}>
+      <div css={subTitle}>
         {item.gallery}/ {item.location}
       </div>
       <div css={period}>
@@ -71,5 +71,3 @@ const BoardItem = ({ item }) => {
 };
 
 export default BoardItem;
-
-// 각 게시판에의 Item 컴포넌트 재활용할 컴포넌트

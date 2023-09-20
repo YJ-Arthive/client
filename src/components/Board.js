@@ -22,7 +22,7 @@ const boardList = css`
 
 const Board = ({ children, text = '게시판' }) => {
   return (
-    <div className='Board'>
+    <div>
       <BoardHeader text={text} />
       <div css={boardWrap}>
         <div css={boardList}>{children}</div>

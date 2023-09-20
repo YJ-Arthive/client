@@ -25,7 +25,7 @@ const detailTable = css`
     // border: 1px solid yellow;
     height: 460px;
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   th,
@@ -47,14 +47,19 @@ const detailTable = css`
 
   img {
     float: right;
+    width: 28px;
+    margin-right: 10px;
   }
 `;
 
 const exhibitionDescription = css`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 1120px;
-  height: 1510px;
+  height: 100%;
+  padding: 100px;
   border-top: 1px solid gray;
   margin: 0 auto;
 `;
@@ -137,12 +142,17 @@ const ExhibitionDetail = () => {
             </tbody>
           </table>
           <span>
-            <img src='assets/heart.png' alt='찜' />
+            <img src='/assets/heart.png' alt='찜' />
           </span>
         </div>
       </div>
 
-      <div css={exhibitionDescription}></div>
+      <div css={exhibitionDescription}>
+        <p>전시설명</p>
+        <p>포스터</p>
+        <p>전시 상세 설명 줄글</p>
+        <p>카카오맵</p>
+      </div>
     </div>
   );
 };

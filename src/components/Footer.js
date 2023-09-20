@@ -77,17 +77,29 @@ const Footer = () => {
           <div className='footer_img'>
             <span>
               <a href='https://github.com/cc-yujin'>
-                <img src='assets/Nav_Footer/github.png' alt='깃헙' />
+                <img
+                  src={`${process.env.PUBLIC_URL}/assets/Nav_Footer/github.png`}
+                  alt='깃헙'
+                />
               </a>
             </span>
             <span>
-              <img src='assets/Nav_Footer/twitter.png' alt='트위터' />
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/Nav_Footer/twitter.png`}
+                alt='트위터'
+              />
             </span>
             <span>
-              <img src='assets/Nav_Footer/instagram.png' alt='인스타그램' />
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/Nav_Footer/instagram.png`}
+                alt='인스타그램'
+              />
             </span>
             <span>
-              <img src='assets/Nav_Footer/mail.png' alt='메일' />
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/Nav_Footer/mail.png`}
+                alt='메일'
+              />
             </span>
           </div>
           <p>개인정보관리자 : 한유진</p>

@@ -16,7 +16,8 @@
     "location": "서울",
     "gallery": "갤러리 이름",
     "startDate": "2023-07-04",
-    "endDate": "2023-07-10"
+    "endDate": "2023-07-10",
+    "slug": "exhibition-detail-1"
   },
   {
     "id": 3,
@@ -25,7 +26,8 @@
     "location": "서울",
     "gallery": "갤러리 이름",
     "startDate": "2023-07-04",
-    "endDate": "2023-07-10"
+    "endDate": "2023-07-10",
+    "slug": "exhibition-detail-1"
   },
   {
     "id": 4,
@@ -34,7 +36,8 @@
     "location": "서울",
     "gallery": "갤러리 이름",
     "startDate": "2023-07-04",
-    "endDate": "2023-07-10"
+    "endDate": "2023-07-10",
+    "slug": "exhibition-detail-1"
   },
   {
     "id": 5,
@@ -43,7 +46,8 @@
     "location": "서울",
     "gallery": "갤러리 이름",
     "startDate": "2023-07-04",
-    "endDate": "2023-07-10"
+    "endDate": "2023-07-10",
+    "slug": "exhibition-detail-1"
   },
   {
     "id": 6,
@@ -52,7 +56,8 @@
     "location": "서울",
     "gallery": "갤러리 이름",
     "startDate": "2023-07-04",
-    "endDate": "2023-07-10"
+    "endDate": "2023-07-10",
+    "slug": "exhibition-detail-1"
   },
   {
     "id": 7,
@@ -61,7 +66,8 @@
     "location": "서울",
     "gallery": "갤러리 이름",
     "startDate": "2023-07-04",
-    "endDate": "2023-07-10"
+    "endDate": "2023-07-10",
+    "slug": "exhibition-detail-1"
   },
   {
     "id": 8,
@@ -70,7 +76,8 @@
     "location": "서울",
     "gallery": "갤러리 이름",
     "startDate": "2023-07-04",
-    "endDate": "2023-07-10"
+    "endDate": "2023-07-10",
+    "slug": "exhibition-detail-1"
   },
   {
     "id": 9,
