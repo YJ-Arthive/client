@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import React from 'react';
 
 const button = css`
-  width: 394px;
+  width: 100%;
   height: 46px;
   background: #000;
   color: #ffffff;
