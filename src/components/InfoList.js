@@ -3,14 +3,15 @@ import { css } from '@emotion/react';
 
 const inputList = css`
   // border: 1px solid red;
-  margin-bottom: 19px;
+  margin-bottom: 23px;
+  width: 100%;
 `;
 
 const inputList_label = css`
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
-  color: #5e5e5e;
-  margin-bottom: 8px;
+  color: #282828;
+  margin-bottom: 3px;
 `;
 
 const inputList_input = css`
@@ -19,6 +20,7 @@ const inputList_input = css`
     height: 34px;
     border: 1px solid #d9d9d9;
     padding: 0 8px;
+    margin-top: 4px;
   }
 
   input::placeholder {
@@ -31,15 +33,29 @@ const errorMsg = css`
   color: red;
 `;
 
-// const inputError = css``;
+const label_sub = css`
+  font-size: 12px;
+  font-weight: 400;
+  color: #5e5e5e;
+  margin: 5px 2px;
+`;
 
-const InfoList = ({ label, input }) => {
-  const { name, value, type, onChange, placeholder, checkInput } = input;
+const InfoList = ({ label, input, labelSub = false, labelSubText }) => {
+  const {
+    name,
+    value,
+    type,
+    onChange,
+    placeholder,
+    checkInput = '',
+    accept,
+  } = input;
   const isError = value?.length !== 0 && checkInput.isConfirm === false;
 
   return (
     <section css={inputList}>
       <section css={inputList_label}>{label}</section>
+      {labelSub && <p css={label_sub}>{labelSubText}</p>}
       <section css={inputList_input}>
         <input
           name={name}
@@ -47,7 +63,7 @@ const InfoList = ({ label, input }) => {
           type={type}
           onChange={onChange}
           placeholder={placeholder}
-          // css={isError ? `${inputError}` : null}
+          accept={accept}
         />
         {isError && <span css={errorMsg}>{checkInput.errorMessage}</span>}
       </section>

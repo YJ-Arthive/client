@@ -55,7 +55,6 @@ const SignUp = () => {
   const [isConfirmPassword, setIsConfirmPassword] = useState(false);
   const [isConfirmCheckPassword, setIsConfirmCheckPassword] = useState(false);
 
-  // 정규식
   const EMAIL_REGEX =
     /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/;
   const PWD_REGEX =
@@ -152,7 +151,7 @@ const SignUp = () => {
     <div css={signUp}>
       <div css={signUpWrap}>
         <div css={signUpTitle}>
-          <hi>회원가입</hi>
+          <p>회원가입</p>
         </div>
         <form id='signUp' css={signUpForm} onSubmit={handleSubmitSignUp}>
           <InfoList

@@ -63,7 +63,7 @@ const Login = () => {
     <div css={login}>
       <div css={loginWrap}>
         <div css={loginTitle}>
-          <hi>로그인</hi>
+          <p>로그인</p>
         </div>
         <form id='login' onSubmit={handleSubmitLogin}>
           <div css={login_label}>이메일</div>

@@ -17,11 +17,21 @@ const boardHeader = css`
   }
 `;
 
-const BoardHeader = ({ text }) => {
+const sub_text = css`
+  // border: 1px solid gray;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 15px;
+  text-align: center;
+  color: #272727;
+`;
+
+const BoardHeader = ({ text, showHr = true, showText = false, subText }) => {
   return (
     <div css={boardHeader}>
       <p>{text}</p>
-      <hr />
+      {showHr && <hr />}
+      {showText && <p css={sub_text}>{subText}</p>}
     </div>
   );
 };
