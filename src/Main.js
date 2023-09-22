@@ -13,8 +13,11 @@ import Exhibition from './pages/Boards/Exhibition';
 import ExhibitionDetail from './pages/Boards/ExhibitionDetail';
 import ExhibitionRegister from './pages/Boards/ExhibitionRegister';
 import Art from './pages/Boards/Art';
+import ArtDetail from './pages/Boards/ArtDetail';
 import Artist from './pages/Boards/Artist';
+import ArtistDetail from './pages/Boards/ArtistDetail';
 import Gallery from './pages/Boards/Gallery';
+import GalleryDetail from './pages/Boards/GalleryDetail';
 import About from './pages/Boards/About';
 import MyRegisterDetail from './pages/MyPage/MyRegisterDetail';
 import NotFound from './pages/NotFound';
@@ -47,17 +50,28 @@ function Main() {
           <Route path='my-info/register' element={<MyRegisterDetail />} />
           <Route path='search' element={<Search />} />
           <Route path='my-like' element={<MyLike />} />
+
           <Route path='exhibition'>
             <Route index element={<Exhibition />} />
-            <Route
-              path='first-exhibition-detail'
-              element={<ExhibitionDetail />}
-            />
+            <Route path='exhibition-detail' element={<ExhibitionDetail />} />
             <Route path='register' element={<ExhibitionRegister />} />
           </Route>
-          <Route path='art' element={<Art />} />
-          <Route path='artist' element={<Artist />} />
-          <Route path='gallery' element={<Gallery />} />
+
+          <Route path='art'>
+            <Route index element={<Art />} />
+            <Route path='art-detail' element={<ArtDetail />} />
+          </Route>
+
+          <Route path='artist'>
+            <Route index element={<Artist />} />
+            <Route path='artist-detail' element={<ArtistDetail />} />
+          </Route>
+
+          <Route path='gallery'>
+            <Route index element={<Gallery />} />
+            <Route path='gallery-detail' element={<GalleryDetail />} />
+          </Route>
+
           <Route path='about' element={<About />} />
           <Route path='*' element={<NotFound />} />
         </Route>

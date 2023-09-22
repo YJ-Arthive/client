@@ -1,0 +1,173 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
+import BoardHeader from './BoardHeader';
+
+const detailWrap = css`
+  // border: 1px solid purple;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1120px;
+  height: 510px;
+  margin: 0 auto;
+  margin-bottom: 150px;
+
+  span > img {
+    float: right;
+    margin-top: 20px;
+  }
+`;
+
+const imgWrap = css`
+  // border: 1px solid purple;
+  width: 500px;
+  // height: 500px;
+  display: flex;
+  justify-content: center;
+
+  img {
+    max-width: 500px;
+    height: 100%;
+    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25);
+  }
+`;
+
+const detailText = css`
+  // border: 1px solid red;
+  width: 473px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1 {
+    font-size: 38px;
+    font-weight: 500;
+    margin-bottom: 13px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 400;
+    color: #5E5E5E;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 17px;
+    font-weight: 400;
+    color: #979797;
+    margin-bottom: 30px;
+  }
+
+  img {
+    width: 28px;
+    margin-right: 10px;
+`;
+
+const galleryTable = css`
+width: 473px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+table {
+  // border: 1px solid yellow;
+  height: 260px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #e9e9e9;
+  font-weight: normal;
+}
+
+td {
+  padding-left: 20px;
+  color: #464646;
+}
+
+span {
+  float: right;
+  color: #d9d9d9;
+}
+  }
+`;
+
+const GalleryDesc = ({ address, hours, closed, homePage }) => {
+  return (
+    <div css={galleryTable}>
+      <table>
+        <tbody>
+          <tr>
+            <th>
+              주소<span>|</span>
+            </th>
+            <td>{address}</td>
+          </tr>
+          <tr>
+            <th>
+              휴관일<span>|</span>
+            </th>
+            <td>{closed}</td>
+          </tr>
+          <tr>
+            <th>
+              운영시간<span>|</span>
+            </th>
+            <td>{hours}</td>
+          </tr>
+          <tr>
+            <th>
+              홈페이지<span>|</span>
+            </th>
+            <td>{homePage}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+const BoardDetail = ({
+  text,
+  src,
+  title,
+  subTitle,
+  description,
+  gallery = false,
+  address,
+  hours,
+  closed,
+  homePage,
+}) => {
+  return (
+    <div>
+      <BoardHeader text={text} />
+      <div css={detailWrap}>
+        <div css={imgWrap}>
+          <img src={src} alt='포스터' />
+        </div>
+        <div css={detailText}>
+          <h1>{title}</h1>
+          <h2>{subTitle}</h2>
+          <p>{description}</p>
+          {gallery && (
+            <GalleryDesc
+              address={address}
+              hours={hours}
+              closed={closed}
+              homePage={homePage}
+            />
+          )}
+          <span>
+            <img src='/assets/heart.png' alt='찜' />
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BoardDetail;
