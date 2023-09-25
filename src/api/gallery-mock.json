@@ -9,7 +9,7 @@
       "closed": "토, 일 공휴일",
       "homePage": "https://www.daum.net/",
       "like": "false",
-      "slug": "art-detail-1"
+      "slug": "gallery-detail-1"
     },
     {
       "id": "2",
@@ -20,7 +20,7 @@
       "closed": "토, 일 공휴일",
       "homePage": "https://www.daum.net/",
       "like": "false",
-      "slug": "art-detail-2"
+      "slug": "gallery-detail-2"
     },
     {
       "id": "3",
@@ -31,7 +31,7 @@
       "closed": "토, 일 공휴일",
       "homePage": "https://www.daum.net/",
       "like": "false",
-      "slug": "art-detail-3"
+      "slug": "gallery-detail-3"
     },
     {
       "id": "4",
@@ -53,7 +53,7 @@
       "closed": "토, 일 공휴일",
       "homePage": "https://www.daum.net/",
       "like": "false",
-      "slug": "art-detail-5"
+      "slug": "gallery-detail-5"
     },
     {
       "id": "6",
@@ -64,7 +64,7 @@
       "closed": "토, 일 공휴일",
       "homePage": "https://www.daum.net/",
       "like": "false",
-      "slug": "art-detail-6"
+      "slug": "gallery-detail-6"
     },
     {
       "id": "7",
@@ -75,7 +75,7 @@
       "closed": "토, 일 공휴일",
       "homePage": "https://www.daum.net/",
       "like": "false",
-      "slug": "art-detail-7"
+      "slug": "gallery-detail-7"
     },
     {
       "id": "8",
@@ -86,7 +86,7 @@
       "closed": "토, 일 공휴일",
       "homePage": "https://www.daum.net/",
       "like": "false",
-      "slug": "art-detail-8"
+      "slug": "gallery-detail-8"
     },
     {
       "id": "9",
@@ -97,7 +97,7 @@
       "closed": "토, 일 공휴일",
       "homePage": "https://www.daum.net/",
       "like": "false",
-      "slug": "art-detail-9"
+      "slug": "gallery-detail-9"
     },
     {
       "id": "10",
@@ -108,7 +108,7 @@
       "closed": "토, 일 공휴일",
       "homePage": "https://www.daum.net/",
       "like": "false",
-      "slug": "art-detail-10"
+      "slug": "gallery-detail-10"
     }
   ]
 }

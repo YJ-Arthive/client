@@ -43,7 +43,7 @@ const SubTitle = css`
   font-size: 15px;
 `;
 
-const artItem = css`
+const itemWrap = css`
   display: flex;
   flex-direction: column;
   width: 250px;
@@ -53,7 +53,7 @@ const artItem = css`
 
 const ArtistItem = ({ artist }) => {
   return (
-    <div css={artItem}>
+    <div css={itemWrap}>
       <div css={poster}>
         <Link to={`/artist/${artist.slug}`}>
           <img src={artist.posterUrl} alt='포스터' />

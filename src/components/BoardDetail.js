@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import BoardHeader from './BoardHeader';
 import HeartBtn from './HeartBtn';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const detailWrap = css`
   // border: 1px solid purple;
@@ -95,6 +96,10 @@ span {
   color: #d9d9d9;
 }
   }
+
+  a{
+    color: black;
+  }
 `;
 
 const GalleryDesc = ({ galleryName, address, hours, closed, homePage }) => {
@@ -130,7 +135,9 @@ const GalleryDesc = ({ galleryName, address, hours, closed, homePage }) => {
             <th>
               홈페이지<span>|</span>
             </th>
-            <td>{homePage}</td>
+            <td>
+              <Link to={homePage}>갤러리 홈페이지 바로가기</Link>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -145,7 +152,7 @@ const BoardDetail = ({
   subTitle,
   description,
   gallery = false,
-  galleryName = '갤러리명',
+  galleryName,
   address,
   hours,
   closed,

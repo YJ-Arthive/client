@@ -9,6 +9,7 @@ import { getArtBySlug } from '../../api/index';
 const ArtDetail = () => {
   const { artSlug } = useParams();
   const art = getArtBySlug(artSlug);
+  console.log(art);
   const [like, setLike] = useState(false);
 
   // 사용자가 좋아요를 눌렀는지 확인

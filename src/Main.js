@@ -69,7 +69,7 @@ function Main() {
 
           <Route path='gallery'>
             <Route index element={<Gallery />} />
-            <Route path=':galleySlug' element={<GalleryDetail />} />
+            <Route path=':gallerySlug' element={<GalleryDetail />} />
           </Route>
 
           <Route path='about' element={<About />} />

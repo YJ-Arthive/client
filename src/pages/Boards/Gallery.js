@@ -40,11 +40,11 @@ const title = css`
   }
 `;
 
-const artist = css`
+const SubTitle = css`
   font-size: 15px;
 `;
 
-const artItem = css`
+const itemWrap = css`
   display: flex;
   flex-direction: column;
   width: 250px;
@@ -69,7 +69,7 @@ const GalleryItem = ({ gallery }) => {
     setLike(!like);
   };
   return (
-    <div css={artItem}>
+    <div css={itemWrap}>
       <div css={poster}>
         <Link to={`/gallery/${gallery.slug}`}>
           <img src={gallery.posterUrl} alt='포스터' />
@@ -79,7 +79,7 @@ const GalleryItem = ({ gallery }) => {
         <Link to={`/gallery/${gallery.slug}`}>{gallery.galleryName}</Link>
         <HeartBtn like={like} onClick={toggleLike} />
       </div>
-      <div css={artist}>{gallery.address}</div>
+      <div css={SubTitle}>{gallery.address}</div>
     </div>
   );
 };
