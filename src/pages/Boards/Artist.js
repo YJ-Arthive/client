@@ -1,7 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import items from '../../api/artist-mock.json';
+import { Link } from 'react-router-dom';
 import Board from '../../components/Board';
+import HeartBtn from '../../components/HeartBtn';
+import { getArtists } from '../../api/index';
 
 const poster = css`
   cursor: pointer;
@@ -30,9 +32,14 @@ const title = css`
     width: 25px;
     cursor: pointer;
   }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
 `;
 
-const artist = css`
+const SubTitle = css`
   font-size: 15px;
 `;
 
@@ -44,29 +51,31 @@ const artItem = css`
   margin-bottom: 20px;
 `;
 
-const ArtistItem = ({ item }) => {
+const ArtistItem = ({ artist }) => {
   return (
     <div css={artItem}>
       <div css={poster}>
-        <img src={item.posterUrl} alt='포스터' />
+        <Link to={`/artist/${artist.slug}`}>
+          <img src={artist.posterUrl} alt='포스터' />
+        </Link>
       </div>
       <div css={title}>
-        {item.artist}
-        <span>
-          <img src='assets/heart.png' alt='찜' />
-        </span>
+        <Link to={`/artist/${artist.slug}`}>{artist.artistName} </Link>
+        <HeartBtn />
       </div>
-      <div css={artist}>{item.artistEn}</div>
+      <div css={SubTitle}>{artist.artistEn}</div>
     </div>
   );
 };
 
 const Artist = () => {
+  const artists = getArtists();
+
   return (
     <div>
       <Board text='Artist'>
-        {items.map((item) => {
-          return <ArtistItem key={item.id} item={item} {...item} />;
+        {artists.map((artist) => {
+          return <ArtistItem key={artist.id} artist={artist} {...artist} />;
         })}
       </Board>
     </div>

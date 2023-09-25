@@ -1,72 +1,114 @@
-[
-  {
-    "id": 1,
-    "posterUrl": "https://img.seoul.co.kr/img/upload/2021/09/17/SSI_20210917150355.jpg",
-    "gallery": "ART369(아트369)",
-    "address": "서울 용산구 용산동2가 17/201호",
-    "like": "false"
-  },
-  {
-    "id": 2,
-    "posterUrl": "https://m.prugna.co.kr/web/product/big/202211/9d7750409c1193bb10a15dcba01f3d6a.jpg",
-    "gallery": "ART369(아트369)",
-    "address": "서울 용산구 용산동2가 17/201호",
-    "like": "false"
-  },
-  {
-    "id": 3,
-    "posterUrl": "https://artlogic-res.cloudinary.com/c_limit,f_auto,fl_lossy,q_auto:good/ws-ropac/usr/images/video_entries/main_image/items/a8/a8f67cd27fa14c10bb71ceed29235cbb/screenshot-2020-11-24-at-14.47.30.png",
-    "gallery": "ART369(아트369)",
-    "address": "서울 용산구 용산동2가 17/201호",
-    "like": "false"
-  },
-  {
-    "id": 4,
-    "posterUrl": "https://m.prugna.co.kr/web/product/big/202211/9d7750409c1193bb10a15dcba01f3d6a.jpg",
-    "gallery": "ART369(아트369)",
-    "address": "서울 용산구 용산동2가 17/201호",
-    "like": "false"
-  },
-  {
-    "id": 5,
-    "posterUrl": "https://image.harpersbazaar.co.kr/wp-content/uploads/2016/10/bzr_mag_1610_art_19_001-640x847.jpg",
-    "gallery": "ART369(아트369)",
-    "address": "서울 용산구 용산동2가 17/201호",
-    "like": "false"
-  },
-  {
-    "id": 6,
-    "posterUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtsyCDDAyroX7lxLf5qlzrOG0pQAgh1-bkvuTB97kLYPE2ykIVehydHntKygrIyeKStvc&usqp=CAU",
-    "gallery": "ART369(아트369)",
-    "address": "서울 용산구 용산동2가 17/201호",
-    "like": "false"
-  },
-  {
-    "id": 7,
-    "posterUrl": "https://m.prugna.co.kr/web/product/big/202211/9d7750409c1193bb10a15dcba01f3d6a.jpg",
-    "gallery": "ART369(아트369)",
-    "address": "서울 용산구 용산동2가 17/201호",
-    "like": "false"
-  },
-  {
-    "id": 8,
-    "posterUrl": "https://awarewomenartists.com/wp-content/uploads/2017/05/portrait-alice-anderson_aware_women-artists_artistes-femmes.jpg",
-    "gallery": "ART369(아트369)",
-    "address": "서울 용산구 용산동2가 17/201호",
-    "like": "false"
-  },
-  {
-    "id": 9,
-    "posterUrl": "https://artlogic-res.cloudinary.com/c_limit,f_auto,fl_lossy,q_auto:good/ws-ropac/usr/images/video_entries/main_image/items/a8/a8f67cd27fa14c10bb71ceed29235cbb/screenshot-2020-11-24-at-14.47.30.png",
-    "gallery": "ART369(아트369)",
-    "address": "서울 용산구 용산동2가 17/201호",
-    "like": "false"
-  },
-  {
-    "id": 10,
-    "posterUrl": "https://awarewomenartists.com/wp-content/uploads/2017/05/portrait-alice-anderson_aware_women-artists_artistes-femmes.jpg",
-    "gallery": "ART369(아트369)",
-    "address": "서울 용산구 용산동2가 17/201호",
-    "like": "false"
-  }
-]
+{
+  "galleries": [
+    {
+      "id": "1",
+      "posterUrl": "https://img.seoul.co.kr/img/upload/2021/09/17/SSI_20210917150355.jpg",
+      "galleryName": "ART369(아트369)",
+      "address": "서울 용산구 용산동2가 17/201호",
+      "hours": "10:00 ~ 19:00",
+      "closed": "토, 일 공휴일",
+      "homePage": "https://www.daum.net/",
+      "like": "false",
+      "slug": "art-detail-1"
+    },
+    {
+      "id": "2",
+      "posterUrl": "https://m.prugna.co.kr/web/product/big/202211/9d7750409c1193bb10a15dcba01f3d6a.jpg",
+      "galleryName": "ART369(아트369)",
+      "address": "서울 용산구 용산동2가 17/201호",
+      "hours": "10:00 ~ 19:00",
+      "closed": "토, 일 공휴일",
+      "homePage": "https://www.daum.net/",
+      "like": "false",
+      "slug": "art-detail-2"
+    },
+    {
+      "id": "3",
+      "posterUrl": "https://artlogic-res.cloudinary.com/c_limit,f_auto,fl_lossy,q_auto:good/ws-ropac/usr/images/video_entries/main_image/items/a8/a8f67cd27fa14c10bb71ceed29235cbb/screenshot-2020-11-24-at-14.47.30.png",
+      "galleryName": "ART369(아트369)",
+      "address": "서울 용산구 용산동2가 17/201호",
+      "hours": "10:00 ~ 19:00",
+      "closed": "토, 일 공휴일",
+      "homePage": "https://www.daum.net/",
+      "like": "false",
+      "slug": "art-detail-3"
+    },
+    {
+      "id": "4",
+      "posterUrl": "https://m.prugna.co.kr/web/product/big/202211/9d7750409c1193bb10a15dcba01f3d6a.jpg",
+      "galleryName": "ART369(아트369)",
+      "address": "서울 용산구 용산동2가 17/201호",
+      "hours": "10:00 ~ 19:00",
+      "closed": "토, 일 공휴일",
+      "homePage": "https://www.daum.net/",
+      "like": "false",
+      "slug": "art-detail-4"
+    },
+    {
+      "id": "5",
+      "posterUrl": "https://image.harpersbazaar.co.kr/wp-content/uploads/2016/10/bzr_mag_1610_art_19_001-640x847.jpg",
+      "galleryName": "ART369(아트369)",
+      "address": "서울 용산구 용산동2가 17/201호",
+      "hours": "10:00 ~ 19:00",
+      "closed": "토, 일 공휴일",
+      "homePage": "https://www.daum.net/",
+      "like": "false",
+      "slug": "art-detail-5"
+    },
+    {
+      "id": "6",
+      "posterUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtsyCDDAyroX7lxLf5qlzrOG0pQAgh1-bkvuTB97kLYPE2ykIVehydHntKygrIyeKStvc&usqp=CAU",
+      "galleryName": "ART369(아트369)",
+      "address": "서울 용산구 용산동2가 17/201호",
+      "hours": "10:00 ~ 19:00",
+      "closed": "토, 일 공휴일",
+      "homePage": "https://www.daum.net/",
+      "like": "false",
+      "slug": "art-detail-6"
+    },
+    {
+      "id": "7",
+      "posterUrl": "https://m.prugna.co.kr/web/product/big/202211/9d7750409c1193bb10a15dcba01f3d6a.jpg",
+      "galleryName": "ART369(아트369)",
+      "address": "서울 용산구 용산동2가 17/201호",
+      "hours": "10:00 ~ 19:00",
+      "closed": "토, 일 공휴일",
+      "homePage": "https://www.daum.net/",
+      "like": "false",
+      "slug": "art-detail-7"
+    },
+    {
+      "id": "8",
+      "posterUrl": "https://awarewomenartists.com/wp-content/uploads/2017/05/portrait-alice-anderson_aware_women-artists_artistes-femmes.jpg",
+      "galleryName": "ART369(아트369)",
+      "address": "서울 용산구 용산동2가 17/201호",
+      "hours": "10:00 ~ 19:00",
+      "closed": "토, 일 공휴일",
+      "homePage": "https://www.daum.net/",
+      "like": "false",
+      "slug": "art-detail-8"
+    },
+    {
+      "id": "9",
+      "posterUrl": "https://artlogic-res.cloudinary.com/c_limit,f_auto,fl_lossy,q_auto:good/ws-ropac/usr/images/video_entries/main_image/items/a8/a8f67cd27fa14c10bb71ceed29235cbb/screenshot-2020-11-24-at-14.47.30.png",
+      "galleryName": "ART369(아트369)",
+      "address": "서울 용산구 용산동2가 17/201호",
+      "hours": "10:00 ~ 19:00",
+      "closed": "토, 일 공휴일",
+      "homePage": "https://www.daum.net/",
+      "like": "false",
+      "slug": "art-detail-9"
+    },
+    {
+      "id": "10",
+      "posterUrl": "https://awarewomenartists.com/wp-content/uploads/2017/05/portrait-alice-anderson_aware_women-artists_artistes-femmes.jpg",
+      "galleryName": "ART369(아트369)",
+      "address": "서울 용산구 용산동2가 17/201호",
+      "hours": "10:00 ~ 19:00",
+      "closed": "토, 일 공휴일",
+      "homePage": "https://www.daum.net/",
+      "like": "false",
+      "slug": "art-detail-10"
+    }
+  ]
+}

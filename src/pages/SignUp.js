@@ -141,10 +141,6 @@ const SignUp = () => {
     };
 
     console.log(signData);
-
-    // 서버로 데이터 전송하는 코드 추가
-    // const isSignUp = await requestSignUp(signData);
-    // if (isSignUp) navigate('/login');
   };
 
   return (

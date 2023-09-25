@@ -1,5 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { useState } from 'react';
+import HeartBtn from './HeartBtn';
 
 const boardItem = css`
   // border: 1px solid pink;
@@ -49,6 +51,21 @@ const period = css`
 `;
 
 const BoardItem = ({ item }) => {
+  const [like, setLike] = useState(false);
+
+  // 사용자가 좋아요를 눌렀는지 확인
+  // useEffect(async () => {
+  //   const fetchData = async () => {
+  //     const res = await axios.get(...)
+  //     if (res.data.type === 'liked') setLike(true);
+  //   };
+  //   fetchData();
+  // }, []);
+
+  const toggleLike = async () => {
+    // const res = await axios.post(...) // [POST] 사용자가 좋아요 누름 -> DB 갱신
+    setLike(!like);
+  };
   return (
     <div css={boardItem}>
       <div css={poster}>
@@ -56,12 +73,11 @@ const BoardItem = ({ item }) => {
       </div>
       <div css={title}>
         {item.title}
-        <span>
-          <img src='assets/heart.png' alt='찜' />
-        </span>
+        <HeartBtn like={like} onClick={toggleLike} />
       </div>
       <div css={subTitle}>
-        {item.gallery}/ {item.location}
+        {item.gallery}
+        {item.location}
       </div>
       <div css={period}>
         {item.startDate} ~ {item.endDate}

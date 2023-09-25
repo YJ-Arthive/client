@@ -1,11 +1,10 @@
-// import { useParams } from 'react-router-dom';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { getExhibitions } from '../../api/index';
 import BoardHeader from '../../components/BoardHeader';
-import ExhibitionItem from './ExhibitionItem';
-import items from '../../api/exhibition-mock.json';
+import HeartBtn from '../../components/HeartBtn';
 
 const buttonWrap = css`
   // border: 1px solid red;
@@ -67,6 +66,7 @@ const ExhibitionButton = () => {
   //   order: 'createdAt',
   //   location: 'all',
   // });
+
   // 기본 상태 (=기본 정렬)
   const [state, setState] = useState({
     period: '현재전시',
@@ -167,18 +167,113 @@ const exhibitionList = css`
   margin-bottom: 70px;
 `;
 
+const exhibitionItem = css`
+  // border: 1px solid pink;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 100%;
+  margin-bottom: 20px;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+`;
+
+const poster = css`
+  cursor: pointer;
+  img {
+    width: 250px;
+    height: 100%;
+    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25);
+  }
+  margin-bottom: 10px;
+`;
+
+const title = css`
+  // border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 38px;
+  font-size: 20px;
+
+  span {
+    text-align: right;
+  }
+
+  img {
+    width: 25px;
+    cursor: pointer;
+  }
+`;
+
+const location = css`
+  font-size: 15px;
+`;
+
+const period = css`
+  font-size: 13px;
+  color: #5e5e5e;
+`;
+
+const ExhibitionItem = ({ exhibition }) => {
+  const [like, setLike] = useState(false);
+
+  // 사용자가 좋아요를 눌렀는지 확인
+  // useEffect(async () => {
+  //   const fetchData = async () => {
+  //     const res = await axios.get(...)
+  //     if (res.data.type === 'liked') setLike(true);
+  //   };
+  //   fetchData();
+  // }, []);
+
+  const toggleLike = async () => {
+    // const res = await axios.post(...) // [POST] 사용자가 좋아요 누름 -> DB 갱신
+    setLike(!like);
+  };
+
+  return (
+    <div css={exhibitionItem}>
+      <Link to={`/exhibition/${exhibition.slug}`}>
+        <div css={poster}>
+          <img src={exhibition.posterUrl} alt='포스터' />
+        </div>
+      </Link>
+      <div css={title}>
+        <Link to={`/exhibition/${exhibition.slug}`}>{exhibition.title}</Link>
+        <HeartBtn like={like} onClick={toggleLike} />
+      </div>
+      <div css={location}>
+        {exhibition.gallery}/ {exhibition.location}
+      </div>
+      <div css={period}>
+        {exhibition.startDate} ~ {exhibition.endDate}
+      </div>
+    </div>
+  );
+};
+
 const Exhibition = () => {
-  // const { exhibitionSlug } = useParams();
-  // const exhibition = getExhibitionSlug(exhibitionSlug);
-  console.log(items);
+  const exhibitions = getExhibitions();
+
   return (
     <div>
       <BoardHeader text='Exhibition' />
       <div css={exhibitionWrap}>
         <ExhibitionButton />
         <div css={exhibitionList}>
-          {items.map((item) => {
-            return <ExhibitionItem key={item.id} item={item} {...item} />;
+          {exhibitions.map((exhibition) => {
+            return (
+              <ExhibitionItem
+                key={exhibition.id}
+                exhibition={exhibition}
+                {...exhibition}
+              />
+            );
           })}
         </div>
       </div>

@@ -1,8 +1,8 @@
-// import { useParams } from 'react-router-dom';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { useParams, Link } from 'react-router-dom';
 import BoardHeader from '../../components/BoardHeader';
-// import { getExhibitionBySlug } from '../../api';
+import { getExhibitionBySlug } from '../../api/index';
 
 const detailSummary = css`
   // border: 1px solid purple;
@@ -65,20 +65,15 @@ const exhibitionDescription = css`
 `;
 
 const ExhibitionDetail = () => {
-  // const { exhibitionSlug } = useParams();
-  // const exhibition = getExhibitionBySlug(exhibitionSlug);
+  const { exhibitionSlug } = useParams();
+  const exhibition = getExhibitionBySlug(exhibitionSlug);
 
   return (
     <div>
       <BoardHeader text='Exhibition' />
       <div css={detailSummary}>
         <div>
-          <img
-            src={
-              'https://m.babiluv.com/web/product/big/202101/e6f2158edbaa6b5fb470dc9474ac0ef8.jpg'
-            }
-            alt='포스터'
-          />
+          <img src={exhibition.posterUrl} alt='포스터' />
         </div>
         <div css={detailTable}>
           <table>
@@ -88,35 +83,39 @@ const ExhibitionDetail = () => {
                   전시
                   <span>|</span>
                 </th>
-                <td>한준호 개인전</td>
+                <td>{exhibition.title}</td>
               </tr>
               <tr>
                 <th>
                   기간
                   <span>|</span>
                 </th>
-                <td>2023.07.10 ~ 2023.07.22</td>
+                <td>
+                  {exhibition.startDate} ~ {exhibition.endDate}
+                </td>
               </tr>
               <tr>
                 <th>
                   시간
                   <span>|</span>
                 </th>
-                <td>11:00 ~ 19:00</td>
+                <td>{exhibition.hours}</td>
               </tr>
               <tr>
                 <th>
                   위치
                   <span>|</span>
                 </th>
-                <td>리갤러리(LeeGallery) / 서울</td>
+                <td>
+                  {exhibition.gallery} / {exhibition.location}
+                </td>
               </tr>
               <tr>
                 <th>
                   주소
                   <span>|</span>
                 </th>
-                <td>서울 강남구 학동로 30길 34/ 1층 1호</td>
+                <td>{exhibition.address}</td>
               </tr>
               <tr>
                 <th>
@@ -130,14 +129,16 @@ const ExhibitionDetail = () => {
                   관람료
                   <span>|</span>
                 </th>
-                <td>무료</td>
+                <td>{exhibition.entranceFee}</td>
               </tr>
               <tr>
                 <th>
                   사이트
                   <span>|</span>
                 </th>
-                <td>홈페이지 바로가기</td>
+                <td>
+                  <Link to={exhibition.homePage}>홈페이지 바로가기</Link>
+                </td>
               </tr>
             </tbody>
           </table>

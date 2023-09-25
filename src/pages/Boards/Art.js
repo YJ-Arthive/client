@@ -1,8 +1,10 @@
 // import { useParams } from 'react-router-dom';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { Link } from 'react-router-dom';
 import BoardHeader from '../../components/BoardHeader';
-import items from '../../api/art-mock.json';
+import { getArts } from '../../api/index';
+import HeartBtn from '../../components/HeartBtn';
 
 const artWrap = css`
   display: flex;
@@ -61,33 +63,40 @@ const artItem = css`
   width: 250px;
   height: 437px;
   margin-bottom: 20px;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
 `;
 
-const ArtItem = ({ item }) => {
+const ArtItem = ({ art }) => {
   return (
     <div css={artItem}>
       <div css={poster}>
-        <img src={item.posterUrl} alt='포스터' />
+        <Link to={`/art/${art.slug}`}>
+          <img src={art.posterUrl} alt='포스터' />
+        </Link>
       </div>
       <div css={title}>
-        {item.title}
-        <span>
-          <img src='assets/heart.png' alt='찜' />
-        </span>
+        <Link to={`/art/${art.slug}`}>{art.title} </Link>
+        <HeartBtn />
       </div>
-      <div css={artist}>{item.artist}</div>
+      <div css={artist}>{art.artist}</div>
     </div>
   );
 };
 
 const Art = () => {
+  const arts = getArts();
+
   return (
     <div>
       <BoardHeader text='Art' />
       <div css={artWrap}>
         <div css={artList}>
-          {items.map((item) => {
-            return <ArtItem key={item.id} item={item} {...item} />;
+          {arts.map((art) => {
+            return <ArtItem key={art.id} art={art} {...art} />;
           })}
         </div>
       </div>

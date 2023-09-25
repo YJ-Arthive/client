@@ -1,58 +1,75 @@
-[
-  {
-    "id": 1,
-    "posterUrl": "https://img1.daumcdn.net/thumb/R658x0.q70/?fname=http://t1.daumcdn.net/news/201503/06/ned/20150306160815069.jpeg",
-    "title": "현대적인 올랭피아",
-    "artist": "폴 세잔",
-    "like": "false"
-  },
-  {
-    "id": 2,
-    "posterUrl": "https://img1.daumcdn.net/thumb/R658x0.q70/?fname=http://t1.daumcdn.net/news/201503/06/ned/20150306160815069.jpeg",
-    "title": "현대적인 올랭피아",
-    "artist": "폴 세잔",
-    "like": "false"
-  },
-  {
-    "id": 3,
-    "posterUrl": "https://tvstore-phinf.pstatic.net/20210914_191/1631614821883lmWOm_JPEG/00020.jpg",
-    "title": "현대적인 올랭피아",
-    "artist": "폴 세잔",
-    "like": "false"
-  },
-  {
-    "id": 4,
-    "posterUrl": "assets/poster.png",
-    "title": "현대적인 올랭피아",
-    "artist": "폴 세잔",
-    "like": "false"
-  },
-  {
-    "id": 5,
-    "posterUrl": "assets/poster.png",
-    "title": "현대적인 올랭피아",
-    "artist": "폴 세잔",
-    "like": "false"
-  },
-  {
-    "id": 6,
-    "posterUrl": "assets/poster.png",
-    "title": "현대적인 올랭피아",
-    "artist": "폴 세잔",
-    "like": "false"
-  },
-  {
-    "id": 7,
-    "posterUrl": "https://tvstore-phinf.pstatic.net/20210914_191/1631614821883lmWOm_JPEG/00020.jpg",
-    "title": "현대적인 올랭피아",
-    "artist": "폴 세잔",
-    "like": "false"
-  },
-  {
-    "id": 8,
-    "posterUrl": "assets/poster.png",
-    "title": "현대적인 올랭피아",
-    "artist": "폴 세잔",
-    "like": "false"
-  }
-]
+{
+  "arts": [
+    {
+      "id": "1",
+      "posterUrl": "https://img1.daumcdn.net/thumb/R658x0.q70/?fname=http://t1.daumcdn.net/news/201503/06/ned/20150306160815069.jpeg",
+      "title": "현대적인 올랭피아",
+      "artist": "폴 세잔",
+      "artInfo": "어떻게 저떻게 만들었슴둥",
+      "like": "false",
+      "slug": "art-detail-1"
+    },
+    {
+      "id": "2",
+      "posterUrl": "https://img1.daumcdn.net/thumb/R658x0.q70/?fname=http://t1.daumcdn.net/news/201503/06/ned/20150306160815069.jpeg",
+      "title": "현대적인 올랭피아",
+      "artist": "폴 세잔",
+      "like": "false",
+      "slug": "art-detail-2"
+    },
+    {
+      "id": "3",
+      "posterUrl": "https://tvstore-phinf.pstatic.net/20210914_191/1631614821883lmWOm_JPEG/00020.jpg",
+      "title": "한유진",
+      "artist": "폴 세잔",
+      "artInfo": "어떻게 저떻게 만들었슴둥",
+      "like": "false",
+      "slug": "art-detail-3"
+    },
+    {
+      "id": "4",
+      "posterUrl": "https://image.utoimage.com/preview/cp872722/2022/12/202212008462_500.jpg",
+      "title": "현대적인 올랭피아",
+      "artist": "폴 세잔",
+      "artInfo": "어떻게 저떻게 만들었슴둥",
+      "like": "false",
+      "slug": "art-detail-4"
+    },
+    {
+      "id": "5",
+      "posterUrl": "https://image.utoimage.com/preview/cp872722/2022/12/202212008462_500.jpg",
+      "title": "현대적인 올랭피아",
+      "artist": "김홍대",
+      "artInfo": "어떻게 저떻게 만들었슴둥",
+      "like": "false",
+      "slug": "art-detail-5"
+    },
+    {
+      "id": "6",
+      "posterUrl": "https://image.utoimage.com/preview/cp872722/2022/12/202212008462_500.jpg",
+      "title": "현대적인 올랭피아",
+      "artist": "폴 세잔",
+      "artInfo": "어떻게 저떻게 만들었슴둥",
+      "like": "false",
+      "slug": "art-detail-6"
+    },
+    {
+      "id": "7",
+      "posterUrl": "https://tvstore-phinf.pstatic.net/20210914_191/1631614821883lmWOm_JPEG/00020.jpg",
+      "title": "현대적인 올랭피아",
+      "artist": "폴 세잔",
+      "artInfo": "어떻게 저떻게 만들었슴둥???????????",
+      "like": "false",
+      "slug": "art-detail-7"
+    },
+    {
+      "id": "8",
+      "posterUrl": "https://image.utoimage.com/preview/cp872722/2022/12/202212008462_500.jpg",
+      "title": "현대적인 올랭피아",
+      "artist": "폴 세잔",
+      "artInfo": "어떻게 저떻게 만들었슴둥",
+      "like": "false",
+      "slug": "art-detail-8"
+    }
+  ]
+}

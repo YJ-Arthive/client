@@ -1,6 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import BoardHeader from './BoardHeader';
+import HeartBtn from './HeartBtn';
+import { useState } from 'react';
 
 const detailWrap = css`
   // border: 1px solid purple;
@@ -95,11 +97,17 @@ span {
   }
 `;
 
-const GalleryDesc = ({ address, hours, closed, homePage }) => {
+const GalleryDesc = ({ galleryName, address, hours, closed, homePage }) => {
   return (
     <div css={galleryTable}>
       <table>
         <tbody>
+          <tr>
+            <th>
+              갤러리명<span>|</span>
+            </th>
+            <td>{galleryName}</td>
+          </tr>
           <tr>
             <th>
               주소<span>|</span>
@@ -137,11 +145,27 @@ const BoardDetail = ({
   subTitle,
   description,
   gallery = false,
+  galleryName = '갤러리명',
   address,
   hours,
   closed,
   homePage,
 }) => {
+  const [like, setLike] = useState(false);
+  // 사용자가 좋아요를 눌렀는지 확인
+  // useEffect(async () => {
+  //   const fetchData = async () => {
+  //     const res = await axios.get(...)
+  //     if (res.data.type === 'liked') setLike(true);
+  //   };
+  //   fetchData();
+  // }, []);
+
+  const toggleLike = async () => {
+    // const res = await axios.post(...) // [POST] 사용자가 좋아요 누름 -> DB 갱신
+    setLike(!like);
+  };
+
   return (
     <div>
       <BoardHeader text={text} />
@@ -155,15 +179,14 @@ const BoardDetail = ({
           <p>{description}</p>
           {gallery && (
             <GalleryDesc
+              galleryName={galleryName}
               address={address}
               hours={hours}
               closed={closed}
               homePage={homePage}
             />
           )}
-          <span>
-            <img src='/assets/heart.png' alt='찜' />
-          </span>
+          <HeartBtn like={like} onClick={toggleLike} />
         </div>
       </div>
     </div>

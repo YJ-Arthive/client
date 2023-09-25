@@ -1,7 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import Board from '../../components/Board';
-import items from '../../api/gallery-mock.json';
+import HeartBtn from '../../components/HeartBtn';
+import { useState } from 'react';
+import { getGalleries } from '../../api/index';
+import { Link } from 'react-router-dom';
 
 const poster = css`
   cursor: pointer;
@@ -30,6 +33,11 @@ const title = css`
     width: 25px;
     cursor: pointer;
   }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
 `;
 
 const artist = css`
@@ -44,29 +52,48 @@ const artItem = css`
   margin-bottom: 20px;
 `;
 
-const GalleryItem = ({ item }) => {
+const GalleryItem = ({ gallery }) => {
+  const [like, setLike] = useState(false);
+
+  // 사용자가 좋아요를 눌렀는지 확인
+  // useEffect(async () => {
+  //   const fetchData = async () => {
+  //     const res = await axios.get(...)
+  //     if (res.data.type === 'liked') setLike(true);
+  //   };
+  //   fetchData();
+  // }, []);
+
+  const toggleLike = async () => {
+    // const res = await axios.post(...) // [POST] 사용자가 좋아요 누름 -> DB 갱신
+    setLike(!like);
+  };
   return (
     <div css={artItem}>
       <div css={poster}>
-        <img src={item.posterUrl} alt='포스터' />
+        <Link to={`/gallery/${gallery.slug}`}>
+          <img src={gallery.posterUrl} alt='포스터' />
+        </Link>
       </div>
       <div css={title}>
-        {item.gallery}
-        <span>
-          <img src='assets/heart.png' alt='찜' />
-        </span>
+        <Link to={`/gallery/${gallery.slug}`}>{gallery.galleryName}</Link>
+        <HeartBtn like={like} onClick={toggleLike} />
       </div>
-      <div css={artist}>{item.address}</div>
+      <div css={artist}>{gallery.address}</div>
     </div>
   );
 };
 
 const Gallery = () => {
+  const galleries = getGalleries();
+
   return (
     <div>
       <Board text='Gallery'>
-        {items.map((item) => {
-          return <GalleryItem key={item.id} item={item} {...item} />;
+        {galleries.map((gallery) => {
+          return (
+            <GalleryItem key={gallery.id} gallery={gallery} {...gallery} />
+          );
         })}
       </Board>
     </div>

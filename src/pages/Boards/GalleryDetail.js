@@ -1,17 +1,43 @@
+import { useState } from 'react';
 import BoardDetail from '../../components/BoardDetail';
+import HeartBtn from '../../components/HeartBtn';
+import { useParams } from 'react-router-dom';
+import { getGalleryBySlug } from '../../api/index';
 
 const GalleryDetail = () => {
+  const { gallerySlug } = useParams();
+  const gallery = getGalleryBySlug(gallerySlug);
+  console.log(gallery);
+
+  const [like, setLike] = useState(false);
+
+  // 사용자가 좋아요를 눌렀는지 확인
+  // useEffect(async () => {
+  //   const fetchData = async () => {
+  //     const res = await axios.get(...)
+  //     if (res.data.type === 'liked') setLike(true);
+  //   };
+  //   fetchData();
+  // }, []);
+
+  const toggleLike = async () => {
+    // const res = await axios.post(...) // [POST] 사용자가 좋아요 누름 -> DB 갱신
+    setLike(!like);
+  };
+
   return (
     <div>
       <BoardDetail
         text='Gallery'
         gallery={true}
-        src='https://qi-b.qoo10cdn.com/partner/goods_image/0/8/2/5/316650825g.jpg'
-        address='서울 용산구 용산동2가 17/201호'
-        closed='토, 일 공휴일'
-        hours='10:00 ~ 19:00'
-        homePage='홈페이지 바로가기'
+        galleryName='흥에'
+        // src={gallery.posterUrl}
+        // address={gallery.address}
+        // closed={gallery.closed}
+        // hours={gallery.hours}
+        // homePage={gallery.homePage}
       />
+      <HeartBtn like={like} onClick={toggleLike} />
     </div>
   );
 };
