@@ -1,17 +1,32 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import BoardHeader from '../../components/BoardHeader';
 import { getExhibitionBySlug } from '../../api/index';
+import HeartBtn from '../../components/HeartBtn';
 
 const detailSummary = css`
-  // border: 1px solid purple;
+  border: 1px solid purple;
   display: flex;
   justify-content: space-between;
   width: 1120px;
   height: 510px;
   margin: 0 auto;
   margin-bottom: 150px;
+`;
+
+const imgWrap = css`
+  border: 1px solid purple;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+
+  img {
+    max-width: 500px;
+    max-height: 500px;
+    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25);
+  }
 `;
 
 const detailTable = css`
@@ -68,11 +83,27 @@ const ExhibitionDetail = () => {
   const { exhibitionSlug } = useParams();
   const exhibition = getExhibitionBySlug(exhibitionSlug);
 
+  const [like, setLike] = useState(false);
+
+  // 사용자가 좋아요를 눌렀는지 확인
+  // useEffect(async () => {
+  //   const fetchData = async () => {
+  //     const res = await axios.get(...)
+  //     if (res.data.type === 'liked') setLike(true);
+  //   };
+  //   fetchData();
+  // }, []);
+
+  const toggleLike = async () => {
+    // const res = await axios.post(...) // [POST] 사용자가 좋아요 누름 -> DB 갱신
+    setLike(!like);
+  };
+
   return (
     <div>
       <BoardHeader text='Exhibition' />
       <div css={detailSummary}>
-        <div>
+        <div css={imgWrap}>
           <img src={exhibition.posterUrl} alt='포스터' />
         </div>
         <div css={detailTable}>
@@ -142,9 +173,7 @@ const ExhibitionDetail = () => {
               </tr>
             </tbody>
           </table>
-          <span>
-            <img src='/assets/heart.png' alt='찜' />
-          </span>
+          <HeartBtn like={like} onClick={toggleLike} />
         </div>
       </div>
 

@@ -7,7 +7,6 @@ import BoardHeader from '../../components/BoardHeader';
 import HeartBtn from '../../components/HeartBtn';
 
 const buttonWrap = css`
-  // border: 1px solid red;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const detailWrap = css`
-  // border: 1px solid purple;
+  border: 1px solid purple;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,21 +22,21 @@ const detailWrap = css`
 `;
 
 const imgWrap = css`
-  // border: 1px solid purple;
+  border: 1px solid purple;
   width: 500px;
-  // height: 500px;
   display: flex;
   justify-content: center;
 
   img {
     max-width: 500px;
-    height: 100%;
+    // height: 100%;
+    max-height: 500px;
     box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25);
   }
 `;
 
 const detailText = css`
-  // border: 1px solid red;
+  border: 1px solid red;
   width: 473px;
   display: flex;
   flex-direction: column;
@@ -74,7 +74,7 @@ flex-direction: column;
 justify-content: center;
 
 table {
-  // border: 1px solid yellow;
+  border: 1px solid yellow;
   height: 260px;
   font-size: 16px;
   margin-bottom: 10px;

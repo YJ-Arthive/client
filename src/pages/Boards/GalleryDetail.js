@@ -7,7 +7,7 @@ import { getGalleryBySlug } from '../../api/index';
 const GalleryDetail = () => {
   const { gallerySlug } = useParams();
   const gallery = getGalleryBySlug(gallerySlug);
-  console.log(gallery); // 못불러오는 중.......... 이유가 머지!?!?!?
+
   const [like, setLike] = useState(false);
 
   // 사용자가 좋아요를 눌렀는지 확인
@@ -29,7 +29,7 @@ const GalleryDetail = () => {
       <BoardDetail
         text='Gallery'
         gallery={true}
-        galleryName='흥에'
+        galleryName={gallery.galleryName}
         src={gallery.posterUrl}
         title={gallery.title}
         address={gallery.address}
