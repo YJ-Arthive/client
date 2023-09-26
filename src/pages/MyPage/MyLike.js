@@ -22,9 +22,7 @@ const boardBtn = css`
   align-items: center;
 
   a {
-    // text-align: center;
     text-decoration: none;
-    // color: black;
   }
 
   button {

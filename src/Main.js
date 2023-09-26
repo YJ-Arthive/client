@@ -9,7 +9,7 @@ import SignUp from './pages/SignUp';
 import MyInfo from './pages/MyPage/MyInfo';
 import Search from './pages/Search';
 import MyLike from './pages/MyPage/MyLike';
-import Exhibition from './pages/Boards/Exhibition';
+import { Exhibition } from './pages/Boards/Exhibition';
 import ExhibitionDetail from './pages/Boards/ExhibitionDetail';
 import ExhibitionRegister from './pages/Boards/ExhibitionRegister';
 import Art from './pages/Boards/Art';

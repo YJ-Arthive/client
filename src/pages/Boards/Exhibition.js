@@ -218,7 +218,7 @@ const period = css`
   color: #5e5e5e;
 `;
 
-const ExhibitionItem = ({ exhibition }) => {
+export const ExhibitionItem = ({ exhibition }) => {
   const [like, setLike] = useState(false);
 
   // 사용자가 좋아요를 눌렀는지 확인
@@ -256,7 +256,7 @@ const ExhibitionItem = ({ exhibition }) => {
   );
 };
 
-const Exhibition = () => {
+export const Exhibition = () => {
   const exhibitions = getExhibitions();
 
   return (
@@ -279,5 +279,3 @@ const Exhibition = () => {
     </div>
   );
 };
-
-export default Exhibition;
