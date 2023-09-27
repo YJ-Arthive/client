@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import Board from '../../components/Board';
 import HeartBtn from '../../components/HeartBtn';
 import { getArtists } from '../../api/index';
@@ -51,7 +52,22 @@ const itemWrap = css`
   margin-bottom: 20px;
 `;
 
-const ArtistItem = ({ artist }) => {
+export const ArtistItem = ({ artist, showHeart = true }) => {
+  const [like, setLike] = useState(false);
+
+  // 사용자가 좋아요를 눌렀는지 확인
+  // useEffect(async () => {
+  //   const fetchData = async () => {
+  //     const res = await axios.get(...)
+  //     if (res.data.type === 'liked') setLike(true);
+  //   };
+  //   fetchData();
+  // }, []);
+
+  const toggleLike = async () => {
+    // const res = await axios.post(...) // [POST] 사용자가 좋아요 누름 -> DB 갱신
+    setLike(!like);
+  };
   return (
     <div css={itemWrap}>
       <div css={poster}>
@@ -61,14 +77,14 @@ const ArtistItem = ({ artist }) => {
       </div>
       <div css={title}>
         <Link to={`/artist/${artist.slug}`}>{artist.artistName} </Link>
-        <HeartBtn />
+        {showHeart && <HeartBtn like={like} onClick={toggleLike} />}
       </div>
       <div css={SubTitle}>{artist.artistEn}</div>
     </div>
   );
 };
 
-const Artist = () => {
+export const Artist = () => {
   const artists = getArtists();
 
   return (
@@ -81,5 +97,3 @@ const Artist = () => {
     </div>
   );
 };
-
-export default Artist;

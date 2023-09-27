@@ -13,7 +13,6 @@ const artWrap = css`
 `;
 
 const artList = css`
-  // border: 1px solid blue;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -35,7 +34,6 @@ const poster = css`
 `;
 
 const title = css`
-  // border: 1px solid red;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

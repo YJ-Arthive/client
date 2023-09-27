@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { getExhibitions } from '../api/index';
 import { ExhibitionItem } from '../pages/Boards/Exhibition';
+import { ArtistItem } from '../pages/Boards/Artist';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar, Navigation } from 'swiper';
@@ -67,9 +67,13 @@ const SubBanner_Swiper = css`
   }
 `;
 
-const SubBanner = ({ name, more_map }) => {
-  const exhibitions = getExhibitions();
-
+const SubBanner = ({
+  name,
+  more_map,
+  data,
+  showExhibit = false,
+  showArtist = false,
+}) => {
   return (
     <div css={subBanner}>
       <div css={subBannerTitle}>
@@ -80,7 +84,6 @@ const SubBanner = ({ name, more_map }) => {
           </span>
         </li>
       </div>
-
       <Swiper
         css={SubBanner_Swiper}
         modules={[Navigation, Scrollbar]}
@@ -95,17 +98,36 @@ const SubBanner = ({ name, more_map }) => {
           '--swiper-navigation-size': '28px',
         }}
       >
-        {exhibitions.map((exhibition) => {
-          return (
-            <SwiperSlide key={exhibition.id}>
-              <ExhibitionItem
-                key={exhibition.id}
-                exhibition={exhibition}
-                {...exhibition}
-              />
-            </SwiperSlide>
-          );
-        })}
+        {showExhibit &&
+          data.map((exhibition) => {
+            return (
+              <SwiperSlide key={exhibition.id}>
+                {
+                  <ExhibitionItem
+                    key={exhibition.id}
+                    exhibition={exhibition}
+                    {...exhibition}
+                    showHeart={false}
+                  />
+                }
+              </SwiperSlide>
+            );
+          })}
+        {showArtist &&
+          data.map((artist) => {
+            return (
+              <SwiperSlide key={artist.id}>
+                {
+                  <ArtistItem
+                    key={artist.id}
+                    artist={artist}
+                    {...artist}
+                    showHeart={false}
+                  />
+                }
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
     </div>
   );

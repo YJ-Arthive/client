@@ -14,7 +14,7 @@ import ExhibitionDetail from './pages/Boards/ExhibitionDetail';
 import ExhibitionRegister from './pages/Boards/ExhibitionRegister';
 import Art from './pages/Boards/Art';
 import ArtDetail from './pages/Boards/ArtDetail';
-import Artist from './pages/Boards/Artist';
+import { Artist } from './pages/Boards/Artist';
 import ArtistDetail from './pages/Boards/ArtistDetail';
 import Gallery from './pages/Boards/Gallery';
 import GalleryDetail from './pages/Boards/GalleryDetail';

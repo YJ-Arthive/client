@@ -7,7 +7,6 @@ import { getExhibitionBySlug } from '../../api/index';
 import HeartBtn from '../../components/HeartBtn';
 
 const detailSummary = css`
-  border: 1px solid purple;
   display: flex;
   justify-content: space-between;
   width: 1120px;
@@ -17,7 +16,6 @@ const detailSummary = css`
 `;
 
 const imgWrap = css`
-  border: 1px solid purple;
   width: 500px;
   display: flex;
   justify-content: center;
@@ -30,14 +28,12 @@ const imgWrap = css`
 `;
 
 const detailTable = css`
-  // border: 1px solid green;
   width: 473px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   table {
-    // border: 1px solid yellow;
     height: 460px;
     font-size: 16px;
     margin-bottom: 10px;

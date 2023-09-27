@@ -218,7 +218,7 @@ const period = css`
   color: #5e5e5e;
 `;
 
-export const ExhibitionItem = ({ exhibition }) => {
+export const ExhibitionItem = ({ exhibition, showHeart = true }) => {
   const [like, setLike] = useState(false);
 
   // 사용자가 좋아요를 눌렀는지 확인
@@ -244,7 +244,7 @@ export const ExhibitionItem = ({ exhibition }) => {
       </Link>
       <div css={title}>
         <Link to={`/exhibition/${exhibition.slug}`}>{exhibition.title}</Link>
-        <HeartBtn like={like} onClick={toggleLike} />
+        {showHeart && <HeartBtn like={like} onClick={toggleLike} />}
       </div>
       <div css={location}>
         {exhibition.gallery}/ {exhibition.location}
