@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import BoardHeader from '../../components/BoardHeader';
 import Button from '../../components/Button';
 
@@ -117,6 +117,18 @@ function MyInfo() {
   const validateCheckPassword = () =>
     checkNewPwd === newPwd || newPwd.length === 0;
 
+  useEffect(() => {
+    setIsConfirmPassword(validatePassword());
+  }, [newPwd]);
+
+  useEffect(() => {
+    setIsConfirmPhoneNumber(validatePhoneNumber());
+  }, [phoneNumber]);
+
+  useEffect(() => {
+    setIsConfirmCheckPassword(validateCheckPassword());
+  }, [checkNewPwd]);
+
   // 입력값 상태 변경
   const handleChangeInfoInputs = (e) => {
     const { value, name } = e.target;
@@ -126,21 +138,17 @@ function MyInfo() {
     });
   };
 
-  const handleSubmitInfo = () => {
+  const handleSubmitInfo = (e) => {
     e.preventDefault();
-    if (
-      !(
-        isConfirmPwd &&
-        isConfirmCheckPwd &&
-        isConfirmPhoneNumber &&
-      )
-    ) {
+    if (!(isConfirmPwd && isConfirmCheckPwd && isConfirmPhoneNumber)) {
       alert('변경 사항을 조건에 맞게 입력해주세요.');
       return;
     }
 
     const signData = {
-      newPwd,checkNewPwd,phoneNumber
+      newPwd,
+      checkNewPwd,
+      phoneNumber,
     };
 
     console.log(signData);
@@ -177,20 +185,15 @@ function MyInfo() {
                 <input
                   type='password'
                   value={newPwd}
-                  onChange={(e) => setNewPwd(e.target.value)}
+                  onChange={handleChangeInfoInputs}
                 />
                 <br />
                 새 비밀번호 확인
                 <input
                   type='password'
-                  value={confirmPwd}
-                  onChange={(e) => setConfirmPwd(e.target.value)}
+                  value={checkNewPwd}
+                  onChange={handleChangeInfoInputs}
                 />
-                {passwordMatchError && (
-                  <div style={{ color: 'red' }}>
-                    비밀번호가 일치하지 않습니다.
-                  </div>
-                )}
               </td>
             </tr>
             <tr>
@@ -200,10 +203,7 @@ function MyInfo() {
             <tr>
               <th>휴대폰</th>
               <td>
-                <input
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                />
+                <input value={phoneNumber} onChange={handleChangeInfoInputs} />
               </td>
             </tr>
             <tr>
