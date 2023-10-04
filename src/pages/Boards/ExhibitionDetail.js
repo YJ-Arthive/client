@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Navigate, useParams, Link } from 'react-router-dom';
 import BoardHeader from '../../components/BoardHeader';
 import { getExhibitionBySlug } from '../../api/index';
 import HeartBtn from '../../components/HeartBtn';
@@ -94,6 +94,11 @@ const ExhibitionDetail = () => {
     // const res = await axios.post(...) // [POST] 사용자가 좋아요 누름 -> DB 갱신
     setLike(!like);
   };
+
+  if (!exhibition) {
+    // 존재하지 않는 슬러그일 때 리다이렉트 경로 지정
+    return <Navigate to='/exhibition' />;
+  }
 
   return (
     <div>

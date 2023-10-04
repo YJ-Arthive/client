@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import BoardDetail from '../../components/BoardDetail';
 import HeartBtn from '../../components/HeartBtn';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { getGalleryBySlug } from '../../api/index';
 
 const GalleryDetail = () => {
@@ -23,6 +23,10 @@ const GalleryDetail = () => {
     // const res = await axios.post(...) // [POST] 사용자가 좋아요 누름 -> DB 갱신
     setLike(!like);
   };
+
+  if (!gallery) {
+    return <Navigate to='/gallery' />;
+  }
 
   return (
     <div>
