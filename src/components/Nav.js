@@ -5,20 +5,25 @@ import React from 'react';
 
 const navbar = css`
   height: 65px;
-  max-width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: black;
   color: rgb(255, 255, 255);
-  padding-left: 300px;
-  padding-right: 300px;
   overflow-x: hidden;
 
   a {
     text-decoration: none;
     color: white;
   }
+`;
+
+const navbar_container = css`
+  width: 1140px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const navbarLogo = css`
@@ -54,7 +59,7 @@ const navLinks = css`
   padding-right: 20px;
 
   img {
-    width: 30px;
+    width: 34px;
     padding: 5px;
     padding-top: 10px;
   }s
@@ -65,7 +70,6 @@ const navbarUser = css`
 
   ul {
     display: flex;
-    width: 150px;
     padding: 0px;
     list-style: none;
     gap: 10px;
@@ -85,72 +89,74 @@ function getLinkStyle({ isActive }) {
 const Nav = () => {
   return (
     <div css={navbar}>
-      <div css={navbarLogo}>
-        <Link to='/'>
-          Arth<span>!</span>ve
-        </Link>
-      </div>
+      <div css={navbar_container}>
+        <div css={navbarLogo}>
+          <Link to='/'>
+            Arth<span>!</span>ve
+          </Link>
+        </div>
 
-      <div css={navbarMenu}>
-        <ul>
-          <li>
-            <NavLink to='/exhibition' style={getLinkStyle}>
-              EXHIBITION
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/art' style={getLinkStyle}>
-              ART
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/artist' style={getLinkStyle}>
-              ARTIST
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/gallery' style={getLinkStyle}>
-              GALLERY
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/about' style={getLinkStyle}>
-              ABOUT
-            </NavLink>
-          </li>
-        </ul>
-      </div>
+        <div css={navbarMenu}>
+          <ul>
+            <li>
+              <NavLink to='/exhibition' style={getLinkStyle}>
+                EXHIBITION
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/art' style={getLinkStyle}>
+                ART
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/artist' style={getLinkStyle}>
+                ARTIST
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/gallery' style={getLinkStyle}>
+                GALLERY
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/about' style={getLinkStyle}>
+                ABOUT
+              </NavLink>
+            </li>
+          </ul>
+        </div>
 
-      <div css={navLinks}>
-        <Link to='my-info'>
-          <img
-            src={`${process.env.PUBLIC_URL}/assets/Nav_Footer/mypage.png`}
-            alt='마이페이지'
-          />
-        </Link>
-        <Link to='/search'>
-          <img
-            src={`${process.env.PUBLIC_URL}/assets/Nav_Footer/search-btn.png`}
-            alt='검색페이지'
-          />
-        </Link>
-        <Link to='/my-like'>
-          <img
-            src={`${process.env.PUBLIC_URL}/assets/Nav_Footer/like-heart.png`}
-            alt='찜목록'
-          />
-        </Link>
-      </div>
+        <div css={navLinks}>
+          <Link to='my-info'>
+            <img
+              src={`${process.env.PUBLIC_URL}/assets/Nav_Footer/mypage.png`}
+              alt='마이페이지'
+            />
+          </Link>
+          <Link to='/search'>
+            <img
+              src={`${process.env.PUBLIC_URL}/assets/Nav_Footer/search-btn.png`}
+              alt='검색페이지'
+            />
+          </Link>
+          <Link to='/my-like'>
+            <img
+              src={`${process.env.PUBLIC_URL}/assets/Nav_Footer/like-heart.png`}
+              alt='찜목록'
+            />
+          </Link>
+        </div>
 
-      <div css={navbarUser}>
-        <ul>
-          <li>
-            <Link to='/login'>로그인</Link>
-          </li>
-          <li>
-            <Link to='/signup'>회원가입</Link>
-          </li>
-        </ul>
+        <div css={navbarUser}>
+          <ul>
+            <li>
+              <Link to='/login'>로그인</Link>
+            </li>
+            <li>
+              <Link to='/signup'>회원가입</Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

@@ -56,7 +56,6 @@ const latestBtn = css`
 const localBtn = css`
   width: 122px;
 `;
-const resetBtn = css``;
 
 const ExhibitionButton = () => {
   // 기본 정렬
@@ -141,9 +140,7 @@ const ExhibitionButton = () => {
         <option value={'대전 충청 세종'}>대전 충청 세종</option>
         <option value={'제주 강원'}>제주 강원</option>
       </select>
-      <button css={resetBtn} onClick={onClearSelect}>
-        초기화
-      </button>
+      <button onClick={onClearSelect}>초기화</button>
     </div>
   );
 };
