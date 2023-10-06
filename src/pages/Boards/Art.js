@@ -68,7 +68,7 @@ const artItem = css`
   }
 `;
 
-const ArtItem = ({ art }) => {
+export const ArtItem = ({ art }) => {
   return (
     <div css={artItem}>
       <div css={poster}>
@@ -85,7 +85,7 @@ const ArtItem = ({ art }) => {
   );
 };
 
-const Art = () => {
+export const Art = () => {
   const arts = getArts();
 
   return (
@@ -101,5 +101,3 @@ const Art = () => {
     </div>
   );
 };
-
-export default Art;

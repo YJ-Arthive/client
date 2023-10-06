@@ -1,7 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import BoardHeader from '../components/BoardHeader';
+import { ExhibitionItem } from './Boards/Exhibition';
+import { ArtItem } from './Boards/Art';
+import { ArtistItem } from './Boards/Artist';
+import { GalleryItem } from './Boards/Gallery';
+import { getExhibitions, getArts, getArtists, getGalleries } from '../api';
 
 const searchWrap = css`
   display: flex;
@@ -93,18 +99,80 @@ const searchCount = css`
 `;
 
 const Search = () => {
-  const [keyword, setKeyword] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initKeyword = searchParams.get('keyword');
+  const [keyword, setKeyword] = useState(initKeyword || '');
+  const [trimmedKeyword, setTrimmedKeyword] = useState();
+  const [count, setCount] = useState(null);
+  // let exhibitions = getExhibitions(initKeyword);
+
+  const [exhibitions, setExhibitions] = useState([]); // exhibitions 상태 추가
+  const [arts, setArts] = useState([]);
+  const [artists, setArtists] = useState([]);
+  const [galleries, setGalleries] = useState([]);
+
   const handleKeywordChange = (e) => setKeyword(e.target.value);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setExhibitions([]);
+    setArts([]);
+    setArtists([]);
+    setGalleries([]);
+
+    const trimmedKeyword = keyword.trim();
+    if (trimmedKeyword === '') {
+      return;
+    }
+
+    setTrimmedKeyword(trimmedKeyword);
+    setSearchParams(
+      trimmedKeyword
+        ? {
+            keyword: trimmedKeyword,
+          }
+        : {}
+    );
+
+    try {
+      // 검색어가 제출될 때마다 데이터를 가져오기
+      const exhibitionsData = await getExhibitions(trimmedKeyword);
+      setExhibitions(exhibitionsData);
+
+      const artsData = await getArts(trimmedKeyword);
+      setArts(artsData);
+
+      const artistsData = await getArtists(trimmedKeyword);
+      setArtists(artistsData);
+
+      const galleriesData = await getGalleries(trimmedKeyword);
+      setGalleries(galleriesData);
+
+      setCount(
+        exhibitions.length + arts.length + artists.length + galleries.length
+      );
+    } catch (error) {
+      console.error('데이터를 가져오는 데 실패했습니다.:', error);
+    }
+
+    console.log(keyword);
+    console.log(exhibitions);
+    console.log(arts);
+    console.log(artists);
+    console.log(galleries);
+  };
 
   return (
     <div css={searchWrap}>
       <BoardHeader text='통합 검색' />
       <div>
-        <form css={searchBar}>
+        <form css={searchBar} onSubmit={handleSubmit}>
           <input
             name='keyword'
             value={keyword}
             onChange={handleKeywordChange}
+            placeholder='검색어를 입력해주세요.'
           />
           <button type='submit'>
             <img
@@ -115,7 +183,14 @@ const Search = () => {
         </form>
       </div>
       <div css={searchCount}>
-        <p>(검색어)에 대한 검색결과가 총 (1)개 있습니다.</p>
+        {count !== null && count > 0 ? (
+          <p>
+            &apos;{trimmedKeyword}&apos;에 대한 검색결과가 총 {count}개
+            있습니다.
+          </p>
+        ) : (
+          count !== null && <p>{trimmedKeyword}에 대한 검색결과가 없습니다.</p>
+        )}
       </div>
       <div css={boardBtn}>
         <a href='#exhibition'>
@@ -133,17 +208,37 @@ const Search = () => {
       </div>
       <div css={searchResult}>
         <div id='exhibition'>
-          <h3>전시(0)</h3> <hr />
+          <h3>전시({exhibitions.length})</h3> <hr />
+          {exhibitions.map((exhibition) => {
+            return (
+              <ExhibitionItem
+                key={exhibition.id}
+                exhibition={exhibition}
+                {...exhibition}
+              />
+            );
+          })}
         </div>
         <div id='art'>
           <h3>작품(0)</h3>
           <hr />
+          {arts.map((art) => {
+            return <ArtItem key={art.id} art={art} {...art} />;
+          })}
         </div>
         <div id='artist'>
           <h3>작가(0)</h3> <hr />
+          {artists.map((artist) => {
+            return <ArtistItem key={artist.id} artist={artist} {...artist} />;
+          })}
         </div>
         <div id='gallery'>
           <h3>갤러리(0)</h3> <hr />
+          {galleries.map((gallery) => {
+            return (
+              <GalleryItem key={gallery.id} gallery={gallery} {...gallery} />
+            );
+          })}
         </div>
       </div>
     </div>

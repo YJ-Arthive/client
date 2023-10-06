@@ -34,6 +34,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/jest-dom", "npm:5.17.0"],\
             ["@testing-library/react", "virtual:6e286122be632179ed8ab69904fddc4b1b37b92a0e370f6a62d233cc4ff44f20dcb068674e6de4d9b818102e3581438d78d78dc937228e17338270bb1dbe2375#npm:13.4.0"],\
             ["@testing-library/user-event", "virtual:6e286122be632179ed8ab69904fddc4b1b37b92a0e370f6a62d233cc4ff44f20dcb068674e6de4d9b818102e3581438d78d78dc937228e17338270bb1dbe2375#npm:13.5.0"],\
+            ["axios", "npm:1.5.1"],\
             ["eslint", "npm:8.50.0"],\
             ["eslint-config-prettier", "virtual:6e286122be632179ed8ab69904fddc4b1b37b92a0e370f6a62d233cc4ff44f20dcb068674e6de4d9b818102e3581438d78d78dc937228e17338270bb1dbe2375#npm:9.0.0"],\
             ["eslint-plugin-jsx-a11y", "virtual:6e286122be632179ed8ab69904fddc4b1b37b92a0e370f6a62d233cc4ff44f20dcb068674e6de4d9b818102e3581438d78d78dc937228e17338270bb1dbe2375#npm:6.7.1"],\
@@ -6186,6 +6187,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/jest-dom", "npm:5.17.0"],\
             ["@testing-library/react", "virtual:6e286122be632179ed8ab69904fddc4b1b37b92a0e370f6a62d233cc4ff44f20dcb068674e6de4d9b818102e3581438d78d78dc937228e17338270bb1dbe2375#npm:13.4.0"],\
             ["@testing-library/user-event", "virtual:6e286122be632179ed8ab69904fddc4b1b37b92a0e370f6a62d233cc4ff44f20dcb068674e6de4d9b818102e3581438d78d78dc937228e17338270bb1dbe2375#npm:13.5.0"],\
+            ["axios", "npm:1.5.1"],\
             ["eslint", "npm:8.50.0"],\
             ["eslint-config-prettier", "virtual:6e286122be632179ed8ab69904fddc4b1b37b92a0e370f6a62d233cc4ff44f20dcb068674e6de4d9b818102e3581438d78d78dc937228e17338270bb1dbe2375#npm:9.0.0"],\
             ["eslint-plugin-jsx-a11y", "virtual:6e286122be632179ed8ab69904fddc4b1b37b92a0e370f6a62d233cc4ff44f20dcb068674e6de4d9b818102e3581438d78d78dc937228e17338270bb1dbe2375#npm:6.7.1"],\
@@ -6300,6 +6302,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/axe-core-npm-4.8.2-d69866ceee-8c19f507da.zip/node_modules/axe-core/",\
           "packageDependencies": [\
             ["axe-core", "npm:4.8.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["axios", [\
+        ["npm:1.5.1", {\
+          "packageLocation": "./.yarn/cache/axios-npm-1.5.1-6bc68e7d25-4444f06601.zip/node_modules/axios/",\
+          "packageDependencies": [\
+            ["axios", "npm:1.5.1"],\
+            ["follow-redirects", "virtual:6bc68e7d25b7055a51c269c1fa5648c8246286db1b7949168396e2ffbde7ed58cf742783c99b4e376ba9a3e96fcc4d029f96bd1b532b606b5055545461060ec6#npm:1.15.3"],\
+            ["form-data", "npm:4.0.0"],\
+            ["proxy-from-env", "npm:1.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -9695,10 +9709,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:a313c479c5c7e54d9ec8fbeeea69ff640f56b8989ea2dff42351a3fa5c4061fb80a52d8ede0f0826a181a216820c2d2c3f15da881e7fdf31cef1c446e42f0c45#npm:1.15.3", {\
-          "packageLocation": "./.yarn/__virtual__/follow-redirects-virtual-ff48ff82c1/0/cache/follow-redirects-npm-1.15.3-ca69c47b72-584da22ec5.zip/node_modules/follow-redirects/",\
+        ["virtual:6bc68e7d25b7055a51c269c1fa5648c8246286db1b7949168396e2ffbde7ed58cf742783c99b4e376ba9a3e96fcc4d029f96bd1b532b606b5055545461060ec6#npm:1.15.3", {\
+          "packageLocation": "./.yarn/__virtual__/follow-redirects-virtual-ddb0bfe676/0/cache/follow-redirects-npm-1.15.3-ca69c47b72-584da22ec5.zip/node_modules/follow-redirects/",\
           "packageDependencies": [\
-            ["follow-redirects", "virtual:a313c479c5c7e54d9ec8fbeeea69ff640f56b8989ea2dff42351a3fa5c4061fb80a52d8ede0f0826a181a216820c2d2c3f15da881e7fdf31cef1c446e42f0c45#npm:1.15.3"],\
+            ["follow-redirects", "virtual:6bc68e7d25b7055a51c269c1fa5648c8246286db1b7949168396e2ffbde7ed58cf742783c99b4e376ba9a3e96fcc4d029f96bd1b532b606b5055545461060ec6#npm:1.15.3"],\
             ["@types/debug", null],\
             ["debug", null]\
           ],\
@@ -9782,6 +9796,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/form-data-npm-3.0.1-d080d436e0-b019e8d35c.zip/node_modules/form-data/",\
           "packageDependencies": [\
             ["form-data", "npm:3.0.1"],\
+            ["asynckit", "npm:0.4.0"],\
+            ["combined-stream", "npm:1.0.8"],\
+            ["mime-types", "npm:2.1.35"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:4.0.0", {\
+          "packageLocation": "./.yarn/cache/form-data-npm-4.0.0-916facec2d-01135bf867.zip/node_modules/form-data/",\
+          "packageDependencies": [\
+            ["form-data", "npm:4.0.0"],\
             ["asynckit", "npm:0.4.0"],\
             ["combined-stream", "npm:1.0.8"],\
             ["mime-types", "npm:2.1.35"]\
@@ -10454,7 +10478,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["http-proxy", "npm:1.18.1"],\
             ["eventemitter3", "npm:4.0.7"],\
-            ["follow-redirects", "virtual:a313c479c5c7e54d9ec8fbeeea69ff640f56b8989ea2dff42351a3fa5c4061fb80a52d8ede0f0826a181a216820c2d2c3f15da881e7fdf31cef1c446e42f0c45#npm:1.15.3"],\
+            ["follow-redirects", "virtual:6bc68e7d25b7055a51c269c1fa5648c8246286db1b7949168396e2ffbde7ed58cf742783c99b4e376ba9a3e96fcc4d029f96bd1b532b606b5055545461060ec6#npm:1.15.3"],\
             ["requires-port", "npm:1.0.0"]\
           ],\
           "linkType": "HARD"\
@@ -15451,6 +15475,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["proxy-addr", "npm:2.0.7"],\
             ["forwarded", "npm:0.2.0"],\
             ["ipaddr.js", "npm:1.9.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["proxy-from-env", [\
+        ["npm:1.1.0", {\
+          "packageLocation": "./.yarn/cache/proxy-from-env-npm-1.1.0-c13d07f26b-ed7fcc2ba0.zip/node_modules/proxy-from-env/",\
+          "packageDependencies": [\
+            ["proxy-from-env", "npm:1.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\

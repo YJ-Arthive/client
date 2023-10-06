@@ -52,7 +52,7 @@ const itemWrap = css`
   margin-bottom: 20px;
 `;
 
-const GalleryItem = ({ gallery }) => {
+export const GalleryItem = ({ gallery }) => {
   const [like, setLike] = useState(false);
 
   // 사용자가 좋아요를 눌렀는지 확인
@@ -84,7 +84,7 @@ const GalleryItem = ({ gallery }) => {
   );
 };
 
-const Gallery = () => {
+export const Gallery = () => {
   const galleries = getGalleries();
 
   return (
@@ -99,5 +99,3 @@ const Gallery = () => {
     </div>
   );
 };
-
-export default Gallery;
