@@ -7,41 +7,30 @@ const { arts } = artMock;
 const { artists } = artistMock;
 const { galleries } = galleryMock;
 
-// function filterByKeyword(items, keyword) {
-//   const lowered = keyword.toLowerCase();
-//   return items.filter((item) => {
-//     // 필드 목록을 배열로 정의합니다.
-//     const fieldsToSearch = [
-//       'title',
-//       'gallery',
-//       'location',
-//       'artist',
-//       'artistName',
-//       'artistEn',
-//       'field',
-//       'country',
-//       'artInfo',
-//       'galleryName',
-//       'address',
-//     ];
-
-//     // 하나 이상의 필드에서 검색어를 포함하면 해당 아이템을 반환합니다.
-//     return fieldsToSearch.some((field) => {
-//       return item[field].includes(lowered);
-//     });
-//   });
-// }
-
-// function filterByKeyword(items, keyword) {
-//   const lowered = keyword.toLowerCase();
-//   const { title, gallery, location } = items;
-//   return items.filter((item) => items.toLowerCase().includes(lowered));
-// }
-
 function filterByKeyword(items, keyword) {
   const lowered = keyword.toLowerCase();
-  return items.filter(({ title }) => title.toLowerCase().includes(lowered));
+  const fields = [
+    'title',
+    'gallery',
+    'galleryName',
+    'location',
+    'artist',
+    'artistName',
+    'artistEn',
+    'address',
+    'field',
+    'country',
+  ];
+
+  return items.filter((item) =>
+    fields.some((field) => item[field]?.toLowerCase().includes(lowered))
+  );
 }
+
+// function filterByKeyword(items, keyword) {
+//   const lowered = keyword.toLowerCase();
+//   return items.filter(({ title }) => title.toLowerCase().includes(lowered));
+// }
 
 // 각 게시판 아이템 리스트 가져오기
 export function getExhibitions(keyword) {

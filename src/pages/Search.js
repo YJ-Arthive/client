@@ -106,7 +106,7 @@ const Search = () => {
   const [count, setCount] = useState(null);
   // let exhibitions = getExhibitions(initKeyword);
 
-  const [exhibitions, setExhibitions] = useState([]); // exhibitions 상태 추가
+  const [exhibitions, setExhibitions] = useState([]);
   const [arts, setArts] = useState([]);
   const [artists, setArtists] = useState([]);
   const [galleries, setGalleries] = useState([]);
@@ -220,20 +220,20 @@ const Search = () => {
           })}
         </div>
         <div id='art'>
-          <h3>작품(0)</h3>
+          <h3>작품({arts.length})</h3>
           <hr />
           {arts.map((art) => {
             return <ArtItem key={art.id} art={art} {...art} />;
           })}
         </div>
         <div id='artist'>
-          <h3>작가(0)</h3> <hr />
+          <h3>작가({artists.length})</h3> <hr />
           {artists.map((artist) => {
             return <ArtistItem key={artist.id} artist={artist} {...artist} />;
           })}
         </div>
         <div id='gallery'>
-          <h3>갤러리(0)</h3> <hr />
+          <h3>갤러리({galleries.length})</h3> <hr />
           {galleries.map((gallery) => {
             return (
               <GalleryItem key={gallery.id} gallery={gallery} {...gallery} />
