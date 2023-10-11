@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { useState } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 import BoardHeader from '../../components/BoardHeader';
-import { getExhibitionBySlug } from '../../api/index';
+import { getExhibitionById } from '../../api/index';
 import HeartBtn from '../../components/HeartBtn';
 
 const detailSummary = css`
@@ -76,8 +76,8 @@ const exhibitionDescription = css`
 `;
 
 const ExhibitionDetail = () => {
-  const { exhibitionSlug } = useParams();
-  const exhibition = getExhibitionBySlug(exhibitionSlug);
+  const { exhibitionId } = useParams();
+  const exhibition = getExhibitionById(exhibitionId);
 
   const [like, setLike] = useState(false);
 
@@ -96,7 +96,7 @@ const ExhibitionDetail = () => {
   };
 
   if (!exhibition) {
-    // 존재하지 않는 슬러그일 때 리다이렉트 경로 지정
+    // 존재하지 않는 Id일 때 리다이렉트 경로 지정
     return <Navigate to='/exhibition' />;
   }
 

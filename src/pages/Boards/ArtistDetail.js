@@ -1,10 +1,10 @@
 import BoardDetail from '../../components/BoardDetail';
 import { Navigate, useParams } from 'react-router-dom';
-import { getArtistBySlug } from '../../api/index';
+import { getArtistById } from '../../api/index';
 
 const ArtistDetail = () => {
-  const { artistSlug } = useParams();
-  const artist = getArtistBySlug(artistSlug);
+  const { artistId } = useParams();
+  const artist = getArtistById(artistId);
   console.log(artist);
 
   if (!artist) {

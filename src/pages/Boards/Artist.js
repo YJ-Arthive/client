@@ -71,12 +71,12 @@ export const ArtistItem = ({ artist, showHeart = true }) => {
   return (
     <div css={itemWrap}>
       <div css={poster}>
-        <Link to={`/artist/${artist.slug}`}>
+        <Link to={`/artist/${artist.id}`}>
           <img src={artist.posterUrl} alt='포스터' />
         </Link>
       </div>
       <div css={title}>
-        <Link to={`/artist/${artist.slug}`}>{artist.artistName} </Link>
+        <Link to={`/artist/${artist.id}`}>{artist.artistName} </Link>
         {showHeart && <HeartBtn like={like} onClick={toggleLike} />}
       </div>
       <div css={SubTitle}>{artist.artistEn}</div>

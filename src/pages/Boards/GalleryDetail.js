@@ -2,11 +2,11 @@ import { useState } from 'react';
 import BoardDetail from '../../components/BoardDetail';
 import HeartBtn from '../../components/HeartBtn';
 import { Navigate, useParams } from 'react-router-dom';
-import { getGalleryBySlug } from '../../api/index';
+import { getGalleryById } from '../../api/index';
 
 const GalleryDetail = () => {
-  const { gallerySlug } = useParams();
-  const gallery = getGalleryBySlug(gallerySlug);
+  const { galleryId } = useParams();
+  const gallery = getGalleryById(galleryId);
 
   const [like, setLike] = useState(false);
 

@@ -234,13 +234,13 @@ export const ExhibitionItem = ({ exhibition, showHeart = true }) => {
 
   return (
     <div css={exhibitionItem}>
-      <Link to={`/exhibition/${exhibition.slug}`}>
+      <Link to={`/exhibition/${exhibition.id}`}>
         <div css={poster}>
           <img src={exhibition.posterUrl} alt='포스터' />
         </div>
       </Link>
       <div css={title}>
-        <Link to={`/exhibition/${exhibition.slug}`}>{exhibition.title}</Link>
+        <Link to={`/exhibition/${exhibition.id}`}>{exhibition.title}</Link>
         {showHeart && <HeartBtn like={like} onClick={toggleLike} />}
       </div>
       <div css={location}>

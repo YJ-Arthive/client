@@ -4,11 +4,11 @@ import { useState } from 'react';
 import BoardDetail from '../../components/BoardDetail';
 import HeartBtn from '../../components/HeartBtn';
 import { Navigate, useParams } from 'react-router-dom';
-import { getArtBySlug } from '../../api/index';
+import { getArtById } from '../../api/index';
 
 const ArtDetail = () => {
-  const { artSlug } = useParams();
-  const art = getArtBySlug(artSlug);
+  const { artId } = useParams();
+  const art = getArtById(artId);
   console.log(art);
   const [like, setLike] = useState(false);
 

@@ -71,7 +71,7 @@ export const GalleryItem = ({ gallery }) => {
   return (
     <div css={itemWrap}>
       <div css={poster}>
-        <Link to={`/gallery/${gallery.slug}`}>
+        <Link to={`/gallery/${gallery.id}`}>
           <img src={gallery.posterUrl} alt='포스터' />
         </Link>
       </div>

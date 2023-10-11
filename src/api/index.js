@@ -27,11 +27,6 @@ function filterByKeyword(items, keyword) {
   );
 }
 
-// function filterByKeyword(items, keyword) {
-//   const lowered = keyword.toLowerCase();
-//   return items.filter(({ title }) => title.toLowerCase().includes(lowered));
-// }
-
 // 각 게시판 아이템 리스트 가져오기
 export function getExhibitions(keyword) {
   if (!keyword) return exhibitions;
@@ -53,19 +48,19 @@ export function getGalleries(keyword) {
   return filterByKeyword(galleries, keyword);
 }
 
-// 디테일 페이지 Slug
-export function getExhibitionBySlug(exhibitionSlug) {
-  return exhibitions.find((exhibition) => exhibition.slug === exhibitionSlug);
+// 디테일 페이지로 이동
+export function getExhibitionById(exhibitionId) {
+  return exhibitions.find((exhibition) => exhibition.id === exhibitionId);
 }
 
-export function getArtBySlug(artSlug) {
-  return arts.find((art) => art.slug === artSlug);
+export function getArtById(artId) {
+  return arts.find((art) => art.id === artId);
 }
 
-export function getArtistBySlug(artistSlug) {
-  return artists.find((artist) => artist.slug === artistSlug);
+export function getArtistById(artistId) {
+  return artists.find((artist) => artist.id === artistId);
 }
 
-export function getGalleryBySlug(gallerySlug) {
-  return galleries.find((gallery) => gallery.slug === gallerySlug);
+export function getGalleryById(galleryId) {
+  return galleries.find((gallery) => gallery.id === galleryId);
 }

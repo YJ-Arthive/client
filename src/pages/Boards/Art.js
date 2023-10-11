@@ -72,12 +72,12 @@ export const ArtItem = ({ art }) => {
   return (
     <div css={artItem}>
       <div css={poster}>
-        <Link to={`/art/${art.slug}`}>
+        <Link to={`/art/${art.id}`}>
           <img src={art.posterUrl} alt='포스터' />
         </Link>
       </div>
       <div css={title}>
-        <Link to={`/art/${art.slug}`}>{art.title} </Link>
+        <Link to={`/art/${art.id}`}>{art.title} </Link>
         <HeartBtn />
       </div>
       <div css={artist}>{art.artist}</div>

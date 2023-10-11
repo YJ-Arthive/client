@@ -53,23 +53,23 @@ function Main() {
 
           <Route path='exhibition'>
             <Route index element={<Exhibition />} />
-            <Route path=':exhibitionSlug' element={<ExhibitionDetail />} />
+            <Route path=':exhibitionId' element={<ExhibitionDetail />} />
             <Route path='register' element={<ExhibitionRegister />} />
           </Route>
 
           <Route path='art'>
             <Route index element={<Art />} />
-            <Route path=':artSlug' element={<ArtDetail />} />
+            <Route path=':artId' element={<ArtDetail />} />
           </Route>
 
           <Route path='artist'>
             <Route index element={<Artist />} />
-            <Route path=':artistSlug' element={<ArtistDetail />} />
+            <Route path=':artistId' element={<ArtistDetail />} />
           </Route>
 
           <Route path='gallery'>
             <Route index element={<Gallery />} />
-            <Route path=':gallerySlug' element={<GalleryDetail />} />
+            <Route path=':galleryId' element={<GalleryDetail />} />
           </Route>
 
           <Route path='about' element={<About />} />
