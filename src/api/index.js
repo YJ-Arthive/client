@@ -1,3 +1,4 @@
+import axios from 'axios';
 import exhibitionMock from './exhibition-mock.json';
 import artMock from './art-mock.json';
 import artistMock from './artist-mock.json';
@@ -43,10 +44,24 @@ export function getArtists(keyword) {
   return filterByKeyword(artists, keyword);
 }
 
-export function getGalleries(keyword) {
-  if (!keyword) return galleries;
-  return filterByKeyword(galleries, keyword);
-}
+// export function getGalleries(keyword) {
+//   if (!keyword) return galleries;
+//   return filterByKeyword(galleries, keyword);
+// }
+
+export const getGalleries = async () => {
+  try {
+    // const response = await axios.get('/api/v1/galleries');
+    const response = await axios.get(
+      'https://api.arthive.dev/api/v1/galleries?page=1&size=10'
+    );
+    // 여기서 response.data에 갤러리 목록이 포함되어 있다고 가정합니다.
+    return response;
+  } catch (error) {
+    console.error('갤러리 목록을 불러오는 중 오류가 발생했습니다:', error);
+    return [];
+  }
+};
 
 // 디테일 페이지로 이동
 export function getExhibitionById(exhibitionId) {

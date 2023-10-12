@@ -21,6 +21,7 @@ import GalleryDetail from './pages/Boards/GalleryDetail';
 import About from './pages/Boards/About';
 import MyRegisterDetail from './pages/MyPage/MyRegisterDetail';
 import NotFound from './pages/NotFound';
+import GalleryRegister from './pages/Admin/GalleryRegister';
 
 export const globalStyle = css`
   * {
@@ -50,6 +51,7 @@ function Main() {
           <Route path='my-info/register' element={<MyRegisterDetail />} />
           <Route path='search' element={<Search />} />
           <Route path='my-like' element={<MyLike />} />
+          <Route path='gallery-register' element={<GalleryRegister />} />
 
           <Route path='exhibition'>
             <Route index element={<Exhibition />} />

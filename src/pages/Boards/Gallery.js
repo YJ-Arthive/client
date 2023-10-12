@@ -2,9 +2,10 @@
 import { css } from '@emotion/react';
 import Board from '../../components/Board';
 import HeartBtn from '../../components/HeartBtn';
-import { useState } from 'react';
-import { getGalleries } from '../../api/index';
+import { useState, useEffect } from 'react';
+// import { getGalleries } from '../../api/index';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const poster = css`
   cursor: pointer;
@@ -68,6 +69,7 @@ export const GalleryItem = ({ gallery }) => {
     // const res = await axios.post(...) // [POST] 사용자가 좋아요 누름 -> DB 갱신
     setLike(!like);
   };
+
   return (
     <div css={itemWrap}>
       <div css={poster}>
@@ -76,7 +78,7 @@ export const GalleryItem = ({ gallery }) => {
         </Link>
       </div>
       <div css={title}>
-        <Link to={`/gallery/${gallery.slug}`}>{gallery.galleryName}</Link>
+        <Link to={`/gallery/${gallery.id}`}>{gallery.galleryName}</Link>
         <HeartBtn like={like} onClick={toggleLike} />
       </div>
       <div css={SubTitle}>{gallery.address}</div>
@@ -85,12 +87,20 @@ export const GalleryItem = ({ gallery }) => {
 };
 
 export const Gallery = () => {
-  const galleries = getGalleries();
+  const [galleryData, setGalleryData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('https://api.arthive.dev/api/v1/galleries?page=1&size=10')
+      .then((response) => {
+        setGalleryData(response.data.data);
+      });
+  }, []);
 
   return (
     <div>
       <Board text='Gallery'>
-        {galleries.map((gallery) => {
+        {galleryData.map((gallery) => {
           return (
             <GalleryItem key={gallery.id} gallery={gallery} {...gallery} />
           );

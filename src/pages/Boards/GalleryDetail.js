@@ -1,14 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import BoardDetail from '../../components/BoardDetail';
 import HeartBtn from '../../components/HeartBtn';
 import { Navigate, useParams } from 'react-router-dom';
-import { getGalleryById } from '../../api/index';
+// import { getGalleryById } from '../../api/index';
+import axios from 'axios';
 
 const GalleryDetail = () => {
   const { galleryId } = useParams();
-  const gallery = getGalleryById(galleryId);
-
+  const [galleryDetail, setGalleryDetail] = useState([]);
   const [like, setLike] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get(`https://api.arthive.dev/api/v1/galleries/${galleryId}`)
+      .then((response) => {
+        setGalleryDetail(response.data);
+        if (response.data.like) setLike(true);
+      });
+  }, [galleryId]);
 
   // 사용자가 좋아요를 눌렀는지 확인
   // useEffect(async () => {
@@ -24,7 +33,7 @@ const GalleryDetail = () => {
     setLike(!like);
   };
 
-  if (!gallery) {
+  if (!galleryDetail) {
     return <Navigate to='/gallery' />;
   }
 
@@ -33,13 +42,13 @@ const GalleryDetail = () => {
       <BoardDetail
         text='Gallery'
         gallery={true}
-        galleryName={gallery.galleryName}
-        src={gallery.posterUrl}
-        title={gallery.title}
-        address={gallery.address}
-        closed={gallery.closed}
-        hours={gallery.hours}
-        homePage={gallery.homePage}
+        galleryName={galleryDetail.galleryName}
+        src={galleryDetail.posterUrl}
+        title={galleryDetail.title}
+        address={galleryDetail.address}
+        closed={galleryDetail.closed}
+        hours={galleryDetail.hours}
+        homePage={galleryDetail.homePage}
       />
       <HeartBtn like={like} onClick={toggleLike} />
     </div>
