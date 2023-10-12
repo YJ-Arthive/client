@@ -64,7 +64,7 @@ const exhibitionPeriod = css`
   }
 `;
 
-const ExhibitionRegister = () => {
+const ExhibitionRegisterUser = () => {
   const subText = (
     <>
       전시회 자료를 등록해주셔서 감사합니다.
@@ -295,4 +295,4 @@ const ExhibitionRegister = () => {
   );
 };
 
-export default ExhibitionRegister;
+export default ExhibitionRegisterUser;

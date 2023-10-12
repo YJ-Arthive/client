@@ -19,15 +19,6 @@ const GalleryDetail = () => {
       });
   }, [galleryId]);
 
-  // 사용자가 좋아요를 눌렀는지 확인
-  // useEffect(async () => {
-  //   const fetchData = async () => {
-  //     const res = await axios.get(...)
-  //     if (res.data.type === 'liked') setLike(true);
-  //   };
-  //   fetchData();
-  // }, []);
-
   const toggleLike = async () => {
     // const res = await axios.post(...) // [POST] 사용자가 좋아요 누름 -> DB 갱신
     setLike(!like);

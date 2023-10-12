@@ -2,20 +2,23 @@
 import { css } from '@emotion/react';
 import { useState } from 'react';
 import Button from '../../components/Button';
+import BoardHeader from '../../components/BoardHeader';
+import axios from 'axios';
 
 const galleryRegisterWrap = css`
   // border: 1px solid red;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
+  justify-content: center;
   align-items: center;
-  width: 1160px;
+  // width: 1200px;
   margin: 0 auto;
+  margin-bottom: 100px;
 `;
 
-const userInfo = css`
-  // border: 1px solid black;
-  width: 100%;
+const galleryInfo = css`
+  // border: 1px solid green;
+  // width: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,16 +28,17 @@ const userInfo = css`
     margin-bottom: 20px;
   }
 
-  form {
-    width: 100%;
-  }
-
   table {
-    width: 100%;
-    height: 370px;
+    // border: 1px solid red;
+    width: 1000px;
+    height: 550px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     margin-bottom: 60px;
+
+    tr {
+      height: 35px;
+    }
 
     th {
       width: 240px;
@@ -42,7 +46,7 @@ const userInfo = css`
       font-weight: 500;
       border-bottom: 1px solid #e9e9e9;
       text-align: left;
-      padding-left: 30px;
+      padding-left: 20px;
       // border: 1px solid black;
     }
 
@@ -55,7 +59,22 @@ const userInfo = css`
 
   button {
     width: 370px;
-    // margin: 0 auto;
+    // justify-content: center;
+  }
+
+  input {
+    // border: 1px solid #a1a1a1;
+    width: 614px;
+    height: 33px;
+    padding-left: 5px;
+  }
+`;
+
+const galleryHours = css`
+  width: 614px;
+  display: inline-block;
+  input {
+    width: 70px;
   }
 `;
 
@@ -89,74 +108,105 @@ const GalleryRegister = () => {
     });
   };
 
-  const handleSubmitInfo = (e) => {
+  const handleSubmitInfo = async (e) => {
     e.preventDefault();
+    console.log(inputs);
 
-    const signData = {
-      galleryName,
-      address,
-      closeDay,
-      openTime,
-      closeTime,
-      posterUrl,
-      homepageUrl,
-    };
-
-    console.log(signData);
+    await axios
+      .post('https://api.arthive.dev/api/v1/galleries', inputs)
+      .then(() => {
+        alert('새로운 갤러리가 등록되었습니다.');
+      });
   };
 
   return (
     <div css={galleryRegisterWrap}>
-      <div css={userInfo}>
-        <h2>기본정보</h2>
-        <form id='newMyInfo' onSubmit={handleSubmitInfo}>
-          <table>
-            <tr>
-              <th>등록일</th>
-              <td>오늘 날짜</td>
-            </tr>
-            <tr>
-              <th>갤러리명</th>
-              <td>
-                <input
-                  type='text'
-                  value={galleryName}
-                  onChange={handleChangeInfoInputs}
-                />
-              </td>
-            </tr>
-            <tr>
-              <th>주소</th>
-              <input
-                type='text'
-                value={address}
-                onChange={handleChangeInfoInputs}
-              />
-            </tr>
-            <tr>
-              <th>휴관일</th>
-              <td>
-                <input value={closeDay} onChange={handleChangeInfoInputs} />
-              </td>
-            </tr>
-            <tr>
-              <th>홈페이지</th>
-              <input
-                type='text'
-                value={homepageUrl}
-                onChange={handleChangeInfoInputs}
-              />
-            </tr>
-            <tr>
-              <th>포스터</th>
-              <input
-                type='text'
-                value={posterUrl}
-                onChange={handleChangeInfoInputs}
-              />
-            </tr>
-          </table>
-          <Button name={'저장하기'} form='newMyInfo' type='submit' />
+      <BoardHeader text='갤러리 등록' />
+      <div css={galleryInfo}>
+        <form id='newGalleryInfo' onSubmit={handleSubmitInfo}>
+          <div>
+            <table>
+              <tr>
+                <th>갤러리명</th>
+                <td>
+                  <input
+                    type='text'
+                    name='galleryName'
+                    value={galleryName}
+                    onChange={handleChangeInfoInputs}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>주소</th>
+                <td>
+                  <input
+                    type='text'
+                    name='address'
+                    value={address}
+                    onChange={handleChangeInfoInputs}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>휴관일</th>
+                <td>
+                  <input
+                    type='text'
+                    name='closeDay'
+                    value={closeDay}
+                    placeholder='토, 일, 공휴일'
+                    onChange={handleChangeInfoInputs}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>운영시간</th>
+                <td>
+                  <div css={galleryHours}>
+                    <input
+                      type='text'
+                      name='openTime'
+                      value={openTime}
+                      placeholder='10:00'
+                      onChange={handleChangeInfoInputs}
+                    />{' '}
+                    ~{' '}
+                    <input
+                      type='text'
+                      name='closeTime'
+                      value={closeTime}
+                      placeholder='17:00'
+                      onChange={handleChangeInfoInputs}
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>홈페이지</th>
+                <td>
+                  <input
+                    type='url'
+                    name='homepageUrl'
+                    value={homepageUrl}
+                    onChange={handleChangeInfoInputs}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>포스터</th>
+                <td>
+                  <input
+                    type='url' // 추후 file type 이미지 업로드로 수정
+                    name='posterUrl'
+                    value={posterUrl}
+                    onChange={handleChangeInfoInputs}
+                  />
+                </td>
+              </tr>
+            </table>
+          </div>
+          <Button name={'저장하기'} form='newGalleryInfo' type='submit' />
         </form>
       </div>
     </div>

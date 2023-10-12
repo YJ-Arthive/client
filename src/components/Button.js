@@ -11,6 +11,7 @@ const button = css`
   margin-top: 40px;
   border: none;
   cursor: pointer;
+  // margin: 0 auto;
 `;
 
 const Button = ({ name }) => {
