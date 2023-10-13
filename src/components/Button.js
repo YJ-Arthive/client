@@ -11,6 +11,7 @@ const button = css`
   margin-top: 40px;
   border: none;
   cursor: pointer;
+  // align-items: center;
   // margin: 0 auto;
 `;
 

@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Button from '../../components/Button';
 import BoardHeader from '../../components/BoardHeader';
 import axios from 'axios';
@@ -78,6 +78,10 @@ const galleryHours = css`
   }
 `;
 
+const imgPreview = css`
+  width: 300px;
+`;
+
 const GalleryRegister = () => {
   const [inputs, setInputs] = useState({
     galleryName: '',
@@ -99,8 +103,21 @@ const GalleryRegister = () => {
     homepageUrl,
   } = inputs;
 
+  const [imgFile, setImgFile] = useState('');
+  const imgRef = useRef();
+
+  const saveImgFile = () => {
+    const file = imgRef.current.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImgFile(reader.result);
+    };
+  };
+
   // 입력값 상태 변경
   const handleChangeInfoInputs = (e) => {
+    saveImgFile();
     const { value, name } = e.target;
     setInputs({
       ...inputs,
@@ -194,13 +211,24 @@ const GalleryRegister = () => {
                 </td>
               </tr>
               <tr>
-                <th>포스터</th>
+                <th>이미지</th>
                 <td>
+                  <img
+                    css={imgPreview}
+                    src={
+                      imgFile
+                        ? imgFile
+                        : `${process.env.PUBLIC_URL}/assets/preview-placeholder.png`
+                    }
+                    alt='이미지 미리보기'
+                  />
                   <input
-                    type='url' // 추후 file type 이미지 업로드로 수정
+                    type='file'
+                    accept='image/*'
                     name='posterUrl'
                     value={posterUrl}
                     onChange={handleChangeInfoInputs}
+                    ref={imgRef}
                   />
                 </td>
               </tr>
