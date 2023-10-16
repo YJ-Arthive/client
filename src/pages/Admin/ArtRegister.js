@@ -70,6 +70,10 @@ const ArtInfo = css`
     height: 33px;
     padding-left: 5px;
   }
+
+  img {
+    width: 200px;
+  }
 `;
 
 const ArtRegister = () => {
@@ -163,7 +167,7 @@ const ArtRegister = () => {
                       src={
                         imgFile
                           ? imgFile
-                          : `${process.env.PUBLIC_URL}/assets/preview-placeholder.png`
+                          : `${process.env.PUBLIC_URL}/assets/register-preview.png`
                       }
                       alt='이미지 미리보기'
                     />

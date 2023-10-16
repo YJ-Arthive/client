@@ -79,7 +79,7 @@ const galleryHours = css`
 `;
 
 const imgPreview = css`
-  width: 300px;
+  width: 200px;
 `;
 
 const GalleryRegister = () => {
@@ -128,7 +128,6 @@ const GalleryRegister = () => {
   const handleSubmitInfo = async (e) => {
     e.preventDefault();
     console.log(inputs);
-
     await axios
       .post('https://api.arthive.dev/api/v1/galleries', inputs)
       .then(() => {
@@ -143,95 +142,97 @@ const GalleryRegister = () => {
         <form id='newGalleryInfo' onSubmit={handleSubmitInfo}>
           <div>
             <table>
-              <tr>
-                <th>갤러리명</th>
-                <td>
-                  <input
-                    type='text'
-                    name='galleryName'
-                    value={galleryName}
-                    onChange={handleChangeInfoInputs}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <th>주소</th>
-                <td>
-                  <input
-                    type='text'
-                    name='address'
-                    value={address}
-                    onChange={handleChangeInfoInputs}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <th>휴관일</th>
-                <td>
-                  <input
-                    type='text'
-                    name='closeDay'
-                    value={closeDay}
-                    placeholder='토, 일, 공휴일'
-                    onChange={handleChangeInfoInputs}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <th>운영시간</th>
-                <td>
-                  <div css={galleryHours}>
+              <tbody>
+                <tr>
+                  <th>갤러리명</th>
+                  <td>
                     <input
                       type='text'
-                      name='openTime'
-                      value={openTime}
-                      placeholder='10:00'
-                      onChange={handleChangeInfoInputs}
-                    />{' '}
-                    ~{' '}
-                    <input
-                      type='text'
-                      name='closeTime'
-                      value={closeTime}
-                      placeholder='17:00'
+                      name='galleryName'
+                      value={galleryName}
                       onChange={handleChangeInfoInputs}
                     />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th>홈페이지</th>
-                <td>
-                  <input
-                    type='url'
-                    name='homepageUrl'
-                    value={homepageUrl}
-                    onChange={handleChangeInfoInputs}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <th>이미지</th>
-                <td>
-                  <img
-                    css={imgPreview}
-                    src={
-                      imgFile
-                        ? imgFile
-                        : `${process.env.PUBLIC_URL}/assets/preview-placeholder.png`
-                    }
-                    alt='이미지 미리보기'
-                  />
-                  <input
-                    type='file'
-                    accept='image/*'
-                    name='posterUrl'
-                    value={posterUrl}
-                    onChange={handleChangeInfoInputs}
-                    ref={imgRef}
-                  />
-                </td>
-              </tr>
+                  </td>
+                </tr>
+                <tr>
+                  <th>주소</th>
+                  <td>
+                    <input
+                      type='text'
+                      name='address'
+                      value={address}
+                      onChange={handleChangeInfoInputs}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th>휴관일</th>
+                  <td>
+                    <input
+                      type='text'
+                      name='closeDay'
+                      value={closeDay}
+                      placeholder='토, 일, 공휴일'
+                      onChange={handleChangeInfoInputs}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th>운영시간</th>
+                  <td>
+                    <div css={galleryHours}>
+                      <input
+                        type='text'
+                        name='openTime'
+                        value={openTime}
+                        placeholder='10:00'
+                        onChange={handleChangeInfoInputs}
+                      />{' '}
+                      ~{' '}
+                      <input
+                        type='text'
+                        name='closeTime'
+                        value={closeTime}
+                        placeholder='17:00'
+                        onChange={handleChangeInfoInputs}
+                      />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>홈페이지</th>
+                  <td>
+                    <input
+                      type='url'
+                      name='homepageUrl'
+                      value={homepageUrl}
+                      onChange={handleChangeInfoInputs}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th>이미지</th>
+                  <td>
+                    <img
+                      css={imgPreview}
+                      src={
+                        imgFile
+                          ? imgFile
+                          : `${process.env.PUBLIC_URL}/assets/register-preview.png`
+                      }
+                      alt='이미지 미리보기'
+                    />
+                    <input
+                      type='file'
+                      accept='image/*'
+                      name='posterUrl'
+                      value={posterUrl}
+                      onChange={handleChangeInfoInputs}
+                      ref={imgRef}
+                    />
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
           <Button name={'저장하기'} form='newGalleryInfo' type='submit' />
