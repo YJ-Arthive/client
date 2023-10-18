@@ -1,77 +1,7 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
 import { useState, useRef } from 'react';
-import Button from '../../components/Button';
 import BoardHeader from '../../components/BoardHeader';
-
-const ExhibitionRegisterWrap = css`
-  border: 1px solid red;
-  margin-bottom: 100px;
-`;
-
-const ExhibitionInfo = css`
-  border: 1px solid green;
-  // width: 1000px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  h2 {
-    margin-bottom: 20px;
-  }
-
-  table {
-    border: 1px solid pink;
-    width: 1000px;
-    // height: 1000px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    margin-bottom: 60px;
-
-    tr {
-      height: 55px;
-    }
-
-    th {
-      width: 240px;
-      font-size: 17px;
-      font-weight: 500;
-      border-bottom: 1px solid #e9e9e9;
-      text-align: left;
-      padding-left: 20px;
-      // border: 1px solid black;
-    }
-
-    td {
-      border-bottom: 1px solid #e9e9e9;
-      font-size: 15px;
-      color: #3d3d3d;
-    }
-
-    input {
-      // border: 1px solid #a1a1a1;
-      width: 600px;
-      height: 32px;
-      // padding-left: 5px;
-    }
-
-    textarea {
-      height: 300px;
-    }
-  }
-
-  button {
-    width: 370px;
-    // justify-content: center;
-    align-items: center;
-  }
-
-  img {
-    width: 200px;
-    // height: 280px;
-  }
-`;
+import AdminForm from '../../components/AdminForm';
+import CommonInputRow from '../../components/CommonInputRow';
 
 const ExhibitionRegister = () => {
   const [inputs, setInputs] = useState({
@@ -79,7 +9,7 @@ const ExhibitionRegister = () => {
     artist: '', // 작가
     openTime: '', // 오픈시간
     closeTime: '', // 마감시간
-    closeDay: '',
+    closeDay: '', // 휴관일
     location: '', // 지역
     gallery: '', // 갤러리명
     address: '', // 전시 주소
@@ -128,6 +58,16 @@ const ExhibitionRegister = () => {
     saveImgFile();
   };
 
+  const locationOptions = [
+    { label: '서울', value: '서울' },
+    { label: '경기 인천', value: '경기 인천' },
+    { label: '대구 경북', value: '대구 경북' },
+    { label: '부산 울산 경남', value: '부산 울산 경남' },
+    { label: '광주 전라', value: '광주 전라' },
+    { label: '대전 충청 세종', value: '대전 충청 세종' },
+    { label: '제주 강원', value: '제주 강원' },
+  ];
+
   const handleSubmitInfo = async (e) => {
     e.preventDefault();
     console.log(inputs);
@@ -139,172 +79,113 @@ const ExhibitionRegister = () => {
     //   });
   };
   return (
-    <div css={ExhibitionRegisterWrap}>
+    <div className='ExhibitionRegister'>
       <BoardHeader text='전시 등록' />
-      <div css={ExhibitionInfo}>
-        <form id='newExhibitionInfo' onSubmit={handleSubmitInfo}>
-          <div>
-            <table>
-              <tbody>
-                <tr>
-                  <th>전시명</th>
-                  <td>
-                    <input
-                      type='text'
-                      name='title'
-                      value={title}
-                      onChange={handleChangeInfoInputs}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>작가</th>
-                  <td>
-                    <input
-                      type='text'
-                      name='artist'
-                      value={artist}
-                      onChange={handleChangeInfoInputs}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>오픈시간</th>
-                  <td>
-                    <input
-                      type='text'
-                      name='openTime'
-                      value={openTime}
-                      onChange={handleChangeInfoInputs}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>마감시간</th>
-                  <td>
-                    <input
-                      type='text'
-                      name='closeTime'
-                      value={closeTime}
-                      onChange={handleChangeInfoInputs}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>휴관일</th>
-                  <td>
-                    <input
-                      type='text'
-                      name='closeDay'
-                      value={closeDay}
-                      onChange={handleChangeInfoInputs}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>지역</th>
-                  <td>
-                    <input
-                      type='text'
-                      name='location'
-                      value={location}
-                      onChange={handleChangeInfoInputs}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>갤러리명</th>
-                  <td>
-                    <input
-                      type='text'
-                      name='gallery'
-                      value={gallery}
-                      onChange={handleChangeInfoInputs}
-                    />{' '}
-                  </td>
-                </tr>
-                <tr>
-                  <th>전시 주소</th>
-                  <td>
-                    <input
-                      type='text'
-                      name='address'
-                      value={address}
-                      onChange={handleChangeInfoInputs}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>오픈일</th>
-                  <td>
-                    <input
-                      type='text'
-                      name='startDate'
-                      value={startDate}
-                      onChange={handleChangeInfoInputs}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>종료일</th>
-                  <td>
-                    <input
-                      type='text'
-                      name='endDate'
-                      value={endDate}
-                      onChange={handleChangeInfoInputs}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>관람료</th>
-                  <td>
-                    <input
-                      type='text'
-                      name='entranceFee'
-                      value={entranceFee}
-                      onChange={handleChangeInfoInputs}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>홈페이지</th>
-                  <td>
-                    <input
-                      type='text'
-                      name='homePageUrl'
-                      value={homePageUrl}
-                      onChange={handleChangeInfoInputs}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>이미지</th>
-                  <td>
-                    <img
-                      src={
-                        imgFile
-                          ? imgFile
-                          : `${process.env.PUBLIC_URL}/assets/register-preview.png`
-                      }
-                      alt='이미지 미리보기'
-                    />
-                    <input
-                      type='file'
-                      accept='image/*'
-                      name='posterUrl'
-                      value={posterUrl}
-                      onChange={handleChangeInfoInputs}
-                      ref={imgRef}
-                    />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <Button name={'저장하기'} form='newExhibitionInfo' type='submit' />
-          </div>
-        </form>
-      </div>
+      <AdminForm
+        inputs={inputs}
+        target={'exhibitions'}
+        formId={'newExhibitionInfo'}
+        buttonName={'저장하기'}
+        buttonForm={'newExhibitionInfo'}
+        onSubmit={handleSubmitInfo}
+      >
+        <CommonInputRow
+          label='전시명'
+          name='title'
+          value={title}
+          onChange={handleChangeInfoInputs}
+        />
+        <CommonInputRow
+          label='작가'
+          name='artist'
+          value={artist}
+          onChange={handleChangeInfoInputs}
+        />
+        <CommonInputRow
+          label='오픈 시간'
+          name='openTime'
+          value={openTime}
+          onChange={handleChangeInfoInputs}
+        />
+        <CommonInputRow
+          label='마감 시간'
+          name='closeTime'
+          value={closeTime}
+          onChange={handleChangeInfoInputs}
+        />
+        <CommonInputRow
+          label='휴관일'
+          name='closeDay'
+          value={closeDay}
+          onChange={handleChangeInfoInputs}
+        />
+        <CommonInputRow
+          label='지역'
+          name='location'
+          value={location}
+          onChange={handleChangeInfoInputs}
+          options={locationOptions}
+        />
+        <CommonInputRow
+          label='갤러리명'
+          name='gallery'
+          value={gallery}
+          onChange={handleChangeInfoInputs}
+        />
+        <CommonInputRow
+          label='전시 주소'
+          name='address'
+          value={address}
+          onChange={handleChangeInfoInputs}
+        />
+        <CommonInputRow
+          label='오픈일'
+          name='startDate'
+          value={startDate}
+          onChange={handleChangeInfoInputs}
+          type='date'
+        />
+        <CommonInputRow
+          label='종료일'
+          name='endDate'
+          value={endDate}
+          onChange={handleChangeInfoInputs}
+          type='date'
+        />
+        <CommonInputRow
+          label='관람료'
+          name='entranceFee'
+          value={entranceFee}
+          onChange={handleChangeInfoInputs}
+        />
+        <CommonInputRow
+          label='홈페이지'
+          name='homePageUrl'
+          value={homePageUrl}
+          onChange={handleChangeInfoInputs}
+        />
+        <tr>
+          <th>이미지</th>
+          <td>
+            <img
+              src={
+                imgFile
+                  ? imgFile
+                  : `${process.env.PUBLIC_URL}/assets/register-preview.png`
+              }
+              alt='이미지 미리보기'
+            />
+            <input
+              type='file'
+              accept='image/*'
+              name='posterUrl'
+              value={posterUrl}
+              onChange={handleChangeInfoInputs}
+              ref={imgRef}
+            />
+          </td>
+        </tr>
+      </AdminForm>
     </div>
   );
 };

@@ -27,6 +27,10 @@ import ExhibitionRegister from './pages/Admin/ExhibitionRegister';
 import GalleryRegister from './pages/Admin/GalleryRegister';
 import ArtRegister from './pages/Admin/ArtRegister';
 import ArtistRegister from './pages/Admin/ArtistRegister';
+import ExhibitionEdit from './pages/Admin/ExhibitionEdit';
+import ArtEdit from './pages/Admin/ArtEdit';
+import ArtistEdit from './pages/Admin/ArtistEdit';
+import GalleryEdit from './pages/Admin/GalleryEdit';
 
 export const globalStyle = css`
   * {
@@ -87,6 +91,11 @@ function Main() {
             <Route path='gallery-register' element={<GalleryRegister />} />
             <Route path='art-register' element={<ArtRegister />} />
             <Route path='artist-register' element={<ArtistRegister />} />
+
+            <Route path='exhibition-edit' element={<ExhibitionEdit />} />
+            <Route path='art-edit' element={<ArtEdit />} />
+            <Route path='artist-edit' element={<ArtistEdit />} />
+            <Route path='gallery-edit' element={<GalleryEdit />} />
           </Route>
 
           <Route path='about' element={<About />} />
