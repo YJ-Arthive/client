@@ -8,6 +8,7 @@ import CommonInputRow from '../../components/CommonInputRow';
 import FileInput from '../../components/FileInput';
 
 const GalleryRegister = ({ galleryData }) => {
+  const imgRef = useRef();
   const [editMode, setEditMode] = useState(false);
   const [inputs, setInputs] = useState({
     galleryName: '',
@@ -29,6 +30,26 @@ const GalleryRegister = ({ galleryData }) => {
     homepageUrl,
   } = inputs;
 
+  const requiredFields = [
+    'galleryName',
+    'address',
+    'closeDay',
+    'openTime',
+    'closeTime',
+    'posterUrl',
+    'homepageUrl',
+  ];
+
+  const requiredFieldsFilled = () => {
+    for (const field of requiredFields) {
+      console.log(field);
+      if (!inputs[field]) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   // galleryData가 전달되면(수정모드) 초기값을 설정
   useEffect(() => {
     if (galleryData && Object.keys(galleryData).length > 0) {
@@ -37,11 +58,8 @@ const GalleryRegister = ({ galleryData }) => {
     }
   }, [galleryData]);
 
-  const imgRef = useRef();
-
   // 입력값 상태 변경
   const handleChangeInfoInputs = (e) => {
-    // saveImgFile();
     const { value, name } = e.target;
     setInputs({
       ...inputs,
@@ -52,6 +70,11 @@ const GalleryRegister = ({ galleryData }) => {
   const handleSubmitInfo = async (e) => {
     e.preventDefault();
     console.log(inputs);
+
+    if (!requiredFieldsFilled()) {
+      alert('모든 항목을 입력해주세요.');
+      return;
+    }
 
     if (editMode) {
       // 수정 모드: PATCH 요청
@@ -127,7 +150,6 @@ const GalleryRegister = ({ galleryData }) => {
           name='posterUrl'
           value={posterUrl}
           onChange={handleChangeInfoInputs}
-          // imgFile={imgFile}
           imgRef={imgRef}
         />
       </AdminForm>

@@ -2,35 +2,6 @@
 import { css } from '@emotion/react';
 import { useState } from 'react';
 
-// const fileInput = css`
-//   position: relative;
-//   width: 182px;
-//   height: 262px;
-//   border-radius: 0 15px 0 15px;
-//   overflow: hidden;
-// `;
-
-// const fileInputPreview = css`
-//   display: block;
-//   width: 100%;
-//   height: 100%;
-//   object-position: center;
-//   object-fit: cover;
-// `;
-
-// const fileClearButton = css`
-//   position: absolute;
-//   top: 9px;
-//   right: 9px;
-//   width: 26px;
-//   height: 26px;
-//   padding: 7px;
-//   border: none;
-//   border-radius: 10px;
-//   cursor: pointer;
-//   background-color: rgba(0, 0, 0, 0.4);
-// `;
-
 const imgPreview = css`
   width: 200px;
 `;

@@ -1,23 +1,29 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import BoardHeader from '../../components/BoardHeader';
 import AdminForm from '../../components/AdminForm';
 import CommonInputRow from '../../components/CommonInputRow';
+import FileInput from '../../components/FileInput';
+import { requiredFieldsFilled } from '../../util/formUtils';
+import { locationLists } from '../../data/locationLists';
+import axios from 'axios';
 
-const ExhibitionRegister = () => {
+const ExhibitionRegister = ({ exhibitionData }) => {
+  const imgRef = useRef();
+  const [editMode, setEditMode] = useState(false);
   const [inputs, setInputs] = useState({
-    title: '', // 전시명
-    artist: '', // 작가
-    openTime: '', // 오픈시간
-    closeTime: '', // 마감시간
-    closeDay: '', // 휴관일
-    location: '', // 지역
-    gallery: '', // 갤러리명
-    address: '', // 전시 주소
-    startDate: '', // 오픈일
-    endDate: '', // 종료일
-    entranceFee: '', // 관람료
-    homePageUrl: '', // 홈페이지
-    posterUrl: '', // 포스터
+    title: '',
+    artist: '',
+    openTime: '',
+    closeTime: '',
+    closeDay: '',
+    location: '',
+    gallery: '',
+    address: '',
+    startDate: '',
+    endDate: '',
+    entranceFee: '',
+    homePageUrl: '',
+    posterUrl: '',
   });
 
   const {
@@ -36,17 +42,28 @@ const ExhibitionRegister = () => {
     posterUrl,
   } = inputs;
 
-  const [imgFile, setImgFile] = useState('');
-  const imgRef = useRef();
+  const requiredFields = [
+    'title',
+    'artist',
+    'openTime',
+    'closeTime',
+    'closeDay',
+    'location',
+    'gallery',
+    'address',
+    'startDate',
+    'endDate',
+    'entranceFee',
+    'posterUrl',
+  ];
 
-  const saveImgFile = () => {
-    const file = imgRef.current.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setImgFile(reader.result);
-    };
-  };
+  // exhibitionData가 전달되면(수정모드) 초기값을 설정
+  useEffect(() => {
+    if (exhibitionData && Object.keys(exhibitionData).length > 0) {
+      setInputs(exhibitionData);
+      setEditMode(true);
+    }
+  }, [exhibitionData]);
 
   // 입력값 상태 변경
   const handleChangeInfoInputs = (e) => {
@@ -55,29 +72,41 @@ const ExhibitionRegister = () => {
       ...inputs,
       [name]: value,
     });
-    saveImgFile();
   };
 
-  const locationOptions = [
-    { label: '서울', value: '서울' },
-    { label: '경기 인천', value: '경기 인천' },
-    { label: '대구 경북', value: '대구 경북' },
-    { label: '부산 울산 경남', value: '부산 울산 경남' },
-    { label: '광주 전라', value: '광주 전라' },
-    { label: '대전 충청 세종', value: '대전 충청 세종' },
-    { label: '제주 강원', value: '제주 강원' },
-  ];
+  const locationOptions = [...locationLists];
+
+  const isAllFieldsFilled = requiredFieldsFilled(inputs, requiredFields);
 
   const handleSubmitInfo = async (e) => {
     e.preventDefault();
     console.log(inputs);
 
-    // await axios
-    //   .post('https://api.arthive.dev/api/v1/arts', inputs)
-    //   .then(() => {
-    //     alert('새로운 전시가 등록되었습니다.');
-    //   });
+    if (!isAllFieldsFilled) {
+      alert('모든 항목을 입력해주세요.');
+      return;
+    }
+
+    if (editMode) {
+      // 수정 모드: PATCH 요청
+      await axios
+        .patch(
+          `https://api.arthive.dev/api/v1/exhibitions/${exhibitionData.id}`,
+          inputs
+        )
+        .then(() => {
+          alert('전시 정보가 수정되었습니다.');
+        });
+    } else {
+      // 등록 모드: POST 요청
+      await axios
+        .post('https://api.arthive.dev/api/v1/exhibitions', inputs)
+        .then(() => {
+          alert('새로운 전시가 등록되었습니다.');
+        });
+    }
   };
+
   return (
     <div className='ExhibitionRegister'>
       <BoardHeader text='전시 등록' />
@@ -125,6 +154,7 @@ const ExhibitionRegister = () => {
           value={location}
           onChange={handleChangeInfoInputs}
           options={locationOptions}
+          type='select'
         />
         <CommonInputRow
           label='갤러리명'
@@ -164,27 +194,12 @@ const ExhibitionRegister = () => {
           value={homePageUrl}
           onChange={handleChangeInfoInputs}
         />
-        <tr>
-          <th>이미지</th>
-          <td>
-            <img
-              src={
-                imgFile
-                  ? imgFile
-                  : `${process.env.PUBLIC_URL}/assets/register-preview.png`
-              }
-              alt='이미지 미리보기'
-            />
-            <input
-              type='file'
-              accept='image/*'
-              name='posterUrl'
-              value={posterUrl}
-              onChange={handleChangeInfoInputs}
-              ref={imgRef}
-            />
-          </td>
-        </tr>
+        <FileInput
+          name='posterUrl'
+          value={posterUrl}
+          onChange={handleChangeInfoInputs}
+          imgRef={imgRef}
+        />
       </AdminForm>
     </div>
   );
