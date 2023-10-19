@@ -1,14 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
+// import { css } from '@emotion/react';
 import { useState, useRef, useEffect } from 'react';
 import BoardHeader from '../../components/BoardHeader';
 import axios from 'axios';
 import AdminForm from '../../components/AdminForm';
 import CommonInputRow from '../../components/CommonInputRow';
-
-const imgPreview = css`
-  width: 200px;
-`;
+import FileInput from '../../components/FileInput';
 
 const GalleryRegister = ({ galleryData }) => {
   const [editMode, setEditMode] = useState(false);
@@ -40,21 +37,11 @@ const GalleryRegister = ({ galleryData }) => {
     }
   }, [galleryData]);
 
-  const [imgFile, setImgFile] = useState('');
   const imgRef = useRef();
-
-  const saveImgFile = () => {
-    const file = imgRef.current.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setImgFile(reader.result);
-    };
-  };
 
   // 입력값 상태 변경
   const handleChangeInfoInputs = (e) => {
-    saveImgFile();
+    // saveImgFile();
     const { value, name } = e.target;
     setInputs({
       ...inputs,
@@ -136,28 +123,13 @@ const GalleryRegister = ({ galleryData }) => {
           value={homepageUrl}
           onChange={handleChangeInfoInputs}
         />
-        <tr>
-          <th>이미지</th>
-          <td>
-            <img
-              css={imgPreview}
-              src={
-                imgFile
-                  ? imgFile
-                  : `${process.env.PUBLIC_URL}/assets/register-preview.png`
-              }
-              alt='이미지 미리보기'
-            />
-            <input
-              type='file'
-              accept='image/*'
-              name='posterUrl'
-              value={posterUrl}
-              onChange={handleChangeInfoInputs}
-              ref={imgRef}
-            />
-          </td>
-        </tr>
+        <FileInput
+          name='posterUrl'
+          value={posterUrl}
+          onChange={handleChangeInfoInputs}
+          // imgFile={imgFile}
+          imgRef={imgRef}
+        />
       </AdminForm>
     </div>
   );
