@@ -1,106 +1,34 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import { useState, useRef } from 'react';
-import Button from '../../components/Button';
+import { useState, useRef, useEffect } from 'react';
 import BoardHeader from '../../components/BoardHeader';
-// import FileInput from '../../components/FileInput';
-// import axios from 'axios';
+import AdminForm from '../../components/AdminForm';
+import CommonInputRow from '../../components/CommonInputRow';
+import FileInput from '../../components/FileInput';
+import { requiredFieldsFilled } from '../../util/formUtils';
+import axios from 'axios';
 
-const ArtRegisterWrap = css`
-  // border: 1px solid red;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  // width: 1200px;
-  margin: 0 auto;
-  margin-bottom: 100px;
-`;
-
-const ArtInfo = css`
-  border: 1px solid green;
-  // width: 1000px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  h2 {
-    margin-bottom: 20px;
-  }
-
-  table {
-    border: 1px solid red;
-    width: 1000px;
-    height: 450px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    margin-bottom: 60px;
-
-    tr {
-      height: 35px;
-    }
-
-    th {
-      width: 240px;
-      font-size: 17px;
-      font-weight: 500;
-      border-bottom: 1px solid #e9e9e9;
-      text-align: left;
-      padding-left: 20px;
-      // border: 1px solid black;
-    }
-
-    td {
-      border-bottom: 1px solid #e9e9e9;
-      font-size: 15px;
-      color: #3d3d3d;
-    }
-  }
-
-  button {
-    width: 370px;
-    // justify-content: center;
-    align-items: center;
-  }
-
-  input {
-    // border: 1px solid #a1a1a1;
-    width: 614px;
-    height: 33px;
-    padding-left: 5px;
-  }
-
-  img {
-    width: 200px;
-  }
-`;
-
-const ArtRegister = () => {
+const ArtRegister = ({ artData }) => {
+  const imgRef = useRef();
+  const [editMode, setEditMode] = useState(false);
   const [inputs, setInputs] = useState({
     artTitle: '',
     artist: '',
     artInfo: '',
-    poster: '',
+    posterUrl: '',
   });
 
-  const { artTitle, artist, artInfo, poster } = inputs;
+  const { artTitle, artist, artInfo, posterUrl } = inputs;
 
-  const [imgFile, setImgFile] = useState('');
-  const imgRef = useRef();
+  const requiredFields = ['artTitle', 'artist', 'artInfo', 'posterUrl'];
 
-  const saveImgFile = () => {
-    const file = imgRef.current.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setImgFile(reader.result);
-    };
-  };
+  useEffect(() => {
+    if (artData && Object.keys(artData).length > 0) {
+      setInputs(artData);
+      setEditMode(true);
+    }
+  }, [artData]);
 
   // 입력값 상태 변경
   const handleChangeInfoInputs = (e) => {
-    saveImgFile();
     const { value, name } = e.target;
     setInputs({
       ...inputs,
@@ -108,86 +36,68 @@ const ArtRegister = () => {
     });
   };
 
+  const isAllFieldsFilled = requiredFieldsFilled(inputs, requiredFields);
+
   const handleSubmitInfo = async (e) => {
     e.preventDefault();
     console.log(inputs);
 
-    // await axios
-    //   .post('https://api.arthive.dev/api/v1/arts', inputs)
-    //   .then(() => {
-    //     alert('새로운 작품이 등록되었습니다.');
-    //   });
+    if (!isAllFieldsFilled) {
+      alert('모든 항목을 입력해주세요.');
+      return;
+    }
+
+    if (editMode) {
+      await axios
+        .patch(`https://api.arthive.dev/api/v1/arts/${artData.id}`, inputs)
+        .then(() => {
+          alert('작품 정보가 수정되었습니다.');
+        });
+    } else {
+      await axios
+        .post('https://api.arthive.dev/api/v1/arts', inputs)
+        .then(() => {
+          alert('새로운 작품이 등록되었습니다.');
+        });
+    }
   };
 
   return (
-    <div css={ArtRegisterWrap}>
+    <div className='ArtRegister'>
       <BoardHeader text='작품 등록' />
-      <div css={ArtInfo}>
-        <form id='newArtInfo' onSubmit={handleSubmitInfo}>
-          <div>
-            <table>
-              <tbody>
-                <tr>
-                  <th>작품명</th>
-                  <td>
-                    <input
-                      type='text'
-                      name='artTitle'
-                      value={artTitle}
-                      onChange={handleChangeInfoInputs}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>작가</th>
-                  <td>
-                    <input
-                      type='text'
-                      name='artist'
-                      value={artist}
-                      onChange={handleChangeInfoInputs}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>설명</th>
-                  <td>
-                    <input
-                      type='text'
-                      name='artInfo'
-                      value={artInfo}
-                      onChange={handleChangeInfoInputs}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>이미지</th>
-                  <td>
-                    <img
-                      src={
-                        imgFile
-                          ? imgFile
-                          : `${process.env.PUBLIC_URL}/assets/register-preview.png`
-                      }
-                      alt='이미지 미리보기'
-                    />
-                    <input
-                      type='file'
-                      accept='image/*'
-                      name='poster'
-                      value={poster}
-                      onChange={handleChangeInfoInputs}
-                      ref={imgRef}
-                    />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <Button name={'저장하기'} form='newArtInfo' type='submit' />
-          </div>
-        </form>
-      </div>
+      <AdminForm
+        inputs={inputs}
+        target={'arts'}
+        formId={'newArtsInfo'}
+        buttonName={'저장하기'}
+        buttonForm={'newArtsInfo'}
+        onSubmit={handleSubmitInfo}
+      >
+        <CommonInputRow
+          label='전시명'
+          name='artTitle'
+          value={artTitle}
+          onChange={handleChangeInfoInputs}
+        />
+        <CommonInputRow
+          label='작가'
+          name='artist'
+          value={artist}
+          onChange={handleChangeInfoInputs}
+        />
+        <CommonInputRow
+          label='오픈 시간'
+          name='artInfo'
+          value={artInfo}
+          onChange={handleChangeInfoInputs}
+        />
+        <FileInput
+          name='posterUrl'
+          value={posterUrl}
+          onChange={handleChangeInfoInputs}
+          imgRef={imgRef}
+        />
+      </AdminForm>
     </div>
   );
 };

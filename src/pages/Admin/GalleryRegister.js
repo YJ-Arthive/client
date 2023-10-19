@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-// import { css } from '@emotion/react';
 import { useState, useRef, useEffect } from 'react';
 import BoardHeader from '../../components/BoardHeader';
 import axios from 'axios';
