@@ -15,7 +15,7 @@ const signUpWrap = css`
   flex-direction: column;
   border: 1px solid #d9d9d9;
   width: 457px;
-  height: 809px;
+  height: 829px;
   border-radius: 30px;
   background-color: white;
   margin: 0 auto;
@@ -29,10 +29,6 @@ const signUpTitle = css`
   font-size: 25px;
   font-weight: 500;
   margin-bottom: 50px;
-`;
-
-const signUpForm = css`
-  // border: 1px solid red;
 `;
 
 const SignUp = () => {
@@ -149,7 +145,7 @@ const SignUp = () => {
         <div css={signUpTitle}>
           <p>회원가입</p>
         </div>
-        <form id='signUp' css={signUpForm} onSubmit={handleSubmitSignUp}>
+        <form id='signUp' onSubmit={handleSubmitSignUp}>
           <InfoList
             label={'이메일'}
             input={{

@@ -3,12 +3,12 @@ import { css } from '@emotion/react';
 import { useState, useEffect } from 'react';
 import BoardHeader from '../../components/BoardHeader';
 import Button from '../../components/Button';
+import InfoList from '../../components/InfoList';
 
 const myInfoWrap = css`
   // border: 1px solid red;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   align-items: center;
   width: 1160px;
   margin: 0 auto;
@@ -45,12 +45,12 @@ const boardBtn = css`
 `;
 
 const userInfo = css`
-  // border: 1px solid black;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 100px;
 
   h2 {
     margin-bottom: 20px;
@@ -62,19 +62,19 @@ const userInfo = css`
 
   table {
     width: 100%;
-    height: 370px;
+    height: 450px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 
     th {
       width: 240px;
+      height: 50px;
       font-size: 17px;
       font-weight: 500;
       border-bottom: 1px solid #e9e9e9;
       text-align: left;
       padding-left: 30px;
-      // border: 1px solid black;
     }
 
     td {
@@ -82,23 +82,39 @@ const userInfo = css`
       font-size: 15px;
       color: #3d3d3d;
     }
+
+    input {
+      width: 180px;
+      height: 34px;
+      border: 1px solid #d9d9d9;
+      padding: 0 8px;
+      margin: 0;
+    }
   }
 
   button {
     width: 370px;
-    // margin: 0 auto;
   }
 `;
 
+const buttonWrap = css`
+  display: flex;
+  justify-content: center;
+`;
+
 const MyRegister = () => {
-  return <div>MyInfo 페이지에 들어가는 전시 등록 신청 내역 컴포넌트</div>;
+  return (
+    <div className='MyRegister'>
+      <h2>전시 등록 신청 내역</h2>
+    </div>
+  );
 };
 
 function MyInfo() {
   const [inputs, setInputs] = useState({
     newPwd: '',
     checkNewPwd: '',
-    phoneNumber: '', // 서버에서 받아오기
+    phoneNumber: '010-2323-3434', // 서버에서 받아 온다.
   });
 
   const { newPwd, checkNewPwd, phoneNumber } = inputs;
@@ -163,10 +179,10 @@ function MyInfo() {
         subText='회원 정보 관리 페이지입니다.'
       />
       <div css={boardBtn}>
-        <a href='#exhibition'>
+        <a href='#myinfo'>
           <div>회원 정보 수정</div>
         </a>
-        <a href='#art'>
+        <a href='#exhibition'>
           <div>전시 등록 신청 내역</div>
         </a>
       </div>
@@ -174,44 +190,73 @@ function MyInfo() {
         <h2>기본정보</h2>
         <form id='newMyInfo' onSubmit={handleSubmitInfo}>
           <table>
-            <tr>
-              <th>이메일</th>
-              <td>arthive2023@gmail.com</td>
-            </tr>
-            <tr>
-              <th>비밀번호</th>
-              <td>
-                새 비밀번호
-                <input
-                  type='password'
-                  value={newPwd}
-                  onChange={handleChangeInfoInputs}
-                />
-                <br />
-                새 비밀번호 확인
-                <input
-                  type='password'
-                  value={checkNewPwd}
-                  onChange={handleChangeInfoInputs}
-                />
-              </td>
-            </tr>
-            <tr>
-              <th>이름</th>
-              <td>김홍대</td>
-            </tr>
-            <tr>
-              <th>휴대폰</th>
-              <td>
-                <input value={phoneNumber} onChange={handleChangeInfoInputs} />
-              </td>
-            </tr>
-            <tr>
-              <th>생년월일</th>
-              <td>1998-07-17</td>
-            </tr>
+            <tbody>
+              <tr>
+                <th>이메일</th>
+                <td>arthive2023@gmail.com</td>
+              </tr>
+              <tr>
+                <th>비밀번호 변경</th>
+                <td>
+                  <InfoList
+                    label={'새 비밀번호'}
+                    input={{
+                      name: 'newPwd',
+                      value: newPwd,
+                      type: 'password',
+                      onChange: handleChangeInfoInputs,
+                      checkInput: {
+                        isConfirm: isConfirmPwd,
+                        errorMessage:
+                          '영문, 숫자, 특수문자 포함 8~20자 사이로 입력해주세요.',
+                      },
+                    }}
+                  />
+                  <InfoList
+                    label={'비밀번호 확인'}
+                    input={{
+                      name: 'checkNewPwd',
+                      value: checkNewPwd,
+                      type: 'password',
+                      onChange: handleChangeInfoInputs,
+                      checkInput: {
+                        isConfirm: isConfirmCheckPwd,
+                        errorMessage: '비밀번호가 일치하지 않습니다.',
+                      },
+                    }}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>이름</th>
+                <td>김홍대</td>
+              </tr>
+              <tr>
+                <th>휴대폰</th>
+                <td>
+                  <InfoList
+                    input={{
+                      name: 'phoneNumber',
+                      value: phoneNumber,
+                      onChange: handleChangeInfoInputs,
+                      checkInput: {
+                        isConfirm: isConfirmPhoneNumber,
+                        errorMessage:
+                          '형식에 맞춰 입력해주세요. (ex. 010-0000-0000)',
+                      },
+                    }}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>생년월일</th>
+                <td>1998-07-17</td>
+              </tr>
+            </tbody>
           </table>
-          <Button name={'저장하기'} form='newMyInfo' type='submit' />
+          <div css={buttonWrap}>
+            <Button name={'저장하기'} form='newMyInfo' type='submit' />
+          </div>
         </form>
       </div>
       <MyRegister />
