@@ -94,15 +94,13 @@ const GalleryRegister = ({ galleryData }) => {
       );
       const { preSignedUrl, cdnLink } = response.data;
 
-      setInputs((prevInputs) => ({
-        ...prevInputs,
-        posterUrl: cdnLink,
-      }));
-      console.log(inputs);
+      const final = { ...inputs };
+      final.posterUrl = cdnLink;
+
       const file = imgRef.current.files[0];
       await axios.put(preSignedUrl, file);
 
-      await axios.post('https://api.arthive.dev/api/v1/galleries', inputs);
+      await axios.post('https://api.arthive.dev/api/v1/galleries', final);
 
       alert('새로운 갤러리가 등록되었습니다.');
     }
