@@ -84,9 +84,14 @@ const GalleryRegister = ({ galleryData }) => {
         });
     } else {
       // 등록 모드
+      const uuid = crypto.randomUUID();
+      const today = new Date().toISOString().slice(0, 10).replace(/-/g, '/');
+      const objectKey = `${today}/${uuid}`;
+      console.log(objectKey);
+
       const response = await axios.post(
         'https://api.arthive.dev/api/v1/files/pre-signed-url',
-        { objectKey: '2023/10/23/test.png' }
+        { objectKey: objectKey }
       );
       const { preSignedUrl, cdnLink } = response.data;
 
