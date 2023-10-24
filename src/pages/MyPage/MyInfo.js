@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import BoardHeader from '../../components/BoardHeader';
 import Button from '../../components/Button';
 import InfoList from '../../components/InfoList';
+// import { getMyInfo } from '../../api/myinfo';
 
 const myInfoWrap = css`
   // border: 1px solid red;
@@ -111,6 +112,12 @@ const MyRegister = () => {
 };
 
 function MyInfo() {
+  // const [data, setData] = useState(); // name, email, birth, phoneNumber
+  useEffect(() => {
+    // myinfo 정보 불러오기
+    // getMyInfo().then((res) => setData(res));
+  }, []);
+
   const [inputs, setInputs] = useState({
     newPwd: '',
     checkNewPwd: '',
@@ -193,7 +200,8 @@ function MyInfo() {
             <tbody>
               <tr>
                 <th>이메일</th>
-                <td>arthive2023@gmail.com</td>
+                <td>abc123@naver.com</td>
+                {/* {data?.email} */}
               </tr>
               <tr>
                 <th>비밀번호 변경</th>
@@ -229,7 +237,8 @@ function MyInfo() {
               </tr>
               <tr>
                 <th>이름</th>
-                <td>김홍대</td>
+                <td>한유진</td>
+                {/* <td>{data?.name}</td> */}
               </tr>
               <tr>
                 <th>휴대폰</th>
@@ -250,7 +259,8 @@ function MyInfo() {
               </tr>
               <tr>
                 <th>생년월일</th>
-                <td>1998-07-17</td>
+                <td>1998-09-09</td>
+                {/* <td>{data?.birth}</td> */}
               </tr>
             </tbody>
           </table>

@@ -87,7 +87,6 @@ const GalleryRegister = ({ galleryData }) => {
       const uuid = crypto.randomUUID();
       const today = new Date().toISOString().slice(0, 10).replace(/-/g, '/');
       const objectKey = `${today}/${uuid}`;
-      console.log(objectKey);
 
       const response = await axios.post(
         'https://api.arthive.dev/api/v1/files/pre-signed-url',
@@ -95,13 +94,13 @@ const GalleryRegister = ({ galleryData }) => {
       );
       const { preSignedUrl, cdnLink } = response.data;
 
+      setInputs((prevInputs) => ({
+        ...prevInputs,
+        posterUrl: cdnLink,
+      }));
+      console.log(inputs);
       const file = imgRef.current.files[0];
       await axios.put(preSignedUrl, file);
-
-      setInputs({
-        ...inputs,
-        posterUrl: cdnLink,
-      });
 
       await axios.post('https://api.arthive.dev/api/v1/galleries', inputs);
 
