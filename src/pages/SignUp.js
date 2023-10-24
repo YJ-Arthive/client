@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import React, { useState, useEffect } from 'react';
 import InfoList from '../components/InfoList';
 import Button from '../components/Button';
+import axios from 'axios';
 
 const signUp = css`
   // border: 1px solid red;
@@ -126,17 +127,13 @@ const SignUp = () => {
     ) {
       alert('필수 사항을 조건에 맞게 모두 입력해주세요.');
       return;
+    } else {
+      const url = '회원가입 api url';
+      return axios.post(url, inputs).then((res) => {
+        console.log(res);
+        return res.data; // res.data에 accessToken 담겨 있어서 return 해주는 거임!
+      });
     }
-
-    const signData = {
-      email,
-      password,
-      username,
-      birthday,
-      phoneNumber,
-    };
-
-    console.log(signData);
   };
 
   return (

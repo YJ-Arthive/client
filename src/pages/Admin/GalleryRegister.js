@@ -24,7 +24,7 @@ const GalleryRegister = ({ galleryData }) => {
     closeDay,
     openTime,
     closeTime,
-    posterUrl,
+    // posterUrl,
     homepageUrl,
   } = inputs;
 
@@ -40,7 +40,6 @@ const GalleryRegister = ({ galleryData }) => {
 
   const requiredFieldsFilled = () => {
     for (const field of requiredFields) {
-      console.log(field);
       if (!inputs[field]) {
         return false;
       }
@@ -67,7 +66,6 @@ const GalleryRegister = ({ galleryData }) => {
 
   const handleSubmitInfo = async (e) => {
     e.preventDefault();
-    console.log(inputs);
 
     if (!requiredFieldsFilled()) {
       alert('모든 항목을 입력해주세요.');
@@ -85,12 +83,24 @@ const GalleryRegister = ({ galleryData }) => {
           alert('갤러리 정보가 수정되었습니다.');
         });
     } else {
-      // 등록 모드: POST 요청
-      await axios
-        .post('https://api.arthive.dev/api/v1/galleries', inputs)
-        .then(() => {
-          alert('새로운 갤러리가 등록되었습니다.');
-        });
+      // 등록 모드
+      const response = await axios.post(
+        'https://api.arthive.dev/api/v1/files/pre-signed-url',
+        { objectKey: '2023/10/23/test.png' }
+      );
+      const { preSignedUrl, cdnLink } = response.data;
+
+      const file = imgRef.current.files[0];
+      await axios.put(preSignedUrl, file);
+
+      setInputs({
+        ...inputs,
+        posterUrl: cdnLink,
+      });
+
+      await axios.post('https://api.arthive.dev/api/v1/galleries', inputs);
+
+      alert('새로운 갤러리가 등록되었습니다.');
     }
   };
 
@@ -146,7 +156,7 @@ const GalleryRegister = ({ galleryData }) => {
         />
         <FileInput
           name='posterUrl'
-          value={posterUrl}
+          // value={posterUrl}
           onChange={handleChangeInfoInputs}
           imgRef={imgRef}
         />
