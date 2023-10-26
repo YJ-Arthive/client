@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import InfoList from '../components/InfoList';
 import Button from '../components/Button';
-import axios from 'axios';
+import { signUp } from '../api/signUp';
 
-const signUp = css`
-  // border: 1px solid red;
+const signUp1 = css`
   background-color: #fbfbfb;
   padding: 120px 0 190px;
 `;
@@ -25,7 +25,6 @@ const signUpWrap = css`
 `;
 
 const signUpTitle = css`
-  // border: 1px solid blue;
   text-align: center;
   font-size: 25px;
   font-weight: 500;
@@ -40,6 +39,7 @@ const SignUp = () => {
     phoneNumber: '',
     password: '',
   });
+  const router = useNavigate();
 
   const { email, username, birthday, phoneNumber, password } = inputs;
   const [checkPassword, setCheckPassword] = useState('');
@@ -128,16 +128,13 @@ const SignUp = () => {
       alert('필수 사항을 조건에 맞게 모두 입력해주세요.');
       return;
     } else {
-      const url = '회원가입 api url';
-      return axios.post(url, inputs).then((res) => {
-        console.log(res);
-        return res.data; // res.data에 accessToken 담겨 있어서 return 해주는 거임!
-      });
+      await signUp(inputs);
+      router('/');
     }
   };
 
   return (
-    <div css={signUp}>
+    <div css={signUp1}>
       <div css={signUpWrap}>
         <div css={signUpTitle}>
           <p>회원가입</p>
@@ -163,6 +160,7 @@ const SignUp = () => {
               name: 'username',
               value: username,
               onChange: handleChangeInfoInputs,
+              placeholder: '홍길동',
               checkInput: {
                 isConfirm: isConfirmName,
                 errorMessage: '이름을 정확히 입력해주세요. (ex. 홍길동)',

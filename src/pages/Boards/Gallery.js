@@ -91,7 +91,9 @@ export const Gallery = () => {
 
   useEffect(() => {
     axios
-      .get('https://api.arthive.dev/api/v1/galleries?page=1&size=10')
+      .get('https://api.arthive.dev/api/v1/galleries?page=1&size=10', {
+        withCredentials: true,
+      })
       .then((response) => {
         setGalleryData(response.data.data);
       });
