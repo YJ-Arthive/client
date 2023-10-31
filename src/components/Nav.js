@@ -60,9 +60,9 @@ const navLinks = css`
 
   img {
     width: 34px;
-    padding: 10px 5px 10px 10px;
-    // padding-top: 10px;
-  }s
+    padding: 5px 5px 5px 5px;
+    margin-top: 5px;
+  }
 `;
 
 const navbarUser = css`
