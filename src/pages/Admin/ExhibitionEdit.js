@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import BoardHeader from '../../components/BoardHeader';
 import AdminForm from '../../components/AdminForm';
 import CommonInputRow from '../../components/CommonInputRow';
+import { locationLists as locationOptions } from '../../data/locationLists';
 
 const ExhibitionEdit = ({ exhibitionId }) => {
   const [inputs, setInputs] = useState({
@@ -76,16 +77,6 @@ const ExhibitionEdit = ({ exhibitionId }) => {
     });
     saveImgFile();
   };
-
-  const locationOptions = [
-    { label: '서울', value: '서울' },
-    { label: '경기 인천', value: '경기 인천' },
-    { label: '대구 경북', value: '대구 경북' },
-    { label: '부산 울산 경남', value: '부산 울산 경남' },
-    { label: '광주 전라', value: '광주 전라' },
-    { label: '대전 충청 세종', value: '대전 충청 세종' },
-    { label: '제주 강원', value: '제주 강원' },
-  ];
 
   const handleSubmitInfo = async (e) => {
     e.preventDefault();

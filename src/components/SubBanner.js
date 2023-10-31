@@ -22,8 +22,7 @@ const subBannerTitle = css`
   justify-content: space-between;
   align-items: center;
   width: 93%;
-  margin: 0 auto;
-  margin-bottom: 10px;
+  margin: 0 auto 10px 0;
 
   li {
     list-style: none;
@@ -45,10 +44,7 @@ const map_point = css`
 
   a {
     color: black;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-left: 9px;
-    padding-right: 9px;
+    padding: 2px 9px 2px 9px;
     font-size: 12px;
     font-weight: 500;
     align-items: center;

@@ -6,7 +6,7 @@ const button = css`
   width: 100%;
   height: 46px;
   background: #000;
-  color: #ffffff;
+  color: #fff;
   font-size: 18px;
   margin-top: 40px;
   border: none;

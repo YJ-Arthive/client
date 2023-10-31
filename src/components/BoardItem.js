@@ -17,7 +17,7 @@ const poster = css`
   img {
     width: 250px;
     height: 100%;
-    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.25);
   }
   margin-bottom: 10px;
 `;

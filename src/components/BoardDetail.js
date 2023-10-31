@@ -11,8 +11,7 @@ const detailWrap = css`
   align-items: center;
   width: 1120px;
   height: 510px;
-  margin: 0 auto;
-  margin-bottom: 150px;
+  margin: 0 auto 150px auto;
 
   span > img {
     float: right;
@@ -28,7 +27,7 @@ const imgWrap = css`
   img {
     max-width: 500px;
     max-height: 500px;
-    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.25);
   }
 `;
 
@@ -64,35 +63,34 @@ const detailText = css`
 `;
 
 const galleryTable = css`
-width: 473px;
-display: flex;
-flex-direction: column;
-justify-content: center;
+  width: 473px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-table {
-  height: 260px;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-th,
-td {
-  border-bottom: 1px solid #e9e9e9;
-  font-weight: normal;
-}
-
-td {
-  padding-left: 20px;
-  color: #464646;
-}
-
-span {
-  float: right;
-  color: #d9d9d9;
-}
+  table {
+    height: 260px;
+    font-size: 16px;
+    margin-bottom: 10px;
   }
 
-  a{
+  th,
+  td {
+    border-bottom: 1px solid #e9e9e9;
+    font-weight: normal;
+  }
+
+  td {
+    padding-left: 20px;
+    color: #464646;
+  }
+
+  span {
+    float: right;
+    color: #d9d9d9;
+  }
+
+  a {
     color: black;
   }
 `;

@@ -54,20 +54,14 @@ const ArtistRegister = ({ artistData }) => {
       return;
     }
     if (editMode) {
-      await axios
-        .patch(
-          `https://api.arthive.dev/api/v1/artists/${artistData.id}`,
-          inputs
-        )
-        .then(() => {
-          alert('작가 정보가 수정되었습니다.');
-        });
+      await axios.patch(
+        `https://api.arthive.dev/api/v1/artists/${artistData.id}`,
+        inputs
+      );
+      alert('작가 정보가 수정되었습니다.');
     } else {
-      await axios
-        .post('https://api.arthive.dev/api/v1/artists', inputs)
-        .then(() => {
-          alert('새로운 작가가 등록되었습니다.');
-        });
+      await axios.post('https://api.arthive.dev/api/v1/artists', inputs);
+      alert('새로운 작가가 등록되었습니다.');
     }
   };
 

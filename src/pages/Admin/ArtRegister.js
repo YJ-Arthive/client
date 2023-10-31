@@ -48,17 +48,14 @@ const ArtRegister = ({ artData }) => {
     }
 
     if (editMode) {
-      await axios
-        .patch(`https://api.arthive.dev/api/v1/arts/${artData.id}`, inputs)
-        .then(() => {
-          alert('작품 정보가 수정되었습니다.');
-        });
+      await axios.patch(
+        `https://api.arthive.dev/api/v1/arts/${artData.id}`,
+        inputs
+      );
+      alert('작품 정보가 수정되었습니다.');
     } else {
-      await axios
-        .post('https://api.arthive.dev/api/v1/arts', inputs)
-        .then(() => {
-          alert('새로운 작품이 등록되었습니다.');
-        });
+      await axios.post('https://api.arthive.dev/api/v1/arts', inputs);
+      alert('새로운 작품이 등록되었습니다.');
     }
   };
 

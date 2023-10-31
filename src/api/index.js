@@ -52,11 +52,10 @@ export function getArtists(keyword) {
 export const getGalleries = async () => {
   try {
     // const response = await axios.get('/api/v1/galleries');
-    const response = await axios.get(
+    // 여기서 response.data에 갤러리 목록이 포함되어 있다고 가정합니다.
+    return await axios.get(
       'https://api.arthive.dev/api/v1/galleries?page=1&size=10'
     );
-    // 여기서 response.data에 갤러리 목록이 포함되어 있다고 가정합니다.
-    return response;
   } catch (error) {
     console.error('갤러리 목록을 불러오는 중 오류가 발생했습니다:', error);
     return [];

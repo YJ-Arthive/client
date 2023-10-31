@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { getNewRefreshToken } from './refresh';
 
+const UNAUTHORIZED = 401;
+
 export const getAuthAxios = (token) => {
   const authAxios = axios.create({
     baseURL: 'https://api.arthive.dev/api/v1/',
@@ -11,7 +13,7 @@ export const getAuthAxios = (token) => {
   authAxios.interceptors.response.use(
     (res) => res,
     async (error) => {
-      if (error.response.statue == 401) {
+      if (error.response.status === UNAUTHORIZED) {
         // 토큰이 만료된 경우 새로 받아오기
         const { accessToken, refreshToken } = await getNewRefreshToken();
         error.config.headers.Authorization = accessToken;
