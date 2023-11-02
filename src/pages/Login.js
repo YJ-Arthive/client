@@ -5,24 +5,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import { login } from '../api/login';
 
-// const users = [
-//   {
-//     username: 'blue',
-//     password: '1234',
-//     userInfo: { name: 'hanYujin' },
-//   },
-//   {
-//     username: 'white',
-//     password: '1234',
-//     userInfo: { name: 'kimHongdae' },
-//   },
-//   {
-//     username: 'red',
-//     password: '1234',
-//     userInfo: { name: 'redGiant' },
-//   },
-// ];
-
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPw] = useState('');

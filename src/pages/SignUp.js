@@ -33,21 +33,19 @@ const signUpTitle = css`
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
-    email: '',
-    username: '',
-    birthday: '',
+    emailAddress: '',
+    name: '',
     phoneNumber: '',
     password: '',
   });
   const router = useNavigate();
 
-  const { email, username, birthday, phoneNumber, password } = inputs;
+  const { emailAddress, name, phoneNumber, password } = inputs;
   const [checkPassword, setCheckPassword] = useState('');
 
   // 유효성 검사
   const [isConfirmEmail, setIsConfirmEmail] = useState(true);
   const [isConfirmName, setIsConfirmName] = useState(true);
-  const [isConfirmBirthday, setIsConfirmBirthday] = useState(false);
   const [isConfirmPhoneNumber, setIsConfirmPhoneNumber] = useState(false);
   const [isConfirmPassword, setIsConfirmPassword] = useState(false);
   const [isConfirmCheckPassword, setIsConfirmCheckPassword] = useState(false);
@@ -57,10 +55,7 @@ const SignUp = () => {
   const PWD_REGEX =
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
   const PHONE_REGEX = /^010-\d{4}-\d{4}$/;
-  const BIRTHDAY_REGEX =
-    /^(?:19|20)\d\d-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
 
-  // 입렵값 상태 변경
   const handleChangeInfoInputs = (e) => {
     const { value, name } = e.target;
     setInputs({
@@ -74,9 +69,8 @@ const SignUp = () => {
   };
 
   // 각 유효성 검사 함수
-  const validateEmail = () => EMAIL_REGEX.test(email);
-  const validateName = () => username.length > 1;
-  const validateBirthday = () => BIRTHDAY_REGEX.test(birthday);
+  const validateEmail = () => EMAIL_REGEX.test(emailAddress);
+  const validateName = () => name.length > 1;
   const validatePhoneNumber = () => PHONE_REGEX.test(phoneNumber);
   const validatePassword = () => PWD_REGEX.test(password);
   const validateCheckPassword = () =>
@@ -85,17 +79,12 @@ const SignUp = () => {
   // 이메일 유효성 검사
   useEffect(() => {
     setIsConfirmEmail(validateEmail());
-  }, [email]);
+  }, [emailAddress]);
 
   // 이름 유효성 검사
   useEffect(() => {
     setIsConfirmName(validateName());
-  }, [username]);
-
-  // 생년월일 유효성 검사
-  useEffect(() => {
-    setIsConfirmBirthday(validateBirthday());
-  }, [birthday]);
+  }, [name]);
 
   // 휴대전화 유효성 검사
   useEffect(() => {
@@ -119,7 +108,6 @@ const SignUp = () => {
       !(
         isConfirmEmail &&
         isConfirmName &&
-        isConfirmBirthday &&
         isConfirmPhoneNumber &&
         isConfirmPassword &&
         isConfirmCheckPassword
@@ -143,8 +131,8 @@ const SignUp = () => {
           <InfoList
             label={'이메일'}
             input={{
-              name: 'email',
-              value: email,
+              name: 'emailAddress',
+              value: emailAddress,
               onChange: handleChangeInfoInputs,
               placeholder: 'arthive@gmail.com',
               checkInput: {
@@ -157,26 +145,13 @@ const SignUp = () => {
           <InfoList
             label={'성함'}
             input={{
-              name: 'username',
-              value: username,
+              name: 'name',
+              value: name,
               onChange: handleChangeInfoInputs,
               placeholder: '홍길동',
               checkInput: {
                 isConfirm: isConfirmName,
                 errorMessage: '이름을 정확히 입력해주세요. (ex. 홍길동)',
-              },
-            }}
-          />
-          <InfoList
-            label={'생년월일'}
-            input={{
-              name: 'birthday',
-              value: birthday,
-              placeholder: 'YYYY-MM-DD',
-              onChange: handleChangeInfoInputs,
-              checkInput: {
-                isConfirm: isConfirmBirthday,
-                errorMessage: '형식에 맞춰 입력해주세요. (ex. YYYY-MM-DD)',
               },
             }}
           />
