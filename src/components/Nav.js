@@ -1,7 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 const navbar = css`
   height: 65px;
@@ -86,7 +87,19 @@ function getLinkStyle({ isActive }) {
   };
 }
 
-const Nav = () => {
+const Nav = ({ isLogin }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleClickLogoutBtn = async () => {
+    const isLogout = await requestLogout();
+    if (isLogout) {
+      localStorage.removeItem('token');
+      dispatch(setUserInit());
+      navigate('/');
+      window.location.reload(); // 새로고침
+    }
+  };
   return (
     <div css={navbar}>
       <div css={navbar_container}>
@@ -148,14 +161,27 @@ const Nav = () => {
         </div>
 
         <div css={navbarUser}>
-          <ul>
-            <li>
-              <Link to='/login'>로그인</Link>
-            </li>
-            <li>
-              <Link to='/signup'>회원가입</Link>
-            </li>
-          </ul>
+          {isLogin ? (
+            <ul>
+              <li>
+                <Link to='/login'>한유진</Link>
+              </li>
+              <li>
+                <button type='button' onClick={handleClickLogoutBtn}>
+                  로그아웃
+                </button>
+              </li>
+            </ul>
+          ) : (
+            <ul>
+              <li>
+                <Link to='/login'>로그인</Link>
+              </li>
+              <li>
+                <Link to='/signup'>회원가입</Link>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
     </div>

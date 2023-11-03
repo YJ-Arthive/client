@@ -3,7 +3,6 @@ import { css } from '@emotion/react';
 import Board from '../../components/Board';
 import HeartBtn from '../../components/HeartBtn';
 import { useState, useEffect } from 'react';
-// import { getGalleries } from '../../api/index';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 

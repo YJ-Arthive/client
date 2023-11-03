@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import Button from '../components/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
-import { login } from '../api/login';
+import { requestLogin } from '../api/userAPI';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -19,7 +19,7 @@ const Login = () => {
 
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
-    const result = await login(email, password);
+    const result = await requestLogin(email, password);
     const { accessToken, refreshToken } = result;
     localStorage.setItem('access', accessToken);
     localStorage.setItem('refresh', refreshToken);

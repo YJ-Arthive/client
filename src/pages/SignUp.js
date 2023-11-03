@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import InfoList from '../components/InfoList';
 import Button from '../components/Button';
 import { signUp } from '../api/signUp';
+import axios from 'axios';
 
 const signUp1 = css`
   background-color: #fbfbfb;
@@ -69,17 +70,19 @@ const SignUp = () => {
   };
 
   // 각 유효성 검사 함수
-  const validateEmail = () => EMAIL_REGEX.test(emailAddress);
+  const validateEmail = useCallback(() => {
+    return EMAIL_REGEX.test(emailAddress);
+  }, [emailAddress, EMAIL_REGEX]);
   const validateName = () => name.length > 1;
   const validatePhoneNumber = () => PHONE_REGEX.test(phoneNumber);
   const validatePassword = () => PWD_REGEX.test(password);
   const validateCheckPassword = () =>
     checkPassword === password || checkPassword.length === 0;
 
-  // 이메일 유효성 검사
+  // 이메일 유효성 검사, 중복검사
   useEffect(() => {
     setIsConfirmEmail(validateEmail());
-  }, [emailAddress]);
+  }, [emailAddress, validateEmail]);
 
   // 이름 유효성 검사
   useEffect(() => {
@@ -116,6 +119,15 @@ const SignUp = () => {
       alert('필수 사항을 조건에 맞게 모두 입력해주세요.');
       return;
     } else {
+      await axios
+        .get('https://api.arthive.dev/api/v1/users/duplication')
+        .then((response) => {
+          console.log(response);
+          if (response.isDuplicated === 'true') {
+            alert('이미 존재하는 이메일입니다. 다시 입력해 주세요.');
+            return;
+          }
+        });
       await signUp(inputs);
       router('/');
     }

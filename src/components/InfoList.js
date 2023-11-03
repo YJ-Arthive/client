@@ -2,7 +2,6 @@
 import { css } from '@emotion/react';
 
 const inputList = css`
-  // border: 1px solid red;
   margin-bottom: 23px;
   width: 100%;
 `;
@@ -50,6 +49,7 @@ const InfoList = ({ label, input, labelSub = false, labelSubText }) => {
     checkInput = '',
     accept,
   } = input;
+
   const isError = value?.length !== 0 && checkInput.isConfirm === false;
 
   return (
