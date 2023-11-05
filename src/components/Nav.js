@@ -2,7 +2,9 @@
 import { css } from '@emotion/react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { requestLogout } from '../api/userAPI';
+import { setUserInit } from '../store/userSlice';
 
 const navbar = css`
   height: 65px;
@@ -90,6 +92,7 @@ function getLinkStyle({ isActive }) {
 const Nav = ({ isLogin }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const displayName = useSelector((state) => state.user.displayName);
 
   const handleClickLogoutBtn = async () => {
     const isLogout = await requestLogout();
@@ -164,7 +167,7 @@ const Nav = ({ isLogin }) => {
           {isLogin ? (
             <ul>
               <li>
-                <Link to='/login'>한유진</Link>
+                <Link to='/login'>{displayName}</Link>
               </li>
               <li>
                 <button type='button' onClick={handleClickLogoutBtn}>

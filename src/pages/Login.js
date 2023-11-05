@@ -4,11 +4,15 @@ import Button from '../components/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import { requestLogin } from '../api/userAPI';
+import { useDispatch } from 'react-redux';
+import { setIsAdmin, setUserInfo } from '../store/userSlice';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPw] = useState('');
-  const router = useNavigate();
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -23,7 +27,21 @@ const Login = () => {
     const { accessToken, refreshToken } = result;
     localStorage.setItem('access', accessToken);
     localStorage.setItem('refresh', refreshToken);
-    router('/'); // home으로 이동하쉐이
+
+    const loginData = await requestLogin({
+      email: e.target.email.value,
+      password: e.target.password.value,
+    });
+
+    if (loginData) {
+      if (loginData.email === process.env.REACT_APP_ADMIN_EMAIL) {
+        dispatch(setIsAdmin({ isAdmin: true }));
+        navigate('/admin');
+        return;
+      }
+      dispatch(setUserInfo({ displayName: loginData.displayName }));
+      navigate('/'); // home으로 이동하쉐이
+    } else alert('잘못된 이메일 혹은 비밀번호입니다.');
   };
 
   return (

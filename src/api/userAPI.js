@@ -17,8 +17,9 @@ export const requestLogin = async (email, password) => {
   return result.data.data;
 };
 
-// export const requestLogout = async () => {
-// }
+export const requestLogout = async () => {
+  await axios.post('https://api.arthive.dev/api/v1/login');
+};
 
 export const getNewRefreshToken = async () => {
   const accessToken = localStorage.getItem('access');
