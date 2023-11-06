@@ -27,5 +27,4 @@ let user = createSlice({
 
 // state 변경함수들(reducers)이 object 로 꺼내어짐
 export const { setUserInfo, setUserInit, setIsAdmin } = user.actions;
-
 export default user;
