@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import InfoList from '../components/InfoList';
 import Button from '../components/Button';
-import { signUp } from '../api/signUp';
+import { requestSignup } from '../api/userAPI';
 import axios from 'axios';
 
 const signUp1 = css`
@@ -128,7 +128,7 @@ const SignUp = () => {
             return;
           }
         });
-      await signUp(inputs);
+      await requestSignup(inputs);
       router('/');
     }
   };

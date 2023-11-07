@@ -85,13 +85,19 @@ function Main() {
           <Route path='admin'>
             <Route index element={<Admin />} />
             <Route
-              path='exhibition-register'
+              path='exhibition-register/:exhibitionId'
               element={<ExhibitionRegister />}
             />
-            <Route path='gallery-register' element={<GalleryRegister />} />
-            <Route path='art-register' element={<ArtRegister />} />
-            <Route path='artist-register' element={<ArtistRegister />} />
-
+            <Route
+              path='gallery-register/:galleryId'
+              element={<GalleryRegister />}
+            />
+            <Route path='art-register/:artId' element={<ArtRegister />} />
+            <Route
+              path='artist-register/:artistId'
+              element={<ArtistRegister />}
+            />
+            {/*  Register 에서 수정까지 잘 작동하면 아래 컴포넌트 지우세요. */}
             <Route path='exhibition-edit' element={<ExhibitionEdit />} />
             <Route path='art-edit' element={<ArtEdit />} />
             <Route path='artist-edit' element={<ArtistEdit />} />

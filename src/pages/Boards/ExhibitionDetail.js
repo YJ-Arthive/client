@@ -5,6 +5,7 @@ import { Navigate, useParams, Link } from 'react-router-dom';
 import BoardHeader from '../../components/BoardHeader';
 import { getExhibitionById } from '../../api/index';
 import HeartBtn from '../../components/HeartBtn';
+import AdminButton from '../../components/AdminButton';
 
 const detailSummary = css`
   display: flex;
@@ -177,6 +178,8 @@ const ExhibitionDetail = () => {
           <HeartBtn like={like} onClick={toggleLike} />
         </div>
       </div>
+
+      <AdminButton idx={exhibitionId} boardName={exhibition} />
 
       <div css={exhibitionDescription}>
         <p>전시설명</p>

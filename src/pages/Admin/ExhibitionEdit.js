@@ -6,19 +6,19 @@ import { locationLists as locationOptions } from '../../data/locationLists';
 
 const ExhibitionEdit = ({ exhibitionId }) => {
   const [inputs, setInputs] = useState({
-    title: '', // 전시명
-    artist: '', // 작가
-    openTime: '', // 오픈시간
-    closeTime: '', // 마감시간
-    closeDay: '', // 휴관일
-    location: '', // 지역
-    gallery: '', // 갤러리명
-    address: '', // 전시 주소
-    startDate: '', // 오픈일
-    endDate: '', // 종료일
-    entranceFee: '', // 관람료
-    homePageUrl: '', // 홈페이지
-    posterUrl: '', // 포스터
+    title: '',
+    artist: '',
+    openTime: '',
+    closeTime: '',
+    closeDay: '',
+    location: '',
+    gallery: '',
+    address: '',
+    startDate: '',
+    endDate: '',
+    entranceFee: '',
+    homePageUrl: '',
+    posterUrl: '',
   });
 
   const {

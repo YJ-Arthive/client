@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import BoardHeader from '../../components/BoardHeader';
 import AdminForm from '../../components/AdminForm';
 import CommonInputRow from '../../components/CommonInputRow';
@@ -7,8 +8,9 @@ import { requiredFieldsFilled } from '../../util/formUtils';
 import { locationLists } from '../../data/locationLists';
 import axios from 'axios';
 
-const ExhibitionRegister = ({ exhibitionData }) => {
+const ExhibitionRegister = () => {
   const imgRef = useRef();
+  const { exhibitionId } = useParams();
   const [editMode, setEditMode] = useState(false);
   const [inputs, setInputs] = useState({
     title: '',
@@ -59,11 +61,15 @@ const ExhibitionRegister = ({ exhibitionData }) => {
 
   // exhibitionData가 전달되면(수정모드) 초기값을 설정
   useEffect(() => {
-    if (exhibitionData && Object.keys(exhibitionData).length > 0) {
-      setInputs(exhibitionData);
+    if (exhibitionId) {
+      axios
+        .get('https://api.arthive.dev/api/v1/exhibition')
+        .then((response) => {
+          setInputs(response.data.data);
+        });
       setEditMode(true);
     }
-  }, [exhibitionData]);
+  }, []);
 
   // 입력값 상태 변경
   const handleChangeInfoInputs = (e) => {
@@ -91,7 +97,7 @@ const ExhibitionRegister = ({ exhibitionData }) => {
       // 수정 모드: PATCH 요청
       await axios
         .patch(
-          `https://api.arthive.dev/api/v1/exhibitions/${exhibitionData.id}`,
+          `https://api.arthive.dev/api/v1/exhibitions/${exhibitionId}`,
           inputs
         )
         .then(() => {
