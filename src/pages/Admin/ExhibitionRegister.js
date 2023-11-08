@@ -59,9 +59,10 @@ const ExhibitionRegister = () => {
     'posterUrl',
   ];
 
-  // exhibitionData가 전달되면(수정모드) 초기값을 설정
+  // exhibitionId === 0이면 등록모드
+  // exhibitionId !== 0이면 (1이상) 수정모드
   useEffect(() => {
-    if (exhibitionId) {
+    if (exhibitionId !== 0) {
       axios
         .get('https://api.arthive.dev/api/v1/exhibition')
         .then((response) => {
@@ -95,21 +96,15 @@ const ExhibitionRegister = () => {
 
     if (editMode) {
       // 수정 모드: PATCH 요청
-      await axios
-        .patch(
-          `https://api.arthive.dev/api/v1/exhibitions/${exhibitionId}`,
-          inputs
-        )
-        .then(() => {
-          alert('전시 정보가 수정되었습니다.');
-        });
+      await axios.patch(
+        `https://api.arthive.dev/api/v1/exhibitions/${exhibitionId}`,
+        inputs
+      );
+      alert('전시 정보가 수정되었습니다.');
     } else {
       // 등록 모드: POST 요청
-      await axios
-        .post('https://api.arthive.dev/api/v1/exhibitions', inputs)
-        .then(() => {
-          alert('새로운 전시가 등록되었습니다.');
-        });
+      await axios.post('https://api.arthive.dev/api/v1/exhibitions', inputs);
+      alert('새로운 전시가 등록되었습니다.');
     }
   };
 

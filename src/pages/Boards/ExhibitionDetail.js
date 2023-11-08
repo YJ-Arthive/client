@@ -6,6 +6,8 @@ import BoardHeader from '../../components/BoardHeader';
 import { getExhibitionById } from '../../api/index';
 import HeartBtn from '../../components/HeartBtn';
 import AdminButton from '../../components/AdminButton';
+import KaKaoMap from '../../components/KakaoMap';
+import MapContainer from '../../components/MapContainer';
 
 const detailSummary = css`
   display: flex;
@@ -64,22 +66,9 @@ const detailTable = css`
   }
 `;
 
-const exhibitionDescription = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 1120px;
-  height: 100%;
-  padding: 100px;
-  border-top: 1px solid gray;
-  margin: 0 auto;
-`;
-
 const ExhibitionDetail = () => {
   const { exhibitionId } = useParams();
   const exhibition = getExhibitionById(exhibitionId);
-
   const [like, setLike] = useState(false);
 
   // 사용자가 좋아요를 눌렀는지 확인
@@ -181,12 +170,9 @@ const ExhibitionDetail = () => {
 
       <AdminButton idx={exhibitionId} boardName={exhibition} />
 
-      <div css={exhibitionDescription}>
-        <p>전시설명</p>
-        <p>포스터</p>
-        <p>전시 상세 설명 줄글</p>
-        <p>카카오맵</p>
-      </div>
+      <MapContainer>
+        <KaKaoMap address={exhibition.address} />
+      </MapContainer>
     </div>
   );
 };

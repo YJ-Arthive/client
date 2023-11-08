@@ -10,8 +10,8 @@ const detailWrap = css`
   justify-content: space-between;
   align-items: center;
   width: 1120px;
-  height: 510px;
-  margin: 0 auto 150px auto;
+  height: 500px;
+  margin: 0 auto 100px auto;
 
   span > img {
     float: right;

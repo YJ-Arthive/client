@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BoardHeader from '../../components/BoardHeader';
 import axios from 'axios';
 import AdminForm from '../../components/AdminForm';
@@ -37,6 +38,7 @@ async function sendCreateGalleryDataRequest(inputs, imgRef) {
 
 const GalleryRegister = ({ galleryData }) => {
   const imgRef = useRef();
+  const navigate = useNavigate();
   const [editMode, setEditMode] = useState(false);
   const [inputs, setInputs] = useState({
     galleryName: '',
@@ -98,6 +100,7 @@ const GalleryRegister = ({ galleryData }) => {
       await sendEditGalleryDataRequest(galleryData, inputs);
     } else {
       await sendCreateGalleryDataRequest(inputs, imgRef);
+      navigate('/gallery');
     }
   };
 

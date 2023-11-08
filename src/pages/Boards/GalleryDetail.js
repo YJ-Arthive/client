@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import BoardDetail from '../../components/BoardDetail';
 import HeartBtn from '../../components/HeartBtn';
 import { Navigate, useParams } from 'react-router-dom';
-// import { getGalleryById } from '../../api/index';
 import axios from 'axios';
+import MapContainer from '../../components/MapContainer';
+import KaKaoMap from '../../components/KakaoMap';
 
 const GalleryDetail = () => {
   const { galleryId } = useParams();
@@ -42,6 +43,9 @@ const GalleryDetail = () => {
         homePage={galleryDetail.homePage}
       />
       <HeartBtn like={like} onClick={toggleLike} />
+      <MapContainer>
+        <KaKaoMap address={galleryDetail.address} />
+      </MapContainer>
     </div>
   );
 };
