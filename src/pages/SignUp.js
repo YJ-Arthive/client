@@ -17,7 +17,7 @@ const signUpWrap = css`
   flex-direction: column;
   border: 1px solid #d9d9d9;
   width: 457px;
-  height: 829px;
+  height: 729px;
   border-radius: 30px;
   background-color: white;
   margin: 0 auto;
