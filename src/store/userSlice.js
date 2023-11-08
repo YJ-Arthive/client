@@ -18,6 +18,7 @@ let user = createSlice({
       // 초기화
       state.displayName = '';
       state.email = '';
+      state.isAdmin = false; // 초기화 시 isAdmin을 false로 설정
     },
     setIsAdmin(state, action) {
       state.isAdmin = action.payload.isAdmin;

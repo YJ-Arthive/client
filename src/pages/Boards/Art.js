@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import BoardHeader from '../../components/BoardHeader';
 import { getArts } from '../../api/index';
 import HeartBtn from '../../components/HeartBtn';
+import AdminRegisterBtn from '../../components/AdminRegisterBtn';
 
 const artWrap = css`
   display: flex;
@@ -91,6 +92,7 @@ export const Art = () => {
   return (
     <div>
       <BoardHeader text='Art' />
+      <AdminRegisterBtn boardName='art' />
       <div css={artWrap}>
         <div css={artList}>
           {arts.map((art) => {

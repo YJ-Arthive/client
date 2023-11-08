@@ -89,7 +89,7 @@ export const Artist = () => {
 
   return (
     <div>
-      <Board text='Artist'>
+      <Board text='Artist' boardName='artist'>
         {artists.map((artist) => {
           return <ArtistItem key={artist.id} artist={artist} {...artist} />;
         })}

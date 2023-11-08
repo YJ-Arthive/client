@@ -2,7 +2,6 @@
 import { css } from '@emotion/react';
 import BoardHeader from './BoardHeader';
 import HeartBtn from './HeartBtn';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const detailWrap = css`
@@ -150,22 +149,9 @@ const BoardDetail = ({
   hours,
   closed,
   homePage,
+  like,
+  onClick,
 }) => {
-  const [like, setLike] = useState(false);
-  // 사용자가 좋아요를 눌렀는지 확인
-  // useEffect(async () => {
-  //   const fetchData = async () => {
-  //     const res = await axios.get(...)
-  //     if (res.data.type === 'liked') setLike(true);
-  //   };
-  //   fetchData();
-  // }, []);
-
-  const toggleLike = async () => {
-    // const res = await axios.post(...) // [POST] 사용자가 좋아요 누름 -> DB 갱신
-    setLike(!like);
-  };
-
   return (
     <div>
       <BoardHeader text={text} />
@@ -186,7 +172,7 @@ const BoardDetail = ({
               homePage={homePage}
             />
           )}
-          <HeartBtn like={like} onClick={toggleLike} />
+          <HeartBtn like={like} onClick={onClick} />
         </div>
       </div>
     </div>

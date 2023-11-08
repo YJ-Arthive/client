@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { getExhibitions } from '../../api/index';
 import BoardHeader from '../../components/BoardHeader';
 import HeartBtn from '../../components/HeartBtn';
+import { useSelector } from 'react-redux';
 
 const buttonWrap = css`
   display: flex;
@@ -47,6 +48,11 @@ const buttonWrap = css`
 const registerBtn = css`
   margin-right: auto;
 `;
+const registerAdminBtn = css`
+  a {
+    color: blue;
+  }
+`;
 const currentBtn = css`
   width: 102px;
 `;
@@ -58,6 +64,8 @@ const localBtn = css`
 `;
 
 const ExhibitionButton = () => {
+  const isAdmin = useSelector((state) => state.user.isAdmin);
+
   // 기본 정렬
   // const [order, setOrder] = useState({
   //   period: 'current',
@@ -65,12 +73,14 @@ const ExhibitionButton = () => {
   //   location: 'all',
   // });
 
-  // 기본 상태 (=기본 정렬)
-  const [state, setState] = useState({
+  const initialState = {
     period: '현재전시',
     order: '최신순',
     location: '지역 전체',
-  });
+  };
+
+  // 기본 정렬
+  const [state, setState] = useState(initialState);
 
   const handleChangeState = (e) => {
     setState({
@@ -80,24 +90,9 @@ const ExhibitionButton = () => {
     // 정렬함수
   };
 
-  // const handleChangeOrder = (e) => {
-  //   setOrder({
-  //     ...order,
-  //     [e.target.name]: e.target.value,
-  //   });
-  //   handleOrder = () => set
-  //   if (e.target.name === 'location') {
-  //     // 필터링
-  //   }
-  // };
-
   const onClearSelect = () => {
     console.log('모든 버튼 초기화');
-    setState({
-      period: '현재전시',
-      order: '최신순',
-      location: '지역 전체',
-    });
+    setState(initialState);
   };
 
   return (
@@ -105,6 +100,11 @@ const ExhibitionButton = () => {
       <button css={registerBtn}>
         <Link to='/exhibition/register'>등록신청</Link>
       </button>
+      {isAdmin && (
+        <button css={registerAdminBtn}>
+          <Link to='/admin/exhibition-register/0'>등록하기</Link>
+        </button>
+      )}
       <select
         name='period'
         value={state.period}

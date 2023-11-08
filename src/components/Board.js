@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import BoardHeader from './BoardHeader';
+import AdminRegisterBtn from './AdminRegisterBtn';
 
 const boardWrap = css`
   display: flex;
@@ -20,10 +21,11 @@ const boardList = css`
   margin-bottom: 70px;
 `;
 
-const Board = ({ children, text = '게시판' }) => {
+const Board = ({ children, text = '게시판', boardName }) => {
   return (
     <div>
       <BoardHeader text={text} />
+      <AdminRegisterBtn boardName={boardName} />
       <div css={boardWrap}>
         <div css={boardList}>{children}</div>
       </div>

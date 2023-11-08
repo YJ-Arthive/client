@@ -98,7 +98,7 @@ export const Gallery = () => {
 
   return (
     <div>
-      <Board text='Gallery'>
+      <Board text='Gallery' boardName='gallery'>
         {galleryData.map((gallery) => {
           return (
             <GalleryItem key={gallery.id} gallery={gallery} {...gallery} />

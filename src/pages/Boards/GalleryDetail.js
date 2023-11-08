@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import BoardDetail from '../../components/BoardDetail';
-import HeartBtn from '../../components/HeartBtn';
+// import HeartBtn from '../../components/HeartBtn';
 import { Navigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import MapContainer from '../../components/MapContainer';
@@ -41,8 +41,9 @@ const GalleryDetail = () => {
         closed={galleryDetail.closed}
         hours={galleryDetail.hours}
         homePage={galleryDetail.homePage}
+        like={like}
+        onClick={toggleLike}
       />
-      <HeartBtn like={like} onClick={toggleLike} />
       <MapContainer>
         <KaKaoMap address={galleryDetail.address} />
       </MapContainer>

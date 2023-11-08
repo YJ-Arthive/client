@@ -2,7 +2,7 @@
 // import { css } from '@emotion/react';
 import { useState } from 'react';
 import BoardDetail from '../../components/BoardDetail';
-import HeartBtn from '../../components/HeartBtn';
+// import HeartBtn from '../../components/HeartBtn';
 import { Navigate, useParams } from 'react-router-dom';
 import { getArtById } from '../../api/index';
 
@@ -39,8 +39,9 @@ const ArtDetail = () => {
         title={art.title}
         subTitle={art.artist}
         description={art.artInfo}
+        like={like}
+        onClick={toggleLike}
       />
-      <HeartBtn like={like} onClick={toggleLike} />
     </div>
   );
 };

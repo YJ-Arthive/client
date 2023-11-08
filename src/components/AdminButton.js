@@ -12,12 +12,12 @@ const AdminButton = ({ idx, boardName }) => {
   const navigate = useNavigate();
 
   const handleEditButtonClick = () => {
-    navigate(`/admin/exhibition-register/${idx}`);
+    navigate(`/admin/${boardName}-register/${idx}`);
   };
 
   const handleDeleteButtonClick = async () => {
     if (window.confirm('게시물을 삭제하시겠습니까?')) {
-      await axios.delete(`https://api.arthive.dev/api/v1/exhibitions/${idx}`);
+      await axios.delete(`https://api.arthive.dev/api/v1/${boardName}/${idx}`);
       alert('삭제되었습니다.');
       navigate(`/${boardName}`);
     }
@@ -25,8 +25,8 @@ const AdminButton = ({ idx, boardName }) => {
 
   return (
     <div css={adminButton}>
-      <button onClick={handleEditButtonClick}>수정</button>
-      <button onClick={handleDeleteButtonClick}>삭제</button>
+      <button onClick={handleEditButtonClick}>수정하기</button>
+      <button onClick={handleDeleteButtonClick}>삭제하기</button>
     </div>
   );
 };
